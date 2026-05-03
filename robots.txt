@@ -1,6 +1,6 @@
 # Robots.txt — Mian Law Associates
-# https://www.mlabwp.com.pk
-# Generated: 2026-05-02
+# https://www.mla.com.pk
+# Updated: 2026-05-03
 
 User-agent: *
 Allow: /
@@ -21,8 +21,11 @@ Allow: /
 User-agent: Baiduspider
 Allow: /
 
-# Sitemap location
-Sitemap: https://www.mlabwp.com.pk/sitemap.xml
+User-agent: Yandex
+Allow: /
 
-# Crawl delay (be respectful to server)
-Crawl-delay: 10
+# Sitemap location
+Sitemap: https://www.mla.com.pk/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 5
