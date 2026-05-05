@@ -154,7 +154,7 @@ h2.st em{font-style:italic;color:var(--gold2)}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:44px}
 .why-photo{position:relative;height:480px;overflow:hidden;border:1px solid var(--border)}
 .why-photo img{width:100%;height:100%;object-fit:cover;filter:sepia(12%) contrast(1.06);transition:transform 6s ease}
-.why-photo:hover img{transform:scale(1.04)}
+@media(hover:hover){.why-photo:hover img{transform:scale(1.04)}}
 .why-list{display:flex;flex-direction:column;gap:12px}
 .why-item{display:flex;align-items:flex-start;gap:14px;padding:15px 18px;border:1px solid var(--border);background:var(--glow);transition:border-color .25s}
 .why-item:hover{border-color:rgba(201,164,68,0.38)}
@@ -191,8 +191,38 @@ h2.st em{font-style:italic;color:var(--gold2)}
 /* ── GALLERY ── */
 .gallery-section{background:var(--bg3);padding:0;overflow:hidden}
 .gallery-strip{display:flex;height:300px}
-.gallery-strip img{flex:1;object-fit:cover;filter:sepia(25%) grayscale(10%) contrast(1.05);transition:flex .5s cubic-bezier(.4,0,.2,1),filter .4s;cursor:pointer}
+.gallery-strip img{flex:1;object-fit:cover;object-position:center center;filter:sepia(25%) grayscale(10%) contrast(1.05);transition:flex .5s cubic-bezier(.4,0,.2,1),filter .4s;cursor:pointer}
 .gallery-strip img:hover{flex:2.6;filter:sepia(5%) grayscale(0%) contrast(1)}
+/* Per-image focus points (grid 3×3: 1=top-left … 9=bottom-right) */
+/* img 1 – Office: focus 8 = bottom-center */
+.gallery-strip img:nth-child(1){object-position:50% 80%}
+/* img 2 – Advocate HC: focus 5 = center */
+.gallery-strip img:nth-child(2){object-position:50% 40%}
+/* img 3 – Advocate BWP: focus 2-3 = upper-center/right */
+.gallery-strip img:nth-child(3){object-position:50% 20%}
+/* img 4 – Chamber 39: focus 5 = center */
+.gallery-strip img:nth-child(4){object-position:50% 40%}
+/* img 5 – Founding Advocates (two faces): no zoom on mobile, slight center on desktop */
+.gallery-strip img:nth-child(5){object-position:50% 35%}
+/* iOS & Android: no crop, show full image */
+@media(hover:none) and (pointer:coarse){
+  .gallery-strip{background:var(--bg)}
+  .gallery-strip img{object-fit:contain;background:var(--bg)}
+}
+/* Mobile/tablet: lock all gallery images to their focus, no scale change */
+@media(max-width:960px){
+  .gallery-strip img{object-fit:cover;}
+  .gallery-strip img:nth-child(1){object-position:50% 80%}
+  .gallery-strip img:nth-child(2){object-position:50% 40%}
+  .gallery-strip img:nth-child(3){object-position:50% 20%}
+  .gallery-strip img:nth-child(4){object-position:50% 40%}
+  .gallery-strip img:nth-child(5){object-position:50% 35%}
+/* iOS & Android: no crop, show full image */
+@media(hover:none) and (pointer:coarse){
+  .gallery-strip{background:var(--bg)}
+  .gallery-strip img{object-fit:contain;background:var(--bg)}
+}
+}
 
 /* ── REVIEWS ── */
 .reviews-section{background:var(--bg2)}
