@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MLA Litigation Desk — Developer Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0c0c0e;color:#e8dfc8;font-family:"Cormorant Garamond",Georgia,serif;line-height:1.75;padding:0}
+.page{max-width:860px;margin:0 auto;padding:48px 32px}
+h1{font-family:"Cinzel",serif;font-size:1.8rem;color:#e8dfc8;letter-spacing:0.06em;margin-bottom:6px}
+h2{font-family:"Cinzel",serif;font-size:1.05rem;color:#c9a444;letter-spacing:0.12em;text-transform:uppercase;margin:36px 0 14px;padding-bottom:8px;border-bottom:1px solid rgba(201,164,68,0.2)}
+h3{font-family:"Cinzel",serif;font-size:0.78rem;color:#e8dfc8;letter-spacing:0.1em;text-transform:uppercase;margin:20px 0 8px}
+p{font-size:0.95rem;color:#c8bfa8;margin-bottom:12px}
+.badge{display:inline-block;background:rgba(201,164,68,0.15);border:1px solid rgba(201,164,68,0.3);color:#c9a444;font-family:"Cinzel",serif;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-right:6px}
+.badge.green{background:rgba(90,159,114,0.12);border-color:rgba(90,159,114,0.3);color:#5a9f72}
+.badge.red{background:rgba(212,95,95,0.12);border-color:rgba(212,95,95,0.3);color:#d45f5f}
+.badge.blue{background:rgba(91,143,213,0.12);border-color:rgba(91,143,213,0.3);color:#5b8fd5}
+code{font-family:"DM Mono",monospace;font-size:0.82rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:2px 8px;border-radius:2px;color:#c9a444}
+pre{font-family:"DM Mono",monospace;font-size:0.78rem;background:#09090b;border:1px solid rgba(201,164,68,0.15);padding:18px 20px;margin:12px 0 18px;overflow-x:auto;line-height:1.7;color:#c8bfa8;border-left:3px solid #c9a444}
+pre .key{color:#c9a444}pre .val{color:#5a9f72}pre .str{color:#5b8fd5}pre .cmt{color:#5a4838;font-style:italic}
+.step{display:flex;gap:16px;margin-bottom:16px;padding:16px 18px;background:#111116;border:1px solid rgba(201,164,68,0.12)}
+.step-num{width:28px;height:28px;background:rgba(201,164,68,0.15);border:1px solid rgba(201,164,68,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Cinzel",serif;font-size:0.65rem;color:#c9a444;flex-shrink:0;margin-top:2px}
+.step-body h3{margin:0 0 4px;font-size:0.7rem}
+.step-body p{margin:0;font-size:0.88rem}
+.warn{background:rgba(212,95,95,0.07);border:1px solid rgba(212,95,95,0.25);padding:14px 18px;margin:14px 0;font-size:0.88rem;color:#c8bfa8}
+.warn strong{color:#d45f5f;font-weight:normal}
+.info{background:rgba(91,143,213,0.07);border:1px solid rgba(91,143,213,0.2);padding:14px 18px;margin:14px 0;font-size:0.88rem;color:#c8bfa8}
+.info strong{color:#5b8fd5;font-weight:normal}
+.success{background:rgba(90,159,114,0.07);border:1px solid rgba(90,159,114,0.22);padding:14px 18px;margin:14px 0;font-size:0.88rem;color:#c8bfa8}
+.success strong{color:#5a9f72;font-weight:normal}
+.rule{display:flex;align-items:center;gap:10px;margin:32px 0}
+.rule div:first-child,.rule div:last-child{flex:1;height:1px;background:rgba(201,164,68,0.15)}
+.rule div:nth-child(2){width:6px;height:6px;background:#c9a444;transform:rotate(45deg)}
+table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:0.88rem}
+th{font-family:"Cinzel",serif;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;color:#8a8070;padding:8px 14px;border-bottom:1px solid rgba(201,164,68,0.18);text-align:left}
+td{padding:10px 14px;border-bottom:1px solid rgba(201,164,68,0.07);color:#c8bfa8;vertical-align:top}
+td:first-child{color:#e8dfc8;font-family:"DM Mono",monospace;font-size:0.78rem}
+.toc a{color:#c9a444;text-decoration:none;font-family:"Cinzel",serif;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;display:block;padding:5px 0;border-bottom:1px solid rgba(201,164,68,0.08)}
+.toc a:hover{color:#e4c46e}
+@media(max-width:600px){.page{padding:28px 18px}h1{font-size:1.3rem}pre{font-size:0.7rem}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div style="text-align:center;margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid rgba(201,164,68,0.2)">
+    <div style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.28em;color:#c9a444;text-transform:uppercase;margin-bottom:12px">Mian Law Associates · Bahawalpur</div>
+    <h1>MLA Litigation Desk</h1>
+    <div style="font-size:0.9rem;color:#8a8070;margin-top:5px">Developer & Setup Guide — Confidential</div>
+    <div style="margin-top:16px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap">
+      <span class="badge">Version 1.0</span>
+      <span class="badge green">Single HTML File</span>
+      <span class="badge blue">No Backend Required</span>
+    </div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <h2>Contents</h2>
+  <div class="toc" style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <a href="#access">1. Login & Password</a>
+    <a href="#deploy">2. Deploy to Website</a>
+    <a href="#whatsapp">3. WhatsApp Setup</a>
+    <a href="#email">4. Email Reminders</a>
+    <a href="#data">5. Adding Cases</a>
+    <a href="#schema">6. Data Schema</a>
+    <a href="#customize">7. Customisation</a>
+    <a href="#troubleshoot">8. Troubleshooting</a>
+  </div>
+
+  <div class="rule"><div></div><div></div><div></div></div>
+
+  <!-- 1. LOGIN -->
+  <h2 id="access">1. Login & Password</h2>
+  <table>
+    <tr><th>Item</th><th>Value</th></tr>
+    <tr><td>Current Password</td><td><code>mla1997</code></td></tr>
+    <tr><td>Protected for</td><td>Advocate Mian Aqil Nawaz — private use only</td></tr>
+    <tr><td>Session</td><td>Stays logged in until browser tab is closed</td></tr>
+  </table>
+
+  <h3>Change Password</h3>
+  <p>Open <code>MLA_Litigation_Desk.html</code> in any text editor (Notepad, VS Code). Find this line:</p>
+  <pre>if(pw==='mla1997') onLogin();</pre>
+  <p>Replace <code>mla1997</code> with your new password. Save the file. Done.</p>
+  <div class="warn"><strong>Security note:</strong> This is a client-side password — suitable for private chamber use. Do not use for highly sensitive public-facing deployments without adding server-side authentication.</div>
+
+  <div class="rule"><div></div><div></div><div></div></div>
+
+  <!-- 2. DEPLOY -->
+  <h2 id="deploy">2. Deploy to mlabwp.com.pk</h2>
+
+  <h3>Option A — Direct Upload (Recommended)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Login to cPanel</h3><p>Go to <code>mlabwp.com.pk/cpanel</code> or your hosting provider's login. Enter your hosting credentials.</p></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Open File Manager</h3><p>Click <strong>File Manager</strong> → navigate to <code>public_html</code> folder.</p></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Upload the file</h3><p>Click <strong>Upload</strong> → select <code>MLA_Litigation_Desk.html</code> → wait for upload to complete.</p></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Access the app</h3><p>Visit: <code>https://mlabwp.com.pk/MLA_Litigation_Desk.html</code> — bookmark this on your phone.</p></div></div>
+
+  <h3>Option B — Private Subdomain (Professional)</h3>
+  <p>In cPanel → <strong>Subdomains</strong> → create <code>desk.mlabwp.com.pk</code> pointing to a new folder. Upload the file to that folder as <code>index.html</code>. Access at <code>https://desk.mlabwp.com.pk</code>.</p>
+
+  <h3>Option C — Password Protected Directory (Extra Security)</h3>
+  <p>In cPanel → <strong>Directory Privacy</strong> → select the folder containing the file → enable password protection → set a second layer username/password. This adds server-level authentication on top of the app's own password.</p>
+
+  <div class="success"><strong>Recommended:</strong> Use Option B (subdomain) + Option C (directory password) for maximum security. The app will then require two passwords — hosting-level and app-level.</div>
+
+  <div class="rule"><div></div><div></div><div></div></div>
+
+  <!-- 3. WHATSAPP -->
+  <h2 id="whatsapp">3. WhatsApp Reminders Setup</h2>
+  <div class="info"><strong>Service used:</strong> CallMeBot — free WhatsApp API. Sends to your personal WhatsApp number 0333-3621111 automatically. Limit: unlimited messages on personal numbers. No subscription, no cost.</div>
+
+  <h3>One-Time Setup (5 minutes)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Save the CallMeBot number</h3><p>Add this number to your WhatsApp contacts: <code>+34 644 82 47 47</code>. Save as "CallMeBot".</p></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Send activation message</h3><p>Open WhatsApp → open the CallMeBot chat → send this exact message:<br><code>I allow callmebot to send me messages</code></p></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Receive your API Key</h3><p>Within 1 minute, CallMeBot replies with your personal API key. It looks like: <code>1234567</code> (a 7-digit number).</p></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Enter key in the app</h3><p>Open MLA Litigation Desk → Reminders page → click <strong>"Send WhatsApp Now"</strong> → paste your API key when prompted. It is saved automatically — you never need to enter it again.</p></div></div>
+
+  <h3>How Auto-Reminders Work</h3>
+  <p>Every time you open the app (once per calendar day), it automatically checks:</p>
+  <ul style="margin:8px 0 14px;padding-left:20px;font-size:0.9rem;color:#c8bfa8;line-height:2">
+    <li>Are there hearings <strong>today</strong>? → Sends WhatsApp immediately</li>
+    <li>Are there hearings <strong>tomorrow</strong>? → Sends WhatsApp reminder</li>
+    <li>Neither → No WhatsApp sent (no spam)</li>
+  </ul>
+  <p>The WhatsApp message includes: today's & tomorrow's hearings, case name, court, stage, and outstanding fee alerts.</p>
+
+  <h3>Reset API Key</h3>
+  <p>Click <strong>"Reset Key"</strong> on the Reminders page. The stored key is deleted. Next time you click Send WhatsApp, you will be prompted to enter it again.</p>
+
+  <div class="rule"><div></div><div></div><div></div></div>
+
+  <!-- 4. EMAIL -->
+  <h2 id="email">4. Email Reminders</h2>
+  <table>
+    <tr><th>Item</th><th>Detail</th></tr>
+    <tr><td>Email address</td><td><code>aqilnawaz@gmail.com</code></td></tr>
+    <tr><td>Method</td><td>Opens Gmail/Outlook with pre-filled email. You press Send.</td></tr>
+    <tr><td>Content</td><td>All hearings next 30 days + fee recovery status for all cases</td></tr>
+    <tr><td>Backend needed</td><td>No — works entirely in browser</td></tr>
+  </table>
+  <h3>Change Recipient Email</h3>
+  <p>Open the file in a text editor. Find:</p>
+  <pre>const REMIND_EMAIL='aqilnawaz@gmail.com';</pre>
+  <p>Replace with any email address. Save.</p>
+
+  <div class="rule"><div></div><div></div><div></div></div>
+
+  <!-- 5. ADDING CASES -->
+  <h2 id="data">5. Adding & Editing Cases</h2>
+  <p>Currently cases are loaded from the <code>SEED</code> array in the file. To add real cases permanently, either:</p>
+
+  <h3>Method A — Edit the file directly (for developer)</h3>
+  <p>Open the HTML file in VS Code. Find the <code>const SEED=[</code> array. Add a new case object following the schema in Section 6. Save and re-upload to hosting.</p>
+
+  <h3>Method B — Browser localStorage (current behavior)</h3>
+  <p>The app saves all case data to <code>localStorage</code> under the key <code>mla_cases</code>. Data persists on the same browser/device. To export your cases, open browser DevTools (F12) → Console → type:</p>
+  <pre>copy(localStorage.getItem('mla_cases'))</pre>
+  <p>This copies your cases as JSON. You can paste this into the <code>SEED</code> array to make them permanent.</p>
+
+  <div class="warn"><strong>Important:</strong> localStorage is device-specific. If you open the app on a different device (phone vs laptop), they will not share case data automatically. To sync: export JSON from one device, import to another by replacing the SEED array.</div>
+
+  <div class="rule"><div></div><div></div><div></div></div>
+
+  <!-- 6. SCHEMA -->
+  <h2 id="schema">6. Case Data Schema</h2>
+  <p>Each case in the <code>SEED</code> array must follow this structure:</p>
+  <pre>{
+  <span class="key">id</span>:        <span class="str">'c6'</span>,                          <span class="cmt">// unique ID</span>
+  <span class="key">no</span>:        <span class="str">'2025/CS/0099'</span>,               <span class="cmt">// case number</span>
+  <span class="key">title</span>:     <span class="str">'Client Name vs. Opponent'</span>,
+  <span class="key">client</span>:    <span class="str">'Client Full Name'</span>,
+  <span class="key">father</span>:    <span class="str">'Father Name'</span>,
+  <span class="key">cnic</span>:      <span class="str">'42201-0000000-0'</span>,
+  <span class="key">mobile</span>:    <span class="str">'0300-0000000'</span>,
+  <span class="key">address</span>:   <span class="str">'Full address'</span>,
+  <span class="key">court</span>:     <span class="str">'Court name, City'</span>,
+  <span class="key">judge</span>:     <span class="str">'Hon. Justice ...'</span>,
+  <span class="key">cat</span>:       <span class="str">'Criminal'</span>,    <span class="cmt">// Criminal | Civil | Commercial</span>
+  <span class="key">stage</span>:     <span class="str">'Bail Hearing'</span>, <span class="cmt">// see stages below</span>
+  <span class="key">next</span>:      <span class="str">'2026-06-15'</span>,   <span class="cmt">// YYYY-MM-DD format REQUIRED</span>
+  <span class="key">filed</span>:     <span class="str">'2025-01-01'</span>,
+  <span class="key">prov</span>:      <span class="str">'PPC 302, 34'</span>,  <span class="cmt">// legal provisions</span>
+  <span class="key">fir</span>:       <span class="str">'FIR No. 12/2025'</span>,
+  <span class="key">ps</span>:        <span class="str">'Police Station Name'</span>,
+  <span class="key">opponent</span>:  <span class="str">'Opponent Name'</span>,
+  <span class="key">opC</span>:       <span class="str">'Opposing Counsel Name'</span>,
+  <span class="key">strategy</span>:  <span class="str">'Your litigation strategy notes'</span>,
+  <span class="key">jnotes</span>:    <span class="str">'Notes about judge behavior'</span>,
+  <span class="key">otactics</span>:  <span class="str">'Opposing counsel tactics'</span>,
+  <span class="key">settle</span>:    <span class="str">'Low | Medium | High'</span>,
+  <span class="key">evwk</span>:      <span class="str">'Evidence weaknesses'</span>,
+  <span class="key">warn</span>:      <span class="str">'Important warnings'</span>,
+  <span class="key">priority</span>:  <span class="str">'urgent'</span>,        <span class="cmt">// urgent | high | normal</span>
+  <span class="key">risk</span>:      <span class="str">'red'</span>,           <span class="cmt">// green=reliable | yellow=slow | red=problematic</span>
+  <span class="key">agreed</span>:    <span class="val">500000</span>,          <span class="cmt">// numbers only, no ₨ symbol</span>
+  <span class="key">received</span>:  <span class="val">250000</span>,
+  <span class="key">expense</span>:   <span class="val">15000</span>,
+  <span class="key">payments</span>: [
+    {<span class="key">date</span>:<span class="str">'2025-01-15'</span>, <span class="key">amt</span>:<span class="val">250000</span>, <span class="key">method</span>:<span class="str">'Cash'</span>, <span class="key">note</span>:<span class="str">'Retainer'</span>}
+  ],
+  <span class="key">timeline</span>: [
+    {<span class="key">date</span>:<span class="str">'2025-01-15'</span>, <span class="key">ev</span>:<span class="str">'Case Filed'</span>, <span class="key">type</span>:<span class="str">'filing'</span>}
+    <span class="cmt">// types: filing | hearing | order | evidence | arguments</span>
+  ]
+}</pre>
+
+  <h3>Valid Stage Values</h3>
+  <p>Use exactly one of these for the <code>stage</code> field — they control the color coding:</p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
+    <code>Bail Hearing</code><code>Arguments</code><code>Final Arguments</code>
+    <code>Evidence</code><code>Trial</code><code>Filing</code><code>Notice</code>
+  </div>
+
+  <div class="rule"><div></div><div></div><div></div></div>
+
+  <!-- 7. CUSTOMISE -->
+  <h2 id="customize">7. Customisation</h2>
+  <table>
+    <tr><th>What to change</th><th>Where in file</th><th>How</th></tr>
+    <tr><td>Password</td><td><code>pw==='mla1997'</code></td><td>Replace mla1997</td></tr>
+    <tr><td>Email address</td><td><code>REMIND_EMAIL=</code></td><td>Replace email string</td></tr>
+    <tr><td>WhatsApp number</td><td><code>WA_NUM='923333621111'</code></td><td>Replace with 92+number (no 0 prefix)</td></tr>
+    <tr><td>Advocate name</td><td>Search "Mian Aqil Nawaz"</td><td>Replace all occurrences</td></tr>
+    <tr><td>Firm name</td><td>Search "Mian Law Associates"</td><td>Replace all occurrences</td></tr>
+    <tr><td>Gold color</td><td><code>const gold='#c9a444'</code></td><td>Replace hex color</td></tr>
+    <tr><td>Background color</td><td><code>const bg='#0c0c0e'</code></td><td>Replace hex color</td></tr>
+    <tr><td>Add new module</td><td>After SearchView function</td><td>Add function component + case in App render</td></tr>
+  </table>
+
+  <div class="rule"><div></div><div></div><div></div></div>
+
+  <!-- 8. TROUBLESHOOT -->
+  <h2 id="troubleshoot">8. Troubleshooting</h2>
+  <table>
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td>Blank screen / classList error</td><td>Old version of file</td><td>Use the latest file (v1.0). The mobile menu is now fully React-managed.</td></tr>
+    <tr><td>App not loading</td><td>No internet (first load)</td><td>Internet needed first time to load React + Fonts from CDN. After that, cached locally.</td></tr>
+    <tr><td>WhatsApp not sending</td><td>Wrong API key</td><td>Click "Reset Key" → redo CallMeBot setup → get new key.</td></tr>
+    <tr><td>Data lost on phone</td><td>Browser storage cleared</td><td>Export JSON from DevTools before clearing. Or upload to hosting — shared URL preserves nothing (each browser has its own data).</td></tr>
+    <tr><td>Cases not saving across devices</td><td>localStorage is per-device</td><td>Both devices must access the same app URL on the hosting. But storage is still per-browser. For true sync, a backend (Supabase/Firebase) is needed — contact developer.</td></tr>
+    <tr><td>Email not opening</td><td>No email app on device</td><td>On mobile, Gmail app must be installed and set as default. On PC, default mail client must be configured.</td></tr>
+    <tr><td>Fonts look different</td><td>No internet</td><td>Cinzel & Cormorant Garamond load from Google Fonts. Offline fallback is Georgia/serif.</td></tr>
+  </table>
+
+  <div class="rule"><div></div><div></div><div></div></div>
+
+  <!-- TECH STACK -->
+  <h2>Technical Stack</h2>
+  <table>
+    <tr><th>Component</th><th>Technology</th><th>Version</th></tr>
+    <tr><td>Framework</td><td>React (CDN)</td><td>18</td></tr>
+    <tr><td>JSX Compiler</td><td>Babel Standalone (CDN)</td><td>latest</td></tr>
+    <tr><td>Fonts</td><td>Google Fonts CDN</td><td>Cinzel, Cormorant Garamond</td></tr>
+    <tr><td>Charts</td><td>Inline SVG (no library)</td><td>—</td></tr>
+    <tr><td>Data Storage</td><td>localStorage</td><td>—</td></tr>
+    <tr><td>WhatsApp API</td><td>CallMeBot</td><td>Free tier</td></tr>
+    <tr><td>Email</td><td>mailto: protocol</td><td>—</td></tr>
+    <tr><td>Hosting</td><td>Any static hosting / cPanel</td><td>—</td></tr>
+  </table>
+
+  <div class="rule"><div></div><div></div><div></div></div>
+
+  <div style="text-align:center;padding:24px 0;font-size:0.78rem;color:#4a4030">
+    <div style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.2em;color:#c9a444;text-transform:uppercase;margin-bottom:6px">Mian Law Associates · Bahawalpur</div>
+    MLA Litigation Desk — Developer Guide · Confidential<br>
+    Built for Advocate Mian Aqil Nawaz · mlabwp.com.pk
+  </div>
+
+</div>
+</body>
+</html>
