@@ -270,8 +270,10 @@ const SvgBar=({data})=>{
 function Login({onLogin}){
   const [pw,setPw]=useState('');
   const [err,setErr]=useState(false);
-  const go=()=>{
-    if(pw==='mla1997') onLogin();
+  const go=async()=>{
+    const h=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw.toUpperCase()));
+    const hx=Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    if(hx==='a8f5f167f44f4964e6c998dee827110c') onLogin();
     else{setErr(true);setTimeout(()=>setErr(false),2500);}
   };
   return <div style={{minHeight:'100vh',background:bg,display:'flex',alignItems:'center',justifyContent:'center',flex:1,position:'relative'}}>
@@ -296,7 +298,7 @@ function Login({onLogin}){
       <button onClick={go} style={{width:'100%',background:`linear-gradient(135deg,${gold},${gold2})`,border:'none',color:bg,fontFamily:CIN,fontSize:'0.6rem',letterSpacing:'0.18em',textTransform:'uppercase',padding:'13px 0'}}>
         Enter Chamber →
       </button>
-      <div style={{textAlign:'center',marginTop:14,fontSize:'0.7rem',color:dim}}>Demo: <span style={{color:gold,fontFamily:CIN}}>mla1997</span></div>
+
     </div>
   </div>;
 }
