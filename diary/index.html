@@ -273,7 +273,7 @@ function Login({onLogin}){
   const go=async()=>{
     const h=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw.toUpperCase()));
     const hx=Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('');
-    if(hx==='a8f5f167f44f4964e6c998dee827110c') onLogin();
+    if(hx==='2fcc158575b5873a2ba837575202103d6599b3bd5076482af9d796c7ebc2e94b') onLogin();
     else{setErr(true);setTimeout(()=>setErr(false),2500);}
   };
   return <div style={{minHeight:'100vh',background:bg,display:'flex',alignItems:'center',justifyContent:'center',flex:1,position:'relative'}}>
