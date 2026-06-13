@@ -3422,6 +3422,7 @@ function mlaShow(pid,e){
 }
 
 function mlaGoMain(anchor,e){
+  if(e&&e.currentTarget){var href=e.currentTarget.getAttribute('href');if(href&&href!=='#'&&href.indexOf('javascript')===-1){window.location.href=href;return;}}
   if(e){e.preventDefault();e.stopPropagation();}
   var onPg=Array.from(document.querySelectorAll('.mla-page')).some(function(p){return p.style.display==='block';});
   if(onPg){
