@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reminders — MLA Litigation Desk</title>
+</head>
+<body style="display:flex;min-height:100vh;background:#140c06">
+<script src="data.js"></script><script src="shared.js"></script>
+<div id="main" style="flex:1;display:flex;flex-direction:column;min-width:0;overflow-y:auto;padding:24px 28px"></div>
+<script>
+var cases = initPage('reminders');
+var main = document.getElementById('main');
+var gold='#c9a444',cream='#e8dfc8',muted='#8a8070',bdr='rgba(201,164,68,0.18)',bg2='#111116';
+
+function btn(label, onclick, variant){
+  var bg=variant==='outline'?'transparent':bg2;
+  var border=gold;
+  return '<button onclick="'+onclick+'" class="gh" style="background:'+bg+';border:1px solid '+bdr+';color:'+gold+';font-family:Cinzel,serif;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;transition:all .18s">'+label+'</button>';
+}
+
+function hearingReminders(){
+  var today=new Date(); today.setHours(0,0,0,0);
+  var limit=new Date(today); limit.setDate(today.getDate()+14);
+  var upcoming=cases.filter(function(c){
+    if(!c.next) return false;
+    var d=new Date(c.next); d.setHours(0,0,0,0);
+    return d>=today && d<=limit;
+  }).sort(function(a,b){return a.next<b.next?-1:1;});
+  return upcoming;
+}
+
+function feeAlerts(){
+  return cases.filter(function(c){
+    return (c.agreed||0)-(c.received||0)>0;
+  }).sort(function(a,b){
+    var da=(a.agreed||0)-(a.received||0);
+    var db=(b.agreed||0)-(b.received||0);
+    return db-da;
+  });
+}
+
+function buildEmailBody(){
+  var lines=['MLA LITIGATION DESK — HEARING SCHEDULE','Generated: '+new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}),''];
+  hearingReminders().forEach(function(c,i){
+    var days=daysTo(c.next);
+    lines.push((i+1)+'. '+c.title);
+    lines.push('   Case: '+c.no);
+    lines.push('   Court: '+c.court);
+    lines.push('   Date: '+D(c.next)+' ('+( days===0?'Today':days===1?'Tomorrow':days+' days')+')');
+    lines.push('   Stage: '+c.stage);
+    lines.push('');
+  });
+  lines.push('— Adv. Mian Aqil Nawaz | Mian Law Associates | Chamber 39, District Courts');
+  return lines.join('\n');
+}
+
+function buildWhatsAppMsg(){
+  var lines=['*MLA Litigation Desk — Upcoming Hearings*',''];
+  hearingReminders().forEach(function(c){
+    var days=daysTo(c.next);
+    lines.push('*'+c.title+'*');
+    lines.push('📅 '+D(c.next)+' ('+(days===0?'Today':days===1?'Tomorrow':days+' days')+')');
+    lines.push('🏛 '+c.court);
+    lines.push('📋 Stage: '+c.stage);
+    lines.push('');
+  });
+  return lines.join('\n');
+}
+
+window._sendEmail=function(){
+  var body=encodeURIComponent(buildEmailBody());
+  var subject=encodeURIComponent('MLA — Hearing Reminders '+new Date().toLocaleDateString('en-GB'));
+  location.href='mailto:?subject='+subject+'&body='+body;
+};
+
+window._reqNotif=function(){
+  if(!('Notification' in window)){showToast('Browser does not support notifications','error');return;}
+  Notification.requestPermission().then(function(p){
+    if(p==='granted'){
+      showToast('Notifications enabled');
+      hearingReminders().forEach(function(c){
+        var days=daysTo(c.next);
+        if(days<=3) new Notification('MLA Hearing Reminder',{body:c.title+'\n'+D(c.next)+' · '+c.court});
+      });
+    } else {showToast('Permission denied','error');}
+  });
+};
+
+window._sendWA=function(){
+  var key=localStorage.getItem('mla_callmebot_key');
+  var phone=localStorage.getItem('mla_callmebot_phone');
+  if(!key||!phone){showToast('Set your CallMeBot phone + key first','error');return;}
+  var msg=encodeURIComponent(buildWhatsAppMsg());
+  var url='https://api.callmebot.com/whatsapp.php?phone='+phone+'&text='+msg+'&apikey='+key;
+  var img=new Image(); img.src=url;
+  showToast('WhatsApp message sent');
+};
+
+window._resetWAKey=function(){
+  var phone=prompt('WhatsApp phone (with country code, e.g. 923001234567):','');
+  if(!phone) return;
+  var key=prompt('CallMeBot API key (get from wa.me/+34644397765?text=I allow callmebot to send me messages):','');
+  if(!key) return;
+  localStorage.setItem('mla_callmebot_phone',phone.trim());
+  localStorage.setItem('mla_callmebot_key',key.trim());
+  showToast('CallMeBot credentials saved');
+};
+
+function renderItem(c, showDue){
+  var days=c.next?daysTo(c.next):null;
+  var urgent=days!=null&&days<=2;
+  var warn=days!=null&&days<=7;
+  var due=(c.agreed||0)-(c.received||0);
+  return '<div class="rh" onclick="location.href=\'case.html?id='+c.id+'\'" style="background:rgba(255,255,255,.03);border:1px solid '+(urgent?'rgba(212,95,95,.5)':bdr)+';padding:13px 15px;margin-bottom:9px;cursor:pointer">'
+    +'<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">'
+    +'<div style="flex:1;min-width:0">'
+    +'<div style="font-size:.76rem;color:'+cream+';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px">'+c.title+'</div>'
+    +'<div style="font-size:.68rem;color:'+muted+'">'+c.court+'</div>'
+    +(showDue?'<div style="font-size:.7rem;color:#d45f5f;margin-top:4px">Due: '+R(due)+'</div>':'')
+    +'</div>'
+    +'<div style="text-align:right;flex-shrink:0">'
+    +(c.next?'<div style="font-size:.7rem;color:'+(urgent?'#d45f5f':warn?'#d4a020':cream)+'">'+(days===0?'Today':days===1?'Tomorrow':days+' days')+'</div>':'')
+    +(c.next?'<div style="font-size:.65rem;color:'+muted+'">'+D(c.next)+'</div>':'')
+    +'<div style="font-size:.6rem;padding:2px 7px;margin-top:4px;background:'+stageColor(c.stage)+'22;color:'+stageColor(c.stage)+';border:1px solid '+stageColor(c.stage)+'44;display:inline-block">'+c.stage+'</div>'
+    +'</div></div></div>';
+}
+
+function render(){
+  var hearings=hearingReminders();
+  var alerts=feeAlerts();
+  var hasWAKey=!!(localStorage.getItem('mla_callmebot_key'));
+
+  var html='';
+  // Title
+  html+='<div style="margin-bottom:24px"><div style="font-family:Cinzel,serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:'+gold+'">◉ Reminders</div></div>';
+
+  // Action cards row
+  html+='<div class="g2" style="margin-bottom:28px">';
+
+  // Email card
+  html+='<div style="background:'+bg2+';border:1px solid '+bdr+';padding:20px">';
+  html+='<div style="font-family:Cinzel,serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:'+gold+';margin-bottom:8px">✉ Email Reminders</div>';
+  html+='<div style="font-size:.74rem;color:'+muted+';margin-bottom:14px">Send full hearing schedule to any email address.</div>';
+  html+=btn('Open in Mail','_sendEmail()');
+  html+='</div>';
+
+  // Browser notif card
+  html+='<div style="background:'+bg2+';border:1px solid '+bdr+';padding:20px">';
+  html+='<div style="font-family:Cinzel,serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:'+gold+';margin-bottom:8px">🔔 Browser Notifications</div>';
+  html+='<div style="font-size:.74rem;color:'+muted+';margin-bottom:14px">Enable desktop push for cases in next 3 days.</div>';
+  html+=btn('Enable & Preview','_reqNotif()');
+  html+='</div>';
+
+  // WhatsApp card (full width)
+  html+='</div>';
+  html+='<div style="background:'+bg2+';border:1px solid '+bdr+';padding:20px;margin-bottom:28px">';
+  html+='<div style="font-family:Cinzel,serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:'+gold+';margin-bottom:8px">📱 WhatsApp via CallMeBot</div>';
+  html+='<div style="font-size:.74rem;color:'+muted+';margin-bottom:14px">'+(hasWAKey?'API key configured. Send upcoming hearings to your WhatsApp.':'Requires a free CallMeBot API key. Click Reset Key to configure.')+'</div>';
+  html+='<div style="display:flex;gap:10px;flex-wrap:wrap">';
+  html+=btn('Send Now','_sendWA()');
+  html+=btn('Reset Key','_resetWAKey()','outline');
+  html+='</div></div>';
+
+  // Two columns
+  html+='<div class="g2">';
+
+  // Hearing reminders column
+  html+='<div>';
+  html+='<div style="font-family:Cinzel,serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:'+gold+';margin-bottom:14px">Hearings — Next 14 Days ('+hearings.length+')</div>';
+  if(!hearings.length){
+    html+='<div style="background:'+bg2+';border:1px solid '+bdr+';padding:24px;text-align:center;font-size:.74rem;color:'+muted+'">No hearings in the next 14 days</div>';
+  } else {
+    hearings.forEach(function(c){html+=renderItem(c,false);});
+  }
+  html+='</div>';
+
+  // Fee alerts column
+  html+='<div>';
+  html+='<div style="font-family:Cinzel,serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:'+gold+';margin-bottom:14px">Fee Recovery Alerts ('+alerts.length+')</div>';
+  if(!alerts.length){
+    html+='<div style="background:'+bg2+';border:1px solid '+bdr+';padding:24px;text-align:center;font-size:.74rem;color:'+muted+'">All fees fully recovered</div>';
+  } else {
+    alerts.forEach(function(c){html+=renderItem(c,true);});
+  }
+  html+='</div>';
+
+  html+='</div>';
+  main.innerHTML=html;
+}
+render();
+</script>
+</body>
+</html>

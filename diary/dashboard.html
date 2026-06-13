@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Dashboard — MLA Litigation Desk</title>
+</head>
+<body>
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<script>
+var cases = initPage('dashboard');
+
+/* ── helpers ── */
+var today = todayStr();
+var tom = (function(){ var d=new Date(); d.setDate(d.getDate()+1); return d.toISOString().slice(0,10); })();
+
+function nav(id){ location.href='case.html?id='+id; }
+
+function sendEmail(c){
+  var sub = encodeURIComponent('Hearing Reminder: '+c.title+' — '+D(c.next));
+  var body = encodeURIComponent(
+    'Dear '+c.client+',\n\nThis is a reminder for your case:\n\n'+
+    'Case: '+c.no+'\nTitle: '+c.title+'\nCourt: '+c.court+'\nDate: '+D(c.next)+'\nStage: '+c.stage+
+    '\n\nPlease ensure your presence.\n\nRegards,\nAdv. Mian Aqil Nawaz\nMian Law Associates'
+  );
+  window.open('mailto:?subject='+sub+'&body='+body);
+}
+
+function getWAKey(){
+  var k = localStorage.getItem('mla_wakey');
+  if (!k){ k = prompt('Enter your CallMeBot WhatsApp API key:'); if(k) localStorage.setItem('mla_wakey',k.trim()); }
+  return k;
+}
+
+function sendWA(c){
+  var k = getWAKey(); if(!k) return;
+  var msg = encodeURIComponent(
+    'MLA Reminder: '+c.title+' ('+c.no+')\nCourt: '+c.court+'\nDate: '+D(c.next)+'\nStage: '+c.stage
+  );
+  window.open('https://api.callmebot.com/whatsapp.php?phone=&apikey='+k+'&text='+msg);
+}
+
+function autoWA(){
+  var last = localStorage.getItem('mla_wa_last');
+  if (last === today) return;
+  var urgent = cases.filter(function(c){ return c.next === today || c.priority==='urgent'; });
+  if (!urgent.length) return;
+  var k = localStorage.getItem('mla_wakey'); if(!k) return;
+  localStorage.setItem('mla_wa_last', today);
+  var msg = encodeURIComponent('MLA Today: '+urgent.length+' urgent/today case(s):\n'+
+    urgent.map(function(c){ return '• '+c.title+' — '+D(c.next); }).join('\n'));
+  var img = new Image();
+  img.src = 'https://api.callmebot.com/whatsapp.php?phone=&apikey='+k+'&text='+msg;
+}
+
+/* ── stats ── */
+var active = cases.filter(function(c){ return c.stage !== 'Closed'; });
+var todayH = cases.filter(function(c){ return c.next === today; });
+var tomH   = cases.filter(function(c){ return c.next === tom; });
+var urgent = cases.filter(function(c){ return c.priority === 'urgent'; });
+var totalFee=0, collected=0;
+cases.forEach(function(c){ totalFee+=c.agreed||0; collected+=c.received||0; });
+var outstanding = totalFee - collected;
+
+/* ── build DOM ── */
+var gold='#c9a444',cream='#e8dfc8',muted='#8a8070',bdr='rgba(201,164,68,0.18)',red='#d45f5f',yellow='#d4a020',blue='#5b8fd5',green='#5a9f72';
+
+document.body.style.cssText='display:flex;height:100vh;overflow:hidden;background:#140c06';
+
+var main = document.createElement('div');
+main.style.cssText='flex:1;display:flex;flex-direction:column;overflow:hidden';
+
+/* stats bar */
+var stats = document.createElement('div');
+stats.className = 'g4';
+stats.style.cssText='padding:16px 24px 0;flex-shrink:0';
+var statsData=[
+  ['Active Cases', active.length, blue],
+  ['Today\'s Hearings', todayH.length, gold],
+  ['Total Fees', R(totalFee), muted],
+  ['Collected', R(collected), green],
+  ['Outstanding', R(outstanding), outstanding>0?red:green],
+  ['Urgent', urgent.length, red]
+];
+statsData.forEach(function(sd){
+  var card=document.createElement('div');
+  card.style.cssText='background:#111116;border:1px solid '+bdr+';padding:12px 14px';
+  card.innerHTML='<div style="font-family:Cinzel,serif;font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:'+muted+';margin-bottom:5px">'+sd[0]+'</div>'
+    +'<div style="font-family:Cinzel,serif;font-size:1.1rem;color:'+sd[2]+'">'+sd[1]+'</div>';
+  stats.appendChild(card);
+});
+main.appendChild(stats);
+
+/* content area */
+var content = document.createElement('div');
+content.className='g2';
+content.style.cssText='flex:1;overflow:auto;padding:16px 24px 24px;align-items:start';
+
+/* ── left column ── */
+var left = document.createElement('div');
+left.style.cssText='display:flex;flex-direction:column;gap:16px';
+
+function section(title, items, emptyMsg){
+  var wrap=document.createElement('div');
+  wrap.style.cssText='background:#111116;border:1px solid '+bdr;
+  wrap.innerHTML='<div style="padding:11px 16px;border-bottom:1px solid '+bdr+';font-family:Cinzel,serif;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:'+gold+'">'+title+'</div>';
+  if(!items.length){
+    var empty=document.createElement('div');
+    empty.style.cssText='padding:14px 16px;color:'+muted+';font-size:.85rem;font-style:italic';
+    empty.textContent=emptyMsg;
+    wrap.appendChild(empty);
+    return wrap;
+  }
+  items.forEach(function(c){
+    var row=document.createElement('div');
+    row.className='rh';
+    row.style.cssText='padding:10px 16px;border-bottom:1px solid rgba(201,164,68,.07);cursor:pointer';
+    row.innerHTML='<div style="display:flex;justify-content:space-between;align-items:start;gap:8px">'
+      +'<div>'
+        +'<div style="font-family:Cinzel,serif;font-size:.62rem;color:'+cream+'">'+c.title+'</div>'
+        +'<div style="font-size:.78rem;color:'+muted+';margin-top:2px">'+c.court+'</div>'
+      +'</div>'
+      +'<div style="text-align:right;flex-shrink:0">'
+        +'<div style="font-family:Cinzel,serif;font-size:.55rem;color:'+stageColor(c.stage)+';white-space:nowrap">'+c.stage+'</div>'
+        +'<div style="font-size:.72rem;color:'+muted+';margin-top:2px">'+D(c.next)+'</div>'
+      +'</div>'
+    +'</div>'
+    +'<div style="display:flex;gap:6px;margin-top:6px">'
+      +'<button onclick="event.stopPropagation();sendEmail(cases.find(function(x){return x.id===\''+c.id+'\'}))" style="background:transparent;border:1px solid '+bdr+';color:'+muted+';font-family:Cinzel,serif;font-size:.45rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px">Email</button>'
+      +'<button onclick="event.stopPropagation();sendWA(cases.find(function(x){return x.id===\''+c.id+'\'}))" style="background:transparent;border:1px solid '+bdr+';color:'+muted+';font-family:Cinzel,serif;font-size:.45rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px">WhatsApp</button>'
+    +'</div>';
+    row.addEventListener('click', function(){ nav(c.id); });
+    wrap.appendChild(row);
+  });
+  return wrap;
+}
+
+left.appendChild(section("Today's Hearings ("+today+")", todayH, 'No hearings today'));
+left.appendChild(section("Tomorrow's Hearings", tomH, 'No hearings tomorrow'));
+
+/* ── right column ── */
+var right = document.createElement('div');
+right.style.cssText='display:flex;flex-direction:column;gap:16px';
+right.appendChild(section('Urgent Matters', urgent, 'No urgent matters'));
+
+/* all cases */
+var allWrap=document.createElement('div');
+allWrap.style.cssText='background:#111116;border:1px solid '+bdr;
+allWrap.innerHTML='<div style="padding:11px 16px;border-bottom:1px solid '+bdr+';font-family:Cinzel,serif;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:'+gold+'">All Cases</div>';
+cases.forEach(function(c){
+  var row=document.createElement('div');
+  row.className='rh';
+  row.style.cssText='padding:10px 16px;border-bottom:1px solid rgba(201,164,68,.07);cursor:pointer';
+  row.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px">'
+    +'<div>'
+      +'<div style="font-family:Cinzel,serif;font-size:.62rem;color:'+cream+'">'+c.title+'</div>'
+      +'<div style="font-size:.75rem;color:'+muted+';margin-top:2px">'+c.no+' · '+c.cat+'</div>'
+    +'</div>'
+    +'<div style="text-align:right;flex-shrink:0">'
+      +'<span style="font-family:Cinzel,serif;font-size:.5rem;padding:2px 7px;border:1px solid '+priColor(c.priority)+';color:'+priColor(c.priority)+'">'+c.priority.toUpperCase()+'</span>'
+      +'<div style="font-size:.72rem;color:'+muted+';margin-top:3px">'+D(c.next)+'</div>'
+    +'</div>'
+  +'</div>';
+  row.addEventListener('click', function(){ nav(c.id); });
+  allWrap.appendChild(row);
+});
+right.appendChild(allWrap);
+
+content.appendChild(left);
+content.appendChild(right);
+main.appendChild(content);
+document.body.appendChild(main);
+
+// header bar
+var header=document.createElement('div');
+header.style.cssText='padding:14px 24px;border-bottom:1px solid '+bdr+';display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:#0b0703';
+header.innerHTML='<div style="font-family:Cinzel,serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:'+gold+'">Dashboard</div>'
+  +'<div style="font-size:.75rem;color:'+muted+'">'+new Date().toLocaleDateString('en-GB',{weekday:'long',day:'2-digit',month:'long',year:'numeric'})+'</div>';
+main.insertBefore(header, main.firstChild);
+
+autoWA();
+</script>
+</body>
+</html>

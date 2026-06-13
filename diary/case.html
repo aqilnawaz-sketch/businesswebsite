@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case Detail — MLA Litigation Desk</title>
+</head>
+<body>
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<div id="_wrap" style="display:flex;height:100vh;overflow:hidden"></div>
+<script>
+initPage('cases');
+
+var id = new URLSearchParams(location.search).get('id');
+var wrap = document.getElementById('_wrap');
+var sidebar = document.getElementById('_sidebar');
+sidebar.style.flexShrink='0';
+wrap.appendChild(sidebar);
+
+var main = document.createElement('div');
+main.style.cssText='flex:1;display:flex;flex-direction:column;overflow:hidden;background:#140c06';
+wrap.appendChild(main);
+
+function getCase(){ return getCases().find(function(c){return c.id===id;}); }
+
+var c = getCase();
+if(!c){
+  main.innerHTML='<div style="padding:60px;text-align:center;font-family:Cinzel,serif;color:#d45f5f;letter-spacing:.12em">CASE NOT FOUND — <a href="cases.html" style="color:#c9a444;text-decoration:none">Back to Cases</a></div>';
+} else {
+  render();
+}
+
+function render(){
+  c = getCase();
+  main.innerHTML='';
+
+  /* Top bar */
+  var topbar = document.createElement('div');
+  topbar.style.cssText='display:flex;align-items:center;justify-content:space-between;padding:16px 28px 12px;border-bottom:1px solid rgba(201,164,68,.18);flex-shrink:0;gap:12px;flex-wrap:wrap';
+
+  var left = document.createElement('div');
+  left.style.cssText='display:flex;align-items:center;gap:14px;min-width:0';
+  left.innerHTML='<a href="cases.html" style="color:#8a8070;text-decoration:none;font-size:1.1rem;line-height:1" title="Back">←</a>'
+    +'<div style="min-width:0">'
+    +'<div style="font-family:Cinzel,serif;font-size:.9rem;color:#e8dfc8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+c.title+'</div>'
+    +'<div style="font-size:.75rem;color:#8a8070;margin-top:2px">'+c.client+(c.no?' · '+c.no:'')+'</div>'
+    +'</div>';
+
+  var right = document.createElement('div');
+  right.style.cssText='display:flex;align-items:center;gap:10px;flex-shrink:0';
+
+  var editBtn = document.createElement('button');
+  editBtn.id='_editBtn';
+  editBtn.style.cssText='background:none;border:1px solid rgba(201,164,68,.3);color:#c9a444;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.12em;padding:7px 16px;text-transform:uppercase';
+  editBtn.textContent='Edit';
+
+  var closeBtn = document.createElement('button');
+  closeBtn.style.cssText='background:none;border:1px solid rgba(212,95,95,.4);color:#d45f5f;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.12em;padding:7px 16px;text-transform:uppercase';
+  closeBtn.textContent = c.status==='closed' ? '✓ Closed' : 'Close Case';
+  closeBtn.disabled = c.status==='closed';
+  closeBtn.onclick = function(){
+    var reason = window.prompt('Reason for closing this case:');
+    if(reason===null) return;
+    updateCase(c.id, {status:'closed', closedDate: todayStr(), closedReason: reason||'No reason given'});
+    closeBtn.textContent='✓ Closed'; closeBtn.disabled=true;
+    showToast('Case marked as closed','success');
+  };
+
+  right.appendChild(closeBtn);
+  right.appendChild(editBtn);
+  topbar.appendChild(left);
+  topbar.appendChild(right);
+  main.appendChild(topbar);
+
+  /* Tabs */
+  var tabs = ['overview','notes','finance','timeline'];
+  var tabLabels = ['Overview','Notes','Finance','Timeline'];
+  var activeTab = 'overview';
+
+  var tabBar = document.createElement('div');
+  tabBar.style.cssText='display:flex;border-bottom:1px solid rgba(201,164,68,.12);flex-shrink:0;padding:0 28px';
+  tabs.forEach(function(t,i){
+    var tb = document.createElement('button');
+    tb.id='_tab_'+t;
+    tb.dataset.tab=t;
+    tb.style.cssText='background:none;border:none;border-bottom:2px solid transparent;color:#8a8070;font-family:Cinzel,serif;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;padding:12px 18px;cursor:pointer;transition:all .15s';
+    tb.textContent=tabLabels[i];
+    tb.onclick=function(){ setTab(t); };
+    tabBar.appendChild(tb);
+  });
+  main.appendChild(tabBar);
+
+  var content = document.createElement('div');
+  content.style.cssText='flex:1;overflow-y:auto;padding:22px 28px';
+  main.appendChild(content);
+
+  function setTab(t){
+    activeTab=t;
+    tabs.forEach(function(x){
+      var btn=document.getElementById('_tab_'+x);
+      if(x===t){ btn.style.borderBottomColor='#c9a444'; btn.style.color='#c9a444'; }
+      else { btn.style.borderBottomColor='transparent'; btn.style.color='#8a8070'; }
+    });
+    renderContent();
+  }
+
+  /* ── card helper ── */
+  function card(title, bodyHtml, opts){
+    var o=opts||{};
+    return '<div style="background:#0d0905;border:1px solid rgba(201,164,68,.14);padding:18px 20px;margin-bottom:16px'+(o.style?';'+o.style:'')+'">'
+      +(title?'<div style="font-family:Cinzel,serif;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:#c9a444;margin-bottom:14px;border-bottom:1px solid rgba(201,164,68,.12);padding-bottom:10px">'+title+'</div>':'')
+      +bodyHtml+'</div>';
+  }
+
+  function row2(label, val){
+    return '<div style="display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">'
+      +'<span style="color:#8a8070;font-size:.78rem;flex-shrink:0;min-width:130px">'+label+'</span>'
+      +'<span style="color:#e8dfc8;font-size:.82rem;text-align:right">'+val+'</span>'
+      +'</div>';
+  }
+
+  function badge(text, color){
+    return '<span style="background:'+color+'22;color:'+color+';font-family:Cinzel,serif;font-size:.48rem;letter-spacing:.1em;padding:3px 9px;text-transform:uppercase;border:1px solid '+color+'40">'+text+'</span>';
+  }
+
+  /* ── Edit state ── */
+  var editMode = false;
+  editBtn.onclick = function(){
+    if(!editMode){ enterEdit(); } else { saveEdit(); }
+  };
+
+  function enterEdit(){
+    editMode=true;
+    editBtn.textContent='Save';
+    editBtn.style.background='#c9a444';
+    editBtn.style.color='#0b0703';
+    renderContent();
+  }
+
+  function saveEdit(){
+    if(activeTab==='overview'){
+      var ns = document.getElementById('_e_stage');
+      var nn = document.getElementById('_e_next');
+      var np = document.getElementById('_e_priority');
+      if(ns||nn||np){
+        var upd={};
+        if(ns) upd.stage=ns.value;
+        if(nn) upd.next=nn.value;
+        if(np) upd.priority=np.value;
+        updateCase(id, upd);
+        c=getCase();
+        showToast('Case updated');
+      }
+    }
+    editMode=false;
+    editBtn.textContent='Edit';
+    editBtn.style.background='none';
+    editBtn.style.color='#c9a444';
+    renderContent();
+  }
+
+  /* ── Render content ── */
+  function renderContent(){
+    content.innerHTML='';
+    if(activeTab==='overview') renderOverview();
+    else if(activeTab==='notes') renderNotes();
+    else if(activeTab==='finance') renderFinance();
+    else if(activeTab==='timeline') renderTimeline();
+  }
+
+  /* ── Overview ── */
+  function renderOverview(){
+    var days = c.next ? daysTo(c.next) : null;
+    var daysColor = days===null?'#8a8070':days<=3?'#d45f5f':days<=7?'#d4a020':'#5a9f72';
+    var agreed=Number(c.agreed)||0, received=Number(c.received)||0, expense=Number(c.expense)||0;
+    var pct = agreed>0?Math.min(100,Math.round(received/agreed*100)):0;
+    var pctColor = pct>=100?'#5a9f72':pct>=50?'#d4a020':'#d45f5f';
+
+    var stageHtml = editMode
+      ? '<select id="_e_stage" style="background:#0d0905;border:1px solid rgba(201,164,68,.3);color:#e8dfc8;padding:4px 8px;font-family:inherit;font-size:.82rem">'
+        +STAGES.map(function(s){return '<option value="'+s+'"'+(c.stage===s?' selected':'')+'>'+s+'</option>';}).join('')
+        +'</select>'
+      : badge(c.stage, stageColor(c.stage));
+
+    var nextHtml = editMode
+      ? '<input id="_e_next" type="date" value="'+(c.next||'')+'" style="background:#0d0905;border:1px solid rgba(201,164,68,.3);color:#e8dfc8;padding:4px 8px;font-family:inherit;font-size:.82rem">'
+      : '<span style="color:#e8dfc8">'+D(c.next)+'</span> <span style="color:'+daysColor+';font-size:.75rem">'+(days===null?'':days<0?'('+Math.abs(days)+' days ago)':days===0?'(Today)':'(in '+days+' days)')+'</span>';
+
+    var priHtml = editMode
+      ? '<select id="_e_priority" style="background:#0d0905;border:1px solid rgba(201,164,68,.3);color:#e8dfc8;padding:4px 8px;font-family:inherit;font-size:.82rem">'
+        +PRIORITIES.map(function(p){return '<option value="'+p+'"'+(c.priority===p?' selected':'')+'>'+p+'</option>';}).join('')
+        +'</select>'
+      : badge(c.priority, priColor(c.priority));
+
+    content.innerHTML = '<div class="g2">'
+      +card('Client Information',
+        row2('Name', c.client||'—')
+        +row2("Father's Name", c.father||'—')
+        +row2('CNIC', c.cnic||'—')
+        +row2('Mobile', c.mobile||'—')
+        +row2('Address', c.address||'—'))
+      +card('Case Information',
+        row2('Case No.', c.no||'—')
+        +row2('Category', badge(c.cat,'#c9a444'))
+        +row2('Stage', stageHtml)
+        +row2('Court', c.court||'—')
+        +row2('Judge', c.judge||'—')
+        +row2('Filed', D(c.filed))
+        +row2('Next Hearing', nextHtml)
+        +row2('Priority', priHtml)
+        +row2('Provision', c.prov||'—')
+        +row2('FIR No.', c.fir||'—')
+        +row2('Police Station', c.ps||'—'))
+      +'</div>'
+      +card('Opponent Information',
+        row2('Opponent', c.opponent||'—')
+        +row2("Opponent's Counsel", c.opC||'—')
+        +row2('Settlement Prospect', c.settle||'—'))
+      +card('Fee Summary',
+        '<div class="g4" style="margin-bottom:12px">'
+        +'<div style="text-align:center"><div style="color:#8a8070;font-size:.65rem;font-family:Cinzel,serif;letter-spacing:.1em;text-transform:uppercase">Agreed</div><div style="color:#c9a444;font-size:1.1rem;margin-top:6px">'+R(agreed)+'</div></div>'
+        +'<div style="text-align:center"><div style="color:#8a8070;font-size:.65rem;font-family:Cinzel,serif;letter-spacing:.1em;text-transform:uppercase">Received</div><div style="color:#5a9f72;font-size:1.1rem;margin-top:6px">'+R(received)+'</div></div>'
+        +'<div style="text-align:center"><div style="color:#8a8070;font-size:.65rem;font-family:Cinzel,serif;letter-spacing:.1em;text-transform:uppercase">Balance</div><div style="color:#d45f5f;font-size:1.1rem;margin-top:6px">'+R(agreed-received)+'</div></div>'
+        +'<div style="text-align:center"><div style="color:#8a8070;font-size:.65rem;font-family:Cinzel,serif;letter-spacing:.1em;text-transform:uppercase">Expenses</div><div style="color:#d4a020;font-size:1.1rem;margin-top:6px">'+R(expense)+'</div></div>'
+        +'</div>'
+        +'<div style="background:rgba(255,255,255,.06);height:6px;border-radius:3px"><div style="width:'+pct+'%;height:100%;background:'+pctColor+';border-radius:3px"></div></div>'
+        +'<div style="color:#8a8070;font-size:.72rem;margin-top:6px">'+pct+'% collected · Risk: '+badge(riskLabel(c.risk),riskColor(c.risk))+'</div>')
+      +(c.warn?'<div style="background:rgba(212,95,95,.08);border:1px solid rgba(212,95,95,.3);padding:14px 18px;color:#e8dfc8;font-size:.85rem;line-height:1.6"><span style="color:#d45f5f;font-family:Cinzel,serif;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:8px">⚠ Warning</span>'+c.warn+'</div>':'');
+  }
+
+  /* ── Notes ── */
+  function renderNotes(){
+    function noteCard(title, text, color){
+      return card(title, text
+        ? '<div style="color:#c8c0b0;line-height:1.7;font-size:.88rem;white-space:pre-wrap">'+text+'</div>'
+        : '<div style="color:#4a4030;font-size:.78rem;font-style:italic">Not recorded</div>', {style:color?'border-color:'+color+'40':''});
+    }
+    content.innerHTML=
+      noteCard('Legal Strategy', c.strategy)
+      +noteCard('Judge Notes', c.jnotes)
+      +noteCard('Opposing Tactics', c.otactics)
+      +noteCard('Settlement Notes', c.settle ? 'Prospect: '+c.settle : '')
+      +noteCard('Evidence Weaknesses', c.evwk)
+      +noteCard('Warning / Alert', c.warn, '#d45f5f');
+  }
+
+  /* ── Finance ── */
+  function renderFinance(){
+    var agreed=Number(c.agreed)||0, received=Number(c.received)||0, expense=Number(c.expense)||0;
+    var balance=agreed-received;
+    var pct=agreed>0?Math.min(100,Math.round(received/agreed*100)):0;
+
+    /* Stat cards */
+    var statsHtml='<div class="g4" style="margin-bottom:20px">';
+    [[R(agreed),'Agreed Fee','#c9a444'],[R(received),'Received','#5a9f72'],[R(balance),'Outstanding','#d45f5f'],[R(expense),'Expenses','#d4a020']].forEach(function(x){
+      statsHtml+='<div style="background:#0d0905;border:1px solid rgba(201,164,68,.14);padding:16px;text-align:center">'
+        +'<div style="color:#8a8070;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px">'+x[1]+'</div>'
+        +'<div style="color:'+x[2]+';font-size:1.15rem">'+x[0]+'</div>'
+        +'</div>';
+    });
+    statsHtml+='</div>';
+
+    /* Progress */
+    var pctColor=pct>=100?'#5a9f72':pct>=50?'#d4a020':'#d45f5f';
+    var progressHtml='<div style="margin-bottom:20px">'
+      +'<div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:#8a8070;font-size:.72rem;font-family:Cinzel,serif">Payment Progress</span><span style="color:'+pctColor+';font-size:.72rem">'+pct+'%</span></div>'
+      +'<div style="background:rgba(255,255,255,.06);height:8px;border-radius:4px"><div style="width:'+pct+'%;height:100%;background:'+pctColor+';border-radius:4px;transition:width .4s"></div></div>'
+      +'</div>';
+
+    /* Payment history table */
+    var pmts = c.payments||[];
+    var pmtRows = pmts.length ? pmts.map(function(p){
+      return '<tr style="border-bottom:1px solid rgba(255,255,255,.04)">'
+        +'<td style="padding:9px 12px;color:#8a8070;font-size:.78rem">'+D(p.date)+'</td>'
+        +'<td style="padding:9px 12px;color:#5a9f72;font-size:.85rem">'+R(p.amt)+'</td>'
+        +'<td style="padding:9px 12px;color:#8a8070;font-size:.78rem">'+p.method+'</td>'
+        +'<td style="padding:9px 12px;color:#c8c0b0;font-size:.78rem">'+p.note+'</td>'
+        +'</tr>';
+    }).join('') : '<tr><td colspan="4" style="padding:20px;text-align:center;color:#4a4030;font-size:.78rem;font-style:italic">No payments recorded</td></tr>';
+
+    var historyHtml=card('Payment History',
+      '<table style="width:100%;border-collapse:collapse"><thead><tr style="border-bottom:1px solid rgba(201,164,68,.18)">'
+      +'<th style="text-align:left;padding:7px 12px;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8070;font-weight:400">Date</th>'
+      +'<th style="text-align:left;padding:7px 12px;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8070;font-weight:400">Amount</th>'
+      +'<th style="text-align:left;padding:7px 12px;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8070;font-weight:400">Method</th>'
+      +'<th style="text-align:left;padding:7px 12px;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8070;font-weight:400">Note</th>'
+      +'</tr></thead><tbody>'+pmtRows+'</tbody></table>');
+
+    /* Add payment form */
+    var addPmtHtml='<div id="_pmtForm" style="display:none;background:#0d0905;border:1px solid rgba(201,164,68,.2);padding:18px 20px;margin-top:12px">'
+      +'<div style="font-family:Cinzel,serif;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#c9a444;margin-bottom:14px">Record Payment</div>'
+      +'<div class="g4" style="margin-bottom:12px">'
+      +'<div><label style="font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8070;display:block;margin-bottom:5px">Date</label>'
+      +'<input type="date" id="_pDate" value="'+todayStr()+'" style="background:#111116;border:1px solid rgba(201,164,68,.18);color:#e8dfc8;padding:7px 10px;font-family:inherit;font-size:.82rem;width:100%"></div>'
+      +'<div><label style="font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8070;display:block;margin-bottom:5px">Amount (₨)</label>'
+      +'<input type="number" id="_pAmt" placeholder="0" style="background:#111116;border:1px solid rgba(201,164,68,.18);color:#e8dfc8;padding:7px 10px;font-family:inherit;font-size:.82rem;width:100%"></div>'
+      +'<div><label style="font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8070;display:block;margin-bottom:5px">Method</label>'
+      +'<select id="_pMethod" style="background:#111116;border:1px solid rgba(201,164,68,.18);color:#e8dfc8;padding:7px 10px;font-family:inherit;font-size:.82rem;width:100%">'
+      +METHODS.map(function(m){return '<option>'+m+'</option>';}).join('')+'</select></div>'
+      +'<div><label style="font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8070;display:block;margin-bottom:5px">Note</label>'
+      +'<input type="text" id="_pNote" placeholder="e.g. Installment" style="background:#111116;border:1px solid rgba(201,164,68,.18);color:#e8dfc8;padding:7px 10px;font-family:inherit;font-size:.82rem;width:100%"></div>'
+      +'</div>'
+      +'<div style="display:flex;gap:10px">'
+      +'<button id="_pSave" style="background:#c9a444;border:none;color:#0b0703;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.12em;padding:8px 20px;text-transform:uppercase;font-weight:700">Add Payment</button>'
+      +'<button id="_pCancel" style="background:none;border:1px solid rgba(201,164,68,.2);color:#8a8070;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.12em;padding:8px 16px;text-transform:uppercase">Cancel</button>'
+      +'</div></div>';
+
+    var addBtnHtml='<button id="_showPmt" style="background:none;border:1px solid rgba(201,164,68,.3);color:#c9a444;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.12em;padding:8px 18px;text-transform:uppercase;margin-top:4px">+ Add Payment</button>';
+
+    content.innerHTML = statsHtml+progressHtml+historyHtml+addBtnHtml+addPmtHtml;
+
+    document.getElementById('_showPmt').onclick=function(){
+      document.getElementById('_pmtForm').style.display='block';
+      this.style.display='none';
+    };
+    document.getElementById('_pCancel').onclick=function(){
+      document.getElementById('_pmtForm').style.display='none';
+      document.getElementById('_showPmt').style.display='';
+    };
+    document.getElementById('_pSave').onclick=function(){
+      var date=document.getElementById('_pDate').value;
+      var amt=Number(document.getElementById('_pAmt').value);
+      var method=document.getElementById('_pMethod').value;
+      var note=document.getElementById('_pNote').value.trim();
+      if(!date||!amt){ showToast('Date and amount are required','error'); return; }
+      var fresh=getCase();
+      var pmts2=(fresh.payments||[]).concat([{date:date,amt:amt,method:method,note:note}]);
+      var newReceived=(Number(fresh.received)||0)+amt;
+      updateCase(id,{payments:pmts2,received:newReceived});
+      c=getCase();
+      showToast('Payment recorded');
+      renderContent();
+    };
+  }
+
+  /* ── Timeline ── */
+  function renderTimeline(){
+    var evts = (c.timeline||[]).slice().sort(function(a,b){return a.date<b.date?-1:1;});
+    var typeColors={filing:'#5b8fd5',hearing:'#c9a444',order:'#5a9f72',evidence:'#d4a020',arguments:'#d45f5f'};
+
+    var tlHtml='<div style="position:relative;padding-left:28px">';
+    if(evts.length){
+      tlHtml+='<div style="position:absolute;left:10px;top:0;bottom:0;width:1px;background:rgba(201,164,68,.18)"></div>';
+      evts.forEach(function(e){
+        var col=typeColors[e.type]||'#8a8070';
+        tlHtml+='<div style="position:relative;margin-bottom:22px">'
+          +'<div style="position:absolute;left:-23px;top:3px;width:11px;height:11px;border-radius:50%;background:'+col+';border:2px solid #140c06"></div>'
+          +'<div style="background:#0d0905;border:1px solid rgba(201,164,68,.12);padding:12px 16px">'
+          +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">'
+          +'<span style="font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:'+col+'">'+e.type+'</span>'
+          +'<span style="color:#8a8070;font-size:.75rem">'+D(e.date)+'</span>'
+          +'</div>'
+          +'<div style="color:#e8dfc8;font-size:.88rem">'+e.ev+'</div>'
+          +'</div></div>';
+      });
+    } else {
+      tlHtml+='<div style="color:#4a4030;font-size:.78rem;font-style:italic;padding:20px 0">No timeline events recorded</div>';
+    }
+    tlHtml+='</div>';
+
+    /* Add event form */
+    var addEvtHtml='<button id="_showEvt" style="background:none;border:1px solid rgba(201,164,68,.3);color:#c9a444;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.12em;padding:8px 18px;text-transform:uppercase;margin-bottom:20px">+ Add Event</button>'
+      +'<div id="_evtForm" style="display:none;background:#0d0905;border:1px solid rgba(201,164,68,.2);padding:18px 20px;margin-bottom:20px">'
+      +'<div style="font-family:Cinzel,serif;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#c9a444;margin-bottom:14px">Add Timeline Event</div>'
+      +'<div class="g2" style="margin-bottom:12px;gap:12px">'
+      +'<div><label style="font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8070;display:block;margin-bottom:5px">Date</label>'
+      +'<input type="date" id="_eDate" value="'+todayStr()+'" style="background:#111116;border:1px solid rgba(201,164,68,.18);color:#e8dfc8;padding:7px 10px;font-family:inherit;font-size:.82rem;width:100%"></div>'
+      +'<div><label style="font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8070;display:block;margin-bottom:5px">Type</label>'
+      +'<select id="_eType" style="background:#111116;border:1px solid rgba(201,164,68,.18);color:#e8dfc8;padding:7px 10px;font-family:inherit;font-size:.82rem;width:100%">'
+      +['filing','hearing','order','evidence','arguments'].map(function(t){return '<option value="'+t+'">'+t.charAt(0).toUpperCase()+t.slice(1)+'</option>';}).join('')
+      +'</select></div>'
+      +'</div>'
+      +'<div style="margin-bottom:12px"><label style="font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8070;display:block;margin-bottom:5px">Event Description</label>'
+      +'<input type="text" id="_eDesc" placeholder="Describe the event…" style="background:#111116;border:1px solid rgba(201,164,68,.18);color:#e8dfc8;padding:7px 10px;font-family:inherit;font-size:.82rem;width:100%"></div>'
+      +'<div style="display:flex;gap:10px">'
+      +'<button id="_eSave" style="background:#c9a444;border:none;color:#0b0703;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.12em;padding:8px 20px;text-transform:uppercase;font-weight:700">Add Event</button>'
+      +'<button id="_eCancel" style="background:none;border:1px solid rgba(201,164,68,.2);color:#8a8070;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.12em;padding:8px 16px;text-transform:uppercase">Cancel</button>'
+      +'</div></div>';
+
+    content.innerHTML = addEvtHtml+tlHtml;
+
+    document.getElementById('_showEvt').onclick=function(){
+      document.getElementById('_evtForm').style.display='block';
+      this.style.display='none';
+    };
+    document.getElementById('_eCancel').onclick=function(){
+      document.getElementById('_evtForm').style.display='none';
+      document.getElementById('_showEvt').style.display='';
+    };
+    document.getElementById('_eSave').onclick=function(){
+      var date=document.getElementById('_eDate').value;
+      var desc=document.getElementById('_eDesc').value.trim();
+      var type=document.getElementById('_eType').value;
+      if(!date||!desc){ showToast('Date and description are required','error'); return; }
+      var fresh=getCase();
+      var tl=(fresh.timeline||[]).concat([{date:date,ev:desc,type:type}]);
+      updateCase(id,{timeline:tl});
+      c=getCase();
+      showToast('Event added');
+      renderContent();
+    };
+  }
+
+  setTab('overview');
+}
+</script>
+</body>
+</html>

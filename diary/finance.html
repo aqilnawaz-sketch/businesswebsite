@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Finance — MLA Litigation Desk</title>
+<script src="data.js"></script>
+<script src="shared.js"></script>
+</head>
+<body style="display:flex;min-height:100vh;background:#140c06">
+<div id="main" style="flex:1;display:flex;flex-direction:column;overflow:auto">
+  <div style="padding:28px 32px 0" class="anim">
+    <div style="font-family:Cinzel,serif;font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:#8a8070;margin-bottom:5px">MLA Litigation Desk</div>
+    <h1 style="font-family:Cinzel,serif;font-size:1.6rem;color:#c9a444;font-weight:400;letter-spacing:.04em">Finance Overview</h1>
+  </div>
+
+  <!-- Stats -->
+  <div style="padding:22px 32px 0">
+    <div id="stats" class="g4"></div>
+  </div>
+
+  <!-- Bar Chart -->
+  <div style="padding:22px 32px 0">
+    <div style="font-family:Cinzel,serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#8a8070;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(201,164,68,.12)">Agreed vs Received by Category</div>
+    <div style="background:#0d0905;border:1px solid rgba(201,164,68,.18);padding:20px 24px">
+      <svg id="barChart" width="100%" style="overflow:visible;display:block"></svg>
+    </div>
+  </div>
+
+  <!-- Per-case Recovery -->
+  <div style="padding:22px 32px 0">
+    <div style="font-family:Cinzel,serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#8a8070;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(201,164,68,.12)">Per-Case Recovery</div>
+    <div id="recoveryList"></div>
+  </div>
+
+  <!-- Recent Payments -->
+  <div style="padding:22px 32px 40px">
+    <div style="font-family:Cinzel,serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#8a8070;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(201,164,68,.12)">Recent Payments</div>
+    <div style="background:#0d0905;border:1px solid rgba(201,164,68,.18);overflow-x:auto">
+      <table id="paymentsTable" style="width:100%;border-collapse:collapse;font-size:.85rem"></table>
+    </div>
+  </div>
+</div>
+
+<script>
+var cases = initPage('finance');
+
+/* ── Stats ── */
+var totalAgreed=0, totalReceived=0, totalExpense=0;
+cases.forEach(c => {
+  totalAgreed   += (c.agreed  ||0);
+  totalReceived += (c.received||0);
+  totalExpense  += (c.expense ||0);
+});
+var outstanding  = totalAgreed - totalReceived;
+var netProfit    = totalReceived - totalExpense;
+var collRate     = totalAgreed ? Math.round(totalReceived/totalAgreed*100) : 0;
+
+function statCard(label, val, color){
+  return '<div style="background:#0d0905;border:1px solid rgba(201,164,68,.18);padding:16px 18px">'
+    +'<div style="font-family:Cinzel,serif;font-size:.48rem;letter-spacing:.15em;text-transform:uppercase;color:#8a8070;margin-bottom:7px">'+label+'</div>'
+    +'<div style="font-size:1.15rem;color:'+(color||'#e8dfc8')+';font-weight:600">'+val+'</div>'
+    +'</div>';
+}
+
+document.getElementById('stats').innerHTML =
+  statCard('Total Agreed',    R(totalAgreed),   '#c9a444')
+ +statCard('Collected',       R(totalReceived), '#5a9f72')
+ +statCard('Outstanding',     R(outstanding),   outstanding>0?'#d45f5f':'#5a9f72')
+ +statCard('Expenses',        R(totalExpense),  '#d4a020')
+ +statCard('Net Profit',      R(netProfit),     netProfit>=0?'#5a9f72':'#d45f5f')
+ +statCard('Collection Rate', collRate+'%',     collRate>=75?'#5a9f72':collRate>=50?'#d4a020':'#d45f5f');
+
+/* ── Bar Chart ── */
+var catData = {};
+CATS.forEach(cat => { catData[cat] = {agreed:0, received:0}; });
+cases.forEach(c => {
+  if(catData[c.cat]){
+    catData[c.cat].agreed   += (c.agreed  ||0);
+    catData[c.cat].received += (c.received||0);
+  }
+});
+
+var maxVal = Math.max(...Object.values(catData).map(d=>d.agreed), 1);
+var barH = 32, gap = 14, groupGap = 26, labelW = 110, axisH = 28;
+var groups = CATS.length;
+var totalH = groups*(2*barH+gap+groupGap)+axisH+10;
+var svg = document.getElementById('barChart');
+svg.setAttribute('height', totalH);
+svg.setAttribute('viewBox','0 0 700 '+totalH);
+
+var pct = v => Math.max((v/maxVal)*560, v>0?4:0);
+
+var svgHtml = '';
+// Grid lines
+[0,.25,.5,.75,1].forEach(f => {
+  var x = labelW + f*560;
+  svgHtml += '<line x1="'+x+'" y1="0" x2="'+x+'" y2="'+(totalH-axisH)+'" stroke="rgba(201,164,68,.07)" stroke-dasharray="4,4"/>';
+  if(f>0){
+    var lbl = R(Math.round(maxVal*f));
+    svgHtml += '<text x="'+x+'" y="'+(totalH-8)+'" fill="#8a8070" font-size="9" text-anchor="middle" font-family="Cormorant Garamond,serif">'+lbl+'</text>';
+  }
+});
+
+CATS.forEach((cat, i) => {
+  var y0 = i*(2*barH+gap+groupGap);
+  var d  = catData[cat];
+  var wa = pct(d.agreed);
+  var wr = pct(d.received);
+
+  svgHtml += '<text x="'+(labelW-8)+'" y="'+(y0+barH/2+5)+'" fill="#8a8070" font-size="11" text-anchor="end" font-family="Cormorant Garamond,serif">'+cat+'</text>';
+
+  // Agreed bar
+  svgHtml += '<rect x="'+labelW+'" y="'+y0+'" width="'+wa+'" height="'+barH+'" fill="rgba(201,164,68,.55)" rx="2"/>';
+  svgHtml += '<text x="'+(labelW+wa+5)+'" y="'+(y0+barH/2+5)+'" fill="#c9a444" font-size="10" font-family="Cormorant Garamond,serif">'+R(d.agreed)+'</text>';
+
+  // Received bar
+  var y1 = y0+barH+gap;
+  svgHtml += '<rect x="'+labelW+'" y="'+y1+'" width="'+wr+'" height="'+barH+'" fill="rgba(90,159,114,.7)" rx="2"/>';
+  svgHtml += '<text x="'+(labelW+wr+5)+'" y="'+(y1+barH/2+5)+'" fill="#5a9f72" font-size="10" font-family="Cormorant Garamond,serif">'+R(d.received)+'</text>';
+});
+
+// Legend
+svgHtml += '<rect x="'+labelW+'" y="'+(totalH-axisH-16)+'" width="12" height="12" fill="rgba(201,164,68,.55)"/>'
+  +'<text x="'+(labelW+16)+'" y="'+(totalH-axisH-5)+'" fill="#c9a444" font-size="10" font-family="Cormorant Garamond,serif">Agreed</text>'
+  +'<rect x="'+(labelW+80)+'" y="'+(totalH-axisH-16)+'" width="12" height="12" fill="rgba(90,159,114,.7)"/>'
+  +'<text x="'+(labelW+96)+'" y="'+(totalH-axisH-5)+'" fill="#5a9f72" font-size="10" font-family="Cormorant Garamond,serif">Received</text>';
+
+svg.innerHTML = svgHtml;
+
+/* ── Per-case Recovery ── */
+var recHtml = '';
+var sorted = cases.slice().sort((a,b)=>(b.agreed||0)-(a.agreed||0));
+sorted.forEach(c => {
+  var ag = c.agreed||0, rc = c.received||0, ex = c.expense||0;
+  var pctR = ag ? Math.round(rc/ag*100) : 0;
+  var rCol = riskColor(c.risk);
+  var barCol = pctR>=75?'#5a9f72':pctR>=40?'#d4a020':'#d45f5f';
+  recHtml += '<div onclick="location.href=\'case.html?id='+c.id+'\'" class="rh" style="background:#0d0905;border:1px solid rgba(201,164,68,.12);padding:14px 18px;margin-bottom:8px;cursor:pointer">'
+    +'<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px">'
+      +'<div style="min-width:0">'
+        +'<div style="font-size:.95rem;color:#e8dfc8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+c.title+'</div>'
+        +'<div style="font-size:.75rem;color:#8a8070;margin-top:2px">'+c.no+' · '+c.cat+'</div>'
+      +'</div>'
+      +'<div style="flex-shrink:0;text-align:right">'
+        +'<div style="font-family:Cinzel,serif;font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:'+rCol+';padding:3px 8px;border:1px solid '+rCol+'55;white-space:nowrap">'+riskLabel(c.risk)+'</div>'
+      +'</div>'
+    +'</div>'
+    +'<div style="display:flex;gap:24px;margin-bottom:10px;font-size:.8rem">'
+      +'<span style="color:#8a8070">Agreed: <span style="color:#c9a444">'+R(ag)+'</span></span>'
+      +'<span style="color:#8a8070">Received: <span style="color:#5a9f72">'+R(rc)+'</span></span>'
+      +'<span style="color:#8a8070">Outstanding: <span style="color:#d45f5f">'+R(ag-rc)+'</span></span>'
+      +'<span style="color:#8a8070">Expense: <span style="color:#d4a020">'+R(ex)+'</span></span>'
+    +'</div>'
+    +'<div style="display:flex;align-items:center;gap:10px">'
+      +'<div style="flex:1;height:6px;background:rgba(255,255,255,.07);border-radius:3px">'
+        +'<div style="width:'+pctR+'%;height:100%;background:'+barCol+';border-radius:3px;transition:width .4s"></div>'
+      +'</div>'
+      +'<span style="font-family:Cinzel,serif;font-size:.55rem;color:'+barCol+';min-width:36px;text-align:right">'+pctR+'%</span>'
+    +'</div>'
+  +'</div>';
+});
+document.getElementById('recoveryList').innerHTML = recHtml;
+
+/* ── Recent Payments ── */
+var allPayments = [];
+cases.forEach(c => {
+  (c.payments||[]).forEach(p => {
+    allPayments.push({date:p.date, amt:p.amt, method:p.method, note:p.note, caseTitle:c.title, caseId:c.id, caseNo:c.no});
+  });
+});
+allPayments.sort((a,b) => b.date.localeCompare(a.date));
+var latest = allPayments.slice(0,15);
+
+var thStyle = 'padding:10px 14px;font-family:Cinzel,serif;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:#8a8070;border-bottom:1px solid rgba(201,164,68,.18);text-align:left;white-space:nowrap';
+var tdStyle = 'padding:11px 14px;border-bottom:1px solid rgba(201,164,68,.07);font-size:.85rem;vertical-align:middle';
+
+var tHtml = '<thead><tr>'
+  +'<th style="'+thStyle+'">Date</th>'
+  +'<th style="'+thStyle+'">Case</th>'
+  +'<th style="'+thStyle+'">Amount</th>'
+  +'<th style="'+thStyle+'">Method</th>'
+  +'<th style="'+thStyle+'">Note</th>'
+  +'</tr></thead><tbody>';
+
+latest.forEach(p => {
+  tHtml += '<tr class="rh" onclick="location.href=\'case.html?id='+p.caseId+'\'" style="cursor:pointer">'
+    +'<td style="'+tdStyle+';font-family:Cinzel,serif;font-size:.6rem;color:#8a8070;white-space:nowrap">'+D(p.date)+'</td>'
+    +'<td style="'+tdStyle+';min-width:0"><div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;color:#e8dfc8">'+p.caseTitle+'</div><div style="font-size:.7rem;color:#8a8070">'+p.caseNo+'</div></td>'
+    +'<td style="'+tdStyle+';color:#5a9f72;font-weight:600;white-space:nowrap">'+R(p.amt)+'</td>'
+    +'<td style="'+tdStyle+';color:#8a8070;white-space:nowrap">'+p.method+'</td>'
+    +'<td style="'+tdStyle+';color:#8a8070">'+p.note+'</td>'
+    +'</tr>';
+});
+
+tHtml += '</tbody>';
+document.getElementById('paymentsTable').innerHTML = tHtml;
+</script>
+</body>
+</html>

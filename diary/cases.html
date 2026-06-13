@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case Records — MLA Litigation Desk</title>
+</head>
+<body>
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<div id="_wrap" style="display:flex;height:100vh;overflow:hidden"></div>
+<script>
+var cases = initPage('cases');
+
+/* ── Main layout ── */
+var wrap = document.getElementById('_wrap');
+var sidebar = document.getElementById('_sidebar');
+sidebar.style.flexShrink='0';
+wrap.appendChild(sidebar);
+
+var main = document.createElement('div');
+main.style.cssText='flex:1;display:flex;flex-direction:column;overflow:hidden;background:#140c06';
+wrap.appendChild(main);
+
+/* ── Top bar ── */
+var topbar = document.createElement('div');
+topbar.style.cssText='display:flex;align-items:center;justify-content:space-between;padding:18px 28px 14px;border-bottom:1px solid rgba(201,164,68,.18);flex-shrink:0;flex-wrap:wrap;gap:10px';
+topbar.innerHTML='<div style="font-family:Cinzel,serif;font-size:1rem;letter-spacing:.08em;color:#e8dfc8">Case Records</div>';
+
+var controls = document.createElement('div');
+controls.style.cssText='display:flex;align-items:center;gap:10px;flex-wrap:wrap';
+
+var searchInput = document.createElement('input');
+searchInput.type='text';
+searchInput.placeholder='Search title / client / CNIC / FIR / mobile / no…';
+searchInput.style.cssText='background:#0b0703;border:1px solid rgba(201,164,68,.2);color:#e8dfc8;padding:8px 14px;font-size:.82rem;width:290px;font-family:inherit';
+
+var catSel = document.createElement('select');
+catSel.style.cssText='background:#0b0703;border:1px solid rgba(201,164,68,.2);color:#8a8070;padding:8px 12px;font-size:.82rem;font-family:inherit';
+catSel.innerHTML='<option value="">All Categories</option>';
+CATS.forEach(function(c){catSel.innerHTML+='<option value="'+c+'">'+c+'</option>';});
+
+var addBtn = document.createElement('button');
+addBtn.style.cssText='background:#c9a444;color:#0b0703;border:none;font-family:Cinzel,serif;font-size:1.1rem;font-weight:700;width:40px;height:40px;display:flex;align-items:center;justify-content:center;letter-spacing:0';
+addBtn.textContent='+';
+addBtn.title='Add New Case';
+
+controls.appendChild(searchInput);
+controls.appendChild(catSel);
+controls.appendChild(addBtn);
+topbar.appendChild(controls);
+main.appendChild(topbar);
+
+/* ── Table area ── */
+var tableWrap = document.createElement('div');
+tableWrap.style.cssText='flex:1;overflow:auto;padding:20px 28px';
+main.appendChild(tableWrap);
+
+function renderTable(){
+  var q = searchInput.value.trim().toLowerCase();
+  var cat = catSel.value;
+  var all = getCases();
+  var closed = all.filter(function(c){ return c.status==='closed'; });
+  var list = all.filter(function(c){
+    if(c.status==='closed') return false;
+    if(cat && c.cat!==cat) return false;
+    if(!q) return true;
+    return [c.title,c.client,c.cnic,c.fir,c.mobile,c.no].some(function(v){
+      return v && v.toLowerCase().includes(q);
+    });
+  });
+
+  tableWrap.innerHTML='';
+
+  if(!list.length){
+    tableWrap.innerHTML='<div style="text-align:center;color:#8a8070;padding:60px 0;font-family:Cinzel,serif;font-size:.7rem;letter-spacing:.14em">NO CASES FOUND</div>';
+    return;
+  }
+
+  var tbl = document.createElement('table');
+  tbl.style.cssText='width:100%;border-collapse:collapse;font-size:.85rem';
+  tbl.innerHTML='<thead><tr style="border-bottom:1px solid rgba(201,164,68,.18)">'
+    +'<th style="text-align:left;padding:8px 12px 10px;font-family:Cinzel,serif;font-size:.53rem;letter-spacing:.14em;text-transform:uppercase;color:#8a8070;font-weight:400">Case</th>'
+    +'<th style="text-align:left;padding:8px 12px 10px;font-family:Cinzel,serif;font-size:.53rem;letter-spacing:.14em;text-transform:uppercase;color:#8a8070;font-weight:400">Court</th>'
+    +'<th style="text-align:left;padding:8px 12px 10px;font-family:Cinzel,serif;font-size:.53rem;letter-spacing:.14em;text-transform:uppercase;color:#8a8070;font-weight:400">Category</th>'
+    +'<th style="text-align:left;padding:8px 12px 10px;font-family:Cinzel,serif;font-size:.53rem;letter-spacing:.14em;text-transform:uppercase;color:#8a8070;font-weight:400">Stage</th>'
+    +'<th style="text-align:left;padding:8px 12px 10px;font-family:Cinzel,serif;font-size:.53rem;letter-spacing:.14em;text-transform:uppercase;color:#8a8070;font-weight:400">Next Hearing</th>'
+    +'<th style="text-align:left;padding:8px 12px 10px;font-family:Cinzel,serif;font-size:.53rem;letter-spacing:.14em;text-transform:uppercase;color:#8a8070;font-weight:400">Fee</th>'
+    +'</tr></thead>';
+  var tbody = document.createElement('tbody');
+
+  list.forEach(function(c){
+    var days = c.next ? daysTo(c.next) : null;
+    var daysStr = days===null ? '—' : days<0 ? (Math.abs(days)+' days ago') : days===0 ? 'Today' : days+' days';
+    var daysColor = days===null ? '#8a8070' : days<=3 ? '#d45f5f' : days<=7 ? '#d4a020' : '#5a9f72';
+    var agreed = Number(c.agreed)||0;
+    var received = Number(c.received)||0;
+    var pct = agreed>0 ? Math.min(100,Math.round(received/agreed*100)) : 0;
+    var pctColor = pct>=100 ? '#5a9f72' : pct>=50 ? '#d4a020' : '#d45f5f';
+
+    var tr = document.createElement('tr');
+    tr.className='rh';
+    tr.style.cssText='border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer';
+    tr.innerHTML='<td style="padding:12px 12px;vertical-align:middle">'
+      +'<div style="color:#e8dfc8;font-size:.88rem;font-weight:500;line-height:1.3">'+c.title+'</div>'
+      +'<div style="color:#8a8070;font-size:.75rem;margin-top:3px">'+c.client+(c.no?' · <span style="color:#4a4030">'+c.no+'</span>':'')+'</div>'
+      +'</td>'
+      +'<td style="padding:12px;color:#8a8070;font-size:.78rem;vertical-align:middle;max-width:160px">'+c.court+'</td>'
+      +'<td style="padding:12px;vertical-align:middle"><span style="background:rgba(201,164,68,.12);color:#c9a444;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;padding:3px 8px;text-transform:uppercase">'+c.cat+'</span></td>'
+      +'<td style="padding:12px;vertical-align:middle"><span style="background:rgba(0,0,0,.3);color:'+stageColor(c.stage)+';font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.08em;padding:3px 8px;border:1px solid '+stageColor(c.stage)+'40;text-transform:uppercase">'+c.stage+'</span></td>'
+      +'<td style="padding:12px;vertical-align:middle">'
+        +'<div style="color:#e8dfc8;font-size:.8rem">'+D(c.next)+'</div>'
+        +'<div style="color:'+daysColor+';font-size:.72rem;margin-top:2px">'+daysStr+'</div>'
+      +'</td>'
+      +'<td style="padding:12px;vertical-align:middle;min-width:110px">'
+        +'<div style="display:flex;justify-content:space-between;margin-bottom:4px">'
+          +'<span style="color:#8a8070;font-size:.7rem">'+pct+'%</span>'
+          +'<span style="color:#8a8070;font-size:.7rem">'+R(received)+' / '+R(agreed)+'</span>'
+        +'</div>'
+        +'<div style="background:rgba(255,255,255,.06);height:4px;border-radius:2px"><div style="width:'+pct+'%;height:100%;background:'+pctColor+';border-radius:2px"></div></div>'
+      +'</td>';
+    tr.onclick = function(){ location.href='case.html?id='+c.id; };
+    tbody.appendChild(tr);
+  });
+
+  tbl.appendChild(tbody);
+  tableWrap.appendChild(tbl);
+
+  /* ── Closed Cases ── */
+  if(closed.length){
+    var closedToggle = document.createElement('div');
+    closedToggle.style.cssText='display:flex;align-items:center;gap:10px;padding:20px 0 10px;cursor:pointer;user-select:none';
+    closedToggle.innerHTML='<div style="flex:1;height:1px;background:rgba(201,164,68,.12)"></div>'
+      +'<span id="_closedLbl" style="font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:#8a8070">▶ Closed Cases ('+closed.length+')</span>'
+      +'<div style="flex:1;height:1px;background:rgba(201,164,68,.12)"></div>';
+    tableWrap.appendChild(closedToggle);
+
+    var closedList = document.createElement('div');
+    closedList.style.display='none';
+    closed.forEach(function(c){
+      var row = document.createElement('div');
+      row.className='rh';
+      row.style.cssText='display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer;opacity:.6';
+      row.innerHTML='<div><div style="color:#e8dfc8;font-size:.84rem">'+c.title+'</div>'
+        +'<div style="color:#8a8070;font-size:.72rem;margin-top:2px">'+c.client+' · closed '+D(c.closedDate)+'</div>'
+        +(c.closedReason?'<div style="font-size:.72rem;color:#4a4030;margin-top:1px">Reason: '+c.closedReason+'</div>':'')+'</div>'
+        +'<span style="background:#d45f5f20;border:1px solid #d45f5f40;color:#d45f5f;font-family:Cinzel,serif;font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;flex-shrink:0">Closed</span>';
+      row.onclick = function(){ location.href='case.html?id='+c.id; };
+      closedList.appendChild(row);
+    });
+    tableWrap.appendChild(closedList);
+
+    closedToggle.onclick = function(){
+      var open = closedList.style.display==='none';
+      closedList.style.display = open ? 'block' : 'none';
+      document.getElementById('_closedLbl').textContent = (open?'▼':'▶')+' Closed Cases ('+closed.length+')';
+    };
+  }
+}
+
+searchInput.oninput = renderTable;
+catSel.onchange = renderTable;
+renderTable();
+
+/* ── Modal ── */
+var overlay = document.createElement('div');
+overlay.style.cssText='display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:500;overflow-y:auto;padding:30px 16px';
+document.body.appendChild(overlay);
+
+function field(label, name, type, opts){
+  var opt = opts||{};
+  var req = opt.required ? ' *' : '';
+  var html = '<div style="display:flex;flex-direction:column;gap:5px">'
+    +'<label style="font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:#8a8070">'+label+req+'</label>';
+  if(type==='select'){
+    html+='<select name="'+name+'" style="background:#0d0905;border:1px solid rgba(201,164,68,.18);color:#e8dfc8;padding:8px 10px;font-size:.82rem;font-family:inherit">'
+      +'<option value="">— select —</option>';
+    (opt.options||[]).forEach(function(o){ html+='<option value="'+o+'">'+o+'</option>'; });
+    html+='</select>';
+  } else if(type==='textarea'){
+    html+='<textarea name="'+name+'" rows="3" style="background:#0d0905;border:1px solid rgba(201,164,68,.18);color:#e8dfc8;padding:8px 10px;font-size:.82rem;font-family:inherit;resize:vertical"></textarea>';
+  } else {
+    html+='<input type="'+type+'" name="'+name+'" style="background:#0d0905;border:1px solid rgba(201,164,68,.18);color:#e8dfc8;padding:8px 10px;font-size:.82rem;font-family:inherit">';
+  }
+  html+='</div>';
+  return html;
+}
+
+function s2(a,b){ return '<div class="g2">'+a+b+'</div>'; }
+
+var modalHtml = '<div style="background:#111116;border:1px solid rgba(201,164,68,.25);max-width:780px;margin:0 auto;padding:28px 32px">'
+  +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:22px">'
+  +'<div style="font-family:Cinzel,serif;font-size:.85rem;letter-spacing:.1em;color:#c9a444">ADD NEW CASE</div>'
+  +'<button id="_mClose" style="background:none;border:none;color:#8a8070;font-size:1.3rem;line-height:1">×</button>'
+  +'</div>'
+  +'<form id="_addForm">'
+  +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">'
+    +field('Case No.','no','text')
+    +field('Provision / Sections','prov','text')
+  +'</div>'
+  +s2(field('Case Title','title','text',{required:true}), field('Client Name','client','text',{required:true}))
+  +'<div style="height:14px"></div>'
+  +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px">'
+    +field("Father's Name",'father','text')
+    +field('CNIC','cnic','text')
+    +field('Mobile','mobile','text')
+  +'</div>'
+  +field('Address','address','text')
+  +'<div style="height:14px"></div>'
+  +s2(field('Court','court','text'), field('Judge','judge','text'))
+  +'<div style="height:14px"></div>'
+  +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:14px">'
+    +field('FIR No.','fir','text')
+    +field('Police Station','ps','text')
+    +field('Province','prov2','text')
+    +field('Category','cat','select',{options:CATS})
+  +'</div>'
+  +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px">'
+    +field('Stage','stage','select',{options:STAGES})
+    +field('Next Hearing','next','date')
+    +field('Date Filed','filed','date')
+  +'</div>'
+  +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px">'
+    +field('Priority','priority','select',{options:PRIORITIES})
+    +field('Risk / Payer','risk','select',{options:RISKS})
+    +field('Settlement Prospect','settle','select',{options:['Low','Medium','High']})
+  +'</div>'
+  +s2(field('Opponent','opponent','text'), field("Opponent's Counsel",'opC','text'))
+  +'<div style="height:14px"></div>'
+  +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px">'
+    +field('Agreed Fee (₨)','agreed','number')
+    +field('Received (₨)','received','number')
+    +field('Expenses (₨)','expense','number')
+  +'</div>'
+  +field('Strategy','strategy','textarea')
+  +'<div style="height:10px"></div>'
+  +field('Judge Notes','jnotes','textarea')
+  +'<div style="height:10px"></div>'
+  +field('Warning / Alert','warn','textarea')
+  +'<div style="height:20px"></div>'
+  +'<div style="display:flex;justify-content:flex-end;gap:12px">'
+  +'<button type="button" id="_mCancel" style="background:none;border:1px solid rgba(201,164,68,.25);color:#8a8070;font-family:Cinzel,serif;font-size:.56rem;letter-spacing:.12em;padding:10px 22px;text-transform:uppercase">Cancel</button>'
+  +'<button type="submit" style="background:#c9a444;border:none;color:#0b0703;font-family:Cinzel,serif;font-size:.56rem;letter-spacing:.12em;padding:10px 26px;font-weight:700;text-transform:uppercase">Save Case</button>'
+  +'</div>'
+  +'</form>'
+  +'</div>';
+
+overlay.innerHTML = modalHtml;
+
+function openModal(){ overlay.style.display='block'; }
+function closeModal(){ overlay.style.display='none'; document.getElementById('_addForm').reset(); }
+
+addBtn.onclick = openModal;
+overlay.onclick = function(e){ if(e.target===overlay) closeModal(); };
+document.getElementById('_mClose').onclick = closeModal;
+document.getElementById('_mCancel').onclick = closeModal;
+
+document.getElementById('_addForm').onsubmit = function(e){
+  e.preventDefault();
+  var f = e.target;
+  var title = f.title.value.trim();
+  var client = f.client.value.trim();
+  if(!title||!client){ showToast('Title and Client are required','error'); return; }
+  var newCase = {
+    id: 'c'+Date.now(),
+    no: f.no.value.trim(),
+    title: title,
+    client: client,
+    father: f.father.value.trim(),
+    cnic: f.cnic.value.trim(),
+    mobile: f.mobile.value.trim(),
+    address: f.address.value.trim(),
+    court: f.court.value.trim(),
+    judge: f.judge.value.trim(),
+    cat: f.cat.value||'Civil',
+    stage: f.stage.value||'Filing',
+    next: f.next.value,
+    filed: f.filed.value,
+    prov: f.prov.value.trim(),
+    fir: f.fir.value.trim(),
+    ps: f.ps.value.trim(),
+    opponent: f.opponent.value.trim(),
+    opC: f.opC.value.trim(),
+    strategy: f.strategy.value.trim(),
+    jnotes: f.jnotes.value.trim(),
+    warn: f.warn.value.trim(),
+    priority: f.priority.value||'normal',
+    risk: f.risk.value||'green',
+    agreed: Number(f.agreed.value)||0,
+    received: Number(f.received.value)||0,
+    expense: Number(f.expense.value)||0,
+    settle: f.settle.value||'Medium',
+    payments: [],
+    timeline: f.filed.value ? [{date:f.filed.value,ev:'Case Filed',type:'filing'}] : []
+  };
+  addCase(newCase);
+  closeModal();
+  renderTable();
+  showToast('Case added successfully');
+};
+</script>
+</body>
+</html>

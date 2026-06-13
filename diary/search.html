@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Search — MLA Litigation Desk</title>
+</head>
+<body>
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<script>
+var cases = initPage('search');
+document.body.style.cssText = 'display:flex;height:100vh;overflow:hidden;background:#140c06';
+
+var main = document.createElement('div');
+main.style.cssText = 'flex:1;display:flex;flex-direction:column;overflow:hidden';
+document.body.appendChild(main);
+
+var top = document.createElement('div');
+top.style.cssText = 'padding:22px 28px 16px;border-bottom:1px solid rgba(201,164,68,.18);flex-shrink:0';
+top.innerHTML = '<div style="font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:#c9a444;margin-bottom:4px">Chamber Records</div>'
+  + '<div style="font-family:Cinzel,serif;font-size:1rem;letter-spacing:.08em;color:#e8dfc8;margin-bottom:14px">Search</div>'
+  + '<input id="_q" type="search" placeholder="Search by title, client, CNIC, FIR, mobile, case no., court, opponent…" autofocus '
+  + 'style="width:100%;max-width:640px;background:#0b0703;border:1px solid rgba(201,164,68,.2);color:#e8dfc8;padding:11px 16px;font-size:.93rem;font-family:inherit">';
+main.appendChild(top);
+
+var hint = document.createElement('div');
+hint.style.cssText = 'font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:#8a8070;padding:10px 28px 0;flex-shrink:0';
+main.appendChild(hint);
+
+var list = document.createElement('div');
+list.style.cssText = 'flex:1;overflow-y:auto;padding:14px 28px';
+main.appendChild(list);
+
+function render(q) {
+  q = (q||'').trim().toLowerCase();
+  if (!q) {
+    hint.textContent = '';
+    list.innerHTML = '<div style="background:#111116;border:1px solid rgba(201,164,68,.18);padding:40px;text-align:center;color:#8a8070;font-size:.87rem;margin-top:10px">Search across all case records — clients, FIR numbers, CNICs, mobile numbers, courts and opponents</div>';
+    return;
+  }
+  var res = cases.filter(function(c) {
+    return (c.title+' '+c.client+' '+c.no+' '+c.cnic+' '+(c.fir||'')+' '+c.mobile+' '+(c.opponent||'')+' '+c.court).toLowerCase().indexOf(q) !== -1;
+  });
+  hint.textContent = res.length + ' result' + (res.length!==1?'s':'') + ' for "' + q + '"';
+  if (!res.length) {
+    list.innerHTML = '<div style="background:#111116;border:1px solid rgba(201,164,68,.18);padding:36px;text-align:center;color:#8a8070;font-size:.87rem;margin-top:10px">No records found for "' + q + '"</div>';
+    return;
+  }
+  list.innerHTML = '';
+  res.forEach(function(c) {
+    var d = daysTo(c.next);
+    var card = document.createElement('div');
+    card.className = 'rh ch';
+    card.style.cssText = 'background:#111116;border:1px solid rgba(201,164,68,.18);padding:14px 18px;margin-bottom:9px;transition:border-color .2s;cursor:pointer';
+    card.innerHTML = '<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;gap:12px;flex-wrap:wrap">'
+      + '<div><div style="font-family:Cinzel,serif;font-size:.68rem;color:#e8dfc8;margin-bottom:3px">'+c.title+'</div>'
+      + '<div style="font-size:.7rem;color:#8a8070">'+c.no+' · '+c.client+' · '+c.mobile+'</div></div>'
+      + '<div style="display:flex;gap:5px;flex-shrink:0">'
+      + '<span style="background:'+stageColor(c.stage)+'20;border:1px solid '+stageColor(c.stage)+'42;color:'+stageColor(c.stage)+';font-family:Cinzel,serif;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px">'+c.stage+'</span>'
+      + '<span style="background:'+priColor(c.priority)+'20;border:1px solid '+priColor(c.priority)+'42;color:'+priColor(c.priority)+';font-family:Cinzel,serif;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px">'+c.priority+'</span>'
+      + '</div></div>'
+      + '<div style="display:flex;gap:18px;flex-wrap:wrap;font-size:.7rem;color:#8a8070">'
+      + '<span>Court: '+c.court+'</span>'
+      + '<span style="color:'+(d<=3&&d>=0?'#d45f5f':'#8a8070')+'">Next: '+D(c.next)+'</span>'
+      + (c.fir?'<span>FIR: '+c.fir+'</span>':'')
+      + '</div>';
+    card.onclick = function(){ location.href = 'case.html?id='+c.id; };
+    list.appendChild(card);
+  });
+}
+
+render('');
+document.getElementById('_q').addEventListener('input', function(){ render(this.value); });
+document.getElementById('_q').focus();
+</script>
+</body>
+</html>

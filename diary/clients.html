@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clients — MLA Litigation Desk</title>
+</head>
+<body style="display:flex;min-height:100vh;background:#140c06">
+<script src="data.js"></script><script src="shared.js"></script>
+<div id="main" style="flex:1;display:flex;flex-direction:column;min-width:0"></div>
+<script>
+var cases = initPage('clients');
+
+var main = document.getElementById('main');
+var gold='#c9a444',cream='#e8dfc8',muted='#8a8070',bdr='rgba(201,164,68,0.18)',bg2='#111116';
+
+// Build client map grouped by CNIC
+function buildClients(arr){
+  var map={};
+  arr.forEach(function(c){
+    var key=c.cnic||c.client;
+    if(!map[key]) map[key]={cnic:c.cnic,name:c.client,father:c.father,mobile:c.mobile,address:c.address,cases:[]};
+    map[key].cases.push(c);
+  });
+  return Object.values(map);
+}
+
+function clientStats(cl){
+  var agreed=0,received=0,expense=0;
+  cl.cases.forEach(function(c){agreed+=c.agreed||0;received+=c.received||0;expense+=c.expense||0;});
+  var due=agreed-received;
+  // worst risk
+  var rOrder={red:2,yellow:1,green:0};
+  var risk=cl.cases.reduce(function(a,c){return rOrder[c.risk]>rOrder[a]?c.risk:a;},'green');
+  // next hearing
+  var next=cl.cases.map(function(c){return c.next;}).filter(Boolean).sort()[0];
+  return {agreed,received,due,expense,risk,next};
+}
+
+function allPayments(cl){
+  var all=[];
+  cl.cases.forEach(function(c){
+    (c.payments||[]).forEach(function(p){all.push(Object.assign({},p,{caseTitle:c.title,caseId:c.id}));});
+  });
+  return all.sort(function(a,b){return a.date<b.date?1:-1;});
+}
+
+function renderGrid(clients, expandedKey){
+  var html='<div style="padding:24px 28px 16px"><div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">'
+    +'<span style="font-family:Cinzel,serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:'+gold+'">◈ Clients</span>'
+    +'<span style="font-size:.7rem;color:'+muted+'">'+clients.length+' clients · '+cases.length+' cases</span>'
+    +'</div>';
+
+  html+='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">';
+  clients.forEach(function(cl){
+    var st=clientStats(cl);
+    var pct=st.agreed?Math.round(st.received/st.agreed*100):0;
+    var init=(cl.name||'?')[0].toUpperCase();
+    var days=st.next?daysTo(st.next):null;
+    var expanded=(expandedKey===cl.cnic);
+
+    html+='<div class="rh" data-cnic="'+cl.cnic+'" style="background:'+bg2+';border:1px solid '+(expanded?gold:bdr)+';padding:0;transition:border-color .2s;cursor:pointer">';
+    html+='<div style="padding:18px 18px 14px">';
+    // header row
+    html+='<div style="display:flex;align-items:flex-start;gap:13px;margin-bottom:14px">';
+    html+='<div style="width:44px;height:44px;border-radius:50%;background:rgba(201,164,68,.15);border:1px solid '+bdr+';display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;font-size:1.1rem;color:'+gold+';flex-shrink:0">'+init+'</div>';
+    html+='<div style="flex:1;min-width:0">';
+    html+='<div style="font-family:Cinzel,serif;font-size:.72rem;color:'+cream+';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+cl.name+'</div>';
+    html+='<div style="font-size:.72rem;color:'+muted+';margin-top:3px">CNIC: '+cl.cnic+'</div>';
+    html+='</div>';
+    html+='<span style="font-size:.58rem;padding:3px 8px;background:rgba('+riskRgb(st.risk)+',.15);color:'+riskColor(st.risk)+';border:1px solid '+riskColor(st.risk)+'33;white-space:nowrap">'+riskLabel(st.risk)+'</span>';
+    html+='</div>';
+    // stats row
+    html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;font-size:.72rem">';
+    html+='<div><div style="color:'+muted+';font-size:.62rem">Cases</div><div style="color:'+cream+'">'+(cl.cases.length)+'</div></div>';
+    html+='<div><div style="color:'+muted+';font-size:.62rem">Next Hearing</div><div style="color:'+(days!=null&&days<=3?'#d45f5f':days!=null&&days<=7?'#d4a020':cream)+'">'+( st.next?D(st.next):'—')+'</div></div>';
+    html+='<div><div style="color:'+muted+';font-size:.62rem">Agreed</div><div style="color:'+cream+'">'+R(st.agreed)+'</div></div>';
+    html+='<div><div style="color:'+muted+';font-size:.62rem">Due</div><div style="color:'+(st.due>0?'#d45f5f':cream)+'">'+R(st.due)+'</div></div>';
+    html+='</div>';
+    // progress bar
+    html+='<div style="margin-bottom:4px;display:flex;align-items:center;justify-content:space-between;font-size:.62rem;color:'+muted+'">';
+    html+='<span>Fee Recovery</span><span>'+pct+'%</span></div>';
+    html+='<div style="height:4px;background:rgba(255,255,255,.08);border-radius:2px">';
+    html+='<div style="height:4px;width:'+pct+'%;background:'+(pct>=80?'#5a9f72':pct>=40?gold:'#d45f5f')+';border-radius:2px;transition:width .4s"></div></div>';
+    html+='</div>';
+
+    if(expanded){
+      html+=renderDetail(cl,st);
+    }
+
+    html+='</div>';
+  });
+  html+='</div></div>';
+  return html;
+}
+
+function riskRgb(r){return {green:'90,159,114',yellow:'212,160,32',red:'212,95,95'}[r]||'138,128,112';}
+
+function renderDetail(cl,st){
+  var html='<div style="border-top:1px solid '+bdr+';padding:18px;animation:fi .25s ease both">';
+
+  // Personal info
+  html+='<div style="font-family:Cinzel,serif;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:'+gold+';margin-bottom:10px">Personal Information</div>';
+  html+='<table style="width:100%;font-size:.75rem;border-collapse:collapse;margin-bottom:18px">';
+  [['Full Name',cl.name],['Father / Guardian',cl.father||'—'],['CNIC / NTN',cl.cnic],['Mobile',cl.mobile],['Address',cl.address||'—']].forEach(function(r){
+    html+='<tr><td style="color:'+muted+';padding:5px 0;width:38%;vertical-align:top">'+r[0]+'</td><td style="color:'+cream+';padding:5px 0">'+r[1]+'</td></tr>';
+  });
+  html+='</table>';
+
+  // Fee stats
+  html+='<div style="font-family:Cinzel,serif;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:'+gold+';margin-bottom:10px">Fee Summary</div>';
+  html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">';
+  [['Agreed',R(st.agreed),cream],['Received',R(st.received),'#5a9f72'],['Due',R(st.due),st.due>0?'#d45f5f':cream],['Expenses',R(st.expense),muted]].forEach(function(r){
+    html+='<div style="background:rgba(255,255,255,.04);padding:10px 12px;border:1px solid '+bdr+'">';
+    html+='<div style="font-size:.6rem;color:'+muted+'">'+r[0]+'</div><div style="color:'+r[2]+';font-size:.82rem;margin-top:4px">'+r[1]+'</div></div>';
+  });
+  html+='</div>';
+
+  // Cases list
+  html+='<div style="font-family:Cinzel,serif;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:'+gold+';margin-bottom:10px">Cases</div>';
+  cl.cases.forEach(function(c){
+    html+='<div class="rh" onclick="location.href=\'case.html?id='+c.id+'\'" style="background:rgba(255,255,255,.03);border:1px solid '+bdr+';padding:11px 14px;margin-bottom:8px;cursor:pointer">';
+    html+='<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
+    html+='<span style="font-size:.74rem;color:'+cream+';flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+c.title+'</span>';
+    html+='<span style="font-size:.6rem;padding:2px 7px;border:1px solid '+bdr+';color:'+muted+'">'+c.no+'</span>';
+    html+='<span style="font-size:.6rem;padding:2px 7px;background:'+stageColor(c.stage)+'22;color:'+stageColor(c.stage)+';border:1px solid '+stageColor(c.stage)+'44">'+c.stage+'</span>';
+    html+='</div>';
+    html+='<div style="font-size:.7rem;color:'+muted+';margin-top:5px">'+c.court+' · Next: '+D(c.next)+'</div>';
+    html+='</div>';
+  });
+
+  // Payment history
+  var payments=allPayments(cl);
+  if(payments.length){
+    html+='<div style="font-family:Cinzel,serif;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:'+gold+';margin:18px 0 10px">Payment History</div>';
+    html+='<table style="width:100%;font-size:.72rem;border-collapse:collapse">';
+    html+='<thead><tr>';
+    ['Date','Amount','Method','Note','Case'].forEach(function(h){
+      html+='<th style="text-align:left;color:'+muted+';font-weight:normal;padding:4px 8px 8px;font-family:Cinzel,serif;font-size:.55rem;letter-spacing:.1em;border-bottom:1px solid '+bdr+'">'+h+'</th>';
+    });
+    html+='</tr></thead><tbody>';
+    payments.forEach(function(p){
+      html+='<tr><td style="padding:7px 8px;color:'+cream+'">'+D(p.date)+'</td>';
+      html+='<td style="padding:7px 8px;color:#5a9f72">'+R(p.amt)+'</td>';
+      html+='<td style="padding:7px 8px;color:'+muted+'">'+p.method+'</td>';
+      html+='<td style="padding:7px 8px;color:'+muted+'">'+( p.note||'—')+'</td>';
+      html+='<td style="padding:7px 8px;color:'+muted+';font-size:.65rem">'+p.caseTitle+'</td></tr>';
+    });
+    html+='</tbody></table>';
+  }
+  html+='</div>';
+  return html;
+}
+
+var expandedKey=null;
+// check URL param
+var urlCnic=new URLSearchParams(location.search).get('cnic');
+if(urlCnic) expandedKey=urlCnic;
+
+function render(){
+  var clients=buildClients(cases);
+  main.innerHTML='<div style="overflow-y:auto;flex:1">'+renderGrid(clients,expandedKey)+'</div>';
+  main.querySelectorAll('[data-cnic]').forEach(function(el){
+    el.addEventListener('click',function(e){
+      if(e.target.closest('a')) return;
+      var key=this.getAttribute('data-cnic');
+      expandedKey=(expandedKey===key)?null:key;
+      history.replaceState(null,'',expandedKey?'clients.html?cnic='+encodeURIComponent(expandedKey):'clients.html');
+      render();
+    });
+  });
+}
+render();
+</script>
+</body>
+</html>

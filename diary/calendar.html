@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Court Diary — MLA Litigation Desk</title>
+<script src="data.js"></script>
+<script src="shared.js"></script>
+</head>
+<body style="display:flex;min-height:100vh;background:#140c06">
+<div id="main" style="flex:1;display:flex;flex-direction:column;overflow:auto">
+  <div style="padding:28px 32px 0" class="anim">
+    <div style="font-family:Cinzel,serif;font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:#8a8070;margin-bottom:5px">MLA Litigation Desk</div>
+    <h1 style="font-family:Cinzel,serif;font-size:1.6rem;color:#c9a444;font-weight:400;letter-spacing:.04em">Court Diary</h1>
+  </div>
+
+  <!-- Month Nav -->
+  <div style="padding:20px 32px 0;display:flex;align-items:center;gap:16px">
+    <button id="prevBtn" onclick="changeMonth(-1)" style="background:rgba(201,164,68,.08);border:1px solid rgba(201,164,68,.22);color:#c9a444;padding:7px 14px;font-size:1rem">‹</button>
+    <div id="monthLabel" style="font-family:Cinzel,serif;font-size:1rem;color:#e8dfc8;min-width:180px;text-align:center"></div>
+    <button id="nextBtn" onclick="changeMonth(1)" style="background:rgba(201,164,68,.08);border:1px solid rgba(201,164,68,.22);color:#c9a444;padding:7px 14px;font-size:1rem">›</button>
+    <button onclick="goToday()" style="background:transparent;border:1px solid rgba(201,164,68,.22);color:#8a8070;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px">Today</button>
+  </div>
+
+  <!-- Calendar Grid -->
+  <div style="padding:16px 32px 0">
+    <div id="calGrid" style="background:#0d0905;border:1px solid rgba(201,164,68,.18);border-radius:2px"></div>
+  </div>
+
+  <!-- Hearings List -->
+  <div style="padding:24px 32px 40px">
+    <div style="font-family:Cinzel,serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#8a8070;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(201,164,68,.12)">Hearings This Month</div>
+    <div id="hearingsList"></div>
+  </div>
+</div>
+
+<script>
+var cases = initPage('calendar');
+var today = todayStr();
+var cur = new Date(today.slice(0,7)+'-01');
+
+function changeMonth(d){ cur.setMonth(cur.getMonth()+d); render(); }
+function goToday(){ cur = new Date(today.slice(0,7)+'-01'); render(); }
+
+function render(){
+  var y = cur.getFullYear(), m = cur.getMonth();
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('monthLabel').textContent = months[m]+' '+y;
+
+  var pad = d => String(d).padStart(2,'0');
+  var monthStr = y+'-'+pad(m+1);
+
+  // cases with a hearing this month
+  var hearings = cases.filter(c => c.next && c.next.startsWith(monthStr));
+
+  // Day index map: dateStr -> [cases]
+  var dayMap = {};
+  hearings.forEach(c => {
+    if(!dayMap[c.next]) dayMap[c.next] = [];
+    dayMap[c.next].push(c);
+  });
+
+  // Build calendar
+  var first = new Date(y, m, 1).getDay(); // 0=Sun
+  var daysInMonth = new Date(y, m+1, 0).getDate();
+
+  var DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var html = '<div style="display:grid;grid-template-columns:repeat(7,1fr)">';
+
+  // Headers
+  DOW.forEach(d => {
+    html += '<div style="padding:8px 4px;text-align:center;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:#8a8070;border-bottom:1px solid rgba(201,164,68,.1);border-right:1px solid rgba(201,164,68,.06)">'+d+'</div>';
+  });
+
+  // Empty cells
+  for(var i=0;i<first;i++){
+    html += '<div style="min-height:90px;border-bottom:1px solid rgba(201,164,68,.06);border-right:1px solid rgba(201,164,68,.06)"></div>';
+  }
+
+  // Day cells
+  for(var d=1;d<=daysInMonth;d++){
+    var ds = y+'-'+pad(m+1)+'-'+pad(d);
+    var isToday = ds===today;
+    var dayCases = dayMap[ds]||[];
+    var bg = isToday ? 'rgba(201,164,68,.1)' : 'transparent';
+    var numColor = isToday ? '#c9a444' : '#8a8070';
+    var borderColor = isToday ? 'rgba(201,164,68,.35)' : 'rgba(201,164,68,.06)';
+
+    html += '<div style="min-height:90px;padding:7px 6px;background:'+bg+';border-bottom:1px solid '+borderColor+';border-right:1px solid '+borderColor+';vertical-align:top">'
+      + '<div style="font-family:Cinzel,serif;font-size:.65rem;color:'+numColor+';margin-bottom:5px'+(isToday?';font-weight:700':'')+'">'
+      + (isToday ? '<span style="display:inline-block;background:#c9a444;color:#140c06;width:20px;height:20px;line-height:20px;text-align:center;border-radius:50%">'+d+'</span>' : d)
+      + '</div>';
+
+    dayCases.forEach(c => {
+      var col = stageColor(c.stage);
+      html += '<div onclick="location.href=\'case.html?id='+c.id+'\'" style="margin-bottom:3px;padding:3px 6px;background:'+col+'22;border-left:2px solid '+col+';font-size:.6rem;color:#e8dfc8;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%" title="'+c.title+' · '+c.no+'">'+c.title+'</div>';
+    });
+
+    html += '</div>';
+  }
+
+  // Trailing empty cells
+  var total = first + daysInMonth;
+  var rem = (7 - (total % 7)) % 7;
+  for(var i=0;i<rem;i++){
+    html += '<div style="min-height:90px;border-bottom:1px solid rgba(201,164,68,.06);border-right:1px solid rgba(201,164,68,.06)"></div>';
+  }
+
+  html += '</div>';
+  document.getElementById('calGrid').innerHTML = html;
+
+  // Hearings list
+  var sorted = hearings.slice().sort((a,b) => a.next.localeCompare(b.next));
+  var lh = document.getElementById('hearingsList');
+  if(!sorted.length){
+    lh.innerHTML = '<div style="color:#8a8070;font-size:.9rem;padding:12px 0">No hearings scheduled this month.</div>';
+    return;
+  }
+  var listHtml = '';
+  var lastDate = '';
+  sorted.forEach(c => {
+    if(c.next !== lastDate){
+      lastDate = c.next;
+      var dd = new Date(c.next);
+      var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      listHtml += '<div style="font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:#c9a444;margin:16px 0 8px">'
+        + dayNames[dd.getDay()]+', '+D(c.next)+'</div>';
+    }
+    var col = stageColor(c.stage);
+    var isPast = c.next < today;
+    listHtml += '<div onclick="location.href=\'case.html?id='+c.id+'\'" class="rh" style="display:flex;align-items:center;gap:14px;padding:11px 14px;margin-bottom:6px;background:#0d0905;border:1px solid rgba(201,164,68,.12);cursor:pointer;'+(isPast?'opacity:.5':'')+'">'+
+      '<div style="width:3px;height:36px;background:'+col+';flex-shrink:0"></div>'+
+      '<div style="flex:1;min-width:0">'+
+        '<div style="font-size:.95rem;color:#e8dfc8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+c.title+'</div>'+
+        '<div style="font-size:.75rem;color:#8a8070;margin-top:3px">'+c.no+' · '+c.court+'</div>'+
+      '</div>'+
+      '<div style="flex-shrink:0;text-align:right">'+
+        '<div style="font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:'+col+';padding:3px 8px;border:1px solid '+col+'44">'+c.stage+'</div>'+
+      '</div>'+
+    '</div>';
+  });
+  lh.innerHTML = listHtml;
+}
+
+render();
+</script>
+</body>
+</html>
