@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=block"
+      rel="stylesheet"
+    />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      /* Mian Law Associates palette, taken from the website */
+      :root {
+        --ground: #140c06;
+        --ink: #f0e4cc;
+        --gold: #c9a444;
+        --amber: #b5722a;
+        --muted: #a08a6e;
+        --font-display: "Cinzel", serif;
+        --font-body: "Cormorant Garamond", serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--ground);
+        color: var(--ink);
+        font-family: var(--font-body);
+      }
+      .clip {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+      .vignette::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at center, transparent 45%, rgba(10, 5, 2, 0.85) 100%);
+        pointer-events: none;
+      }
+      .eyebrow {
+        font-family: var(--font-display);
+        font-size: 30px;
+        letter-spacing: 0.32em;
+        color: var(--gold);
+        text-transform: uppercase;
+      }
+      .rule {
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      }
+
+      /* Scene 1 — logo */
+      #s1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at 50% 45%, #2a1a0c 0%, var(--ground) 70%);
+      }
+      #s1-logo {
+        width: 560px;
+        height: 560px;
+        border-radius: 50%;
+        box-shadow: 0 0 120px rgba(201, 164, 68, 0.35);
+      }
+      #s1-est {
+        margin-top: 44px;
+      }
+
+      /* Scene 2 — the advocate */
+      #s2-photo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 860px;
+        height: 1080px;
+        object-fit: cover;
+        object-position: 50% 20%;
+        -webkit-mask-image: linear-gradient(90deg, #000 62%, transparent 100%);
+        mask-image: linear-gradient(90deg, #000 62%, transparent 100%);
+      }
+      #s2-fade {
+        position: absolute;
+        left: 560px;
+        top: 0;
+        width: 320px;
+        height: 1080px;
+        background: linear-gradient(90deg, transparent, var(--ground));
+      }
+      #s2-text {
+        position: absolute;
+        left: 960px;
+        top: 260px;
+        width: 860px;
+      }
+      #s2-name {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 92px;
+        line-height: 1.05;
+        color: var(--ink);
+        margin: 28px 0 24px;
+      }
+      #s2-rule {
+        width: 520px;
+        margin-bottom: 36px;
+      }
+      #s2-years {
+        font-size: 50px;
+        font-style: italic;
+        color: var(--ink);
+      }
+      #s2-years b {
+        font-family: var(--font-display);
+        font-style: normal;
+        color: var(--gold);
+        font-size: 64px;
+      }
+
+      /* Scene 3 — practice areas */
+      #s3-bg {
+        position: absolute;
+        inset: -40px;
+        width: calc(100% + 80px);
+        height: calc(100% + 80px);
+        object-fit: cover;
+        filter: brightness(0.28) sepia(0.4);
+      }
+      #s3-inner {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 150px;
+      }
+      #s3-title {
+        font-family: var(--font-display);
+        font-size: 76px;
+        font-weight: 700;
+        margin: 22px 0 70px;
+      }
+      #s3-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 380px);
+        gap: 34px;
+      }
+      .area {
+        border: 1.5px solid rgba(201, 164, 68, 0.6);
+        background: rgba(20, 12, 6, 0.72);
+        padding: 34px 20px;
+        text-align: center;
+        font-family: var(--font-display);
+        font-size: 34px;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+      }
+
+      /* Scene 4 — courts */
+      #s4-photo {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 900px;
+        height: 1080px;
+        object-fit: cover;
+        -webkit-mask-image: linear-gradient(270deg, #000 62%, transparent 100%);
+        mask-image: linear-gradient(270deg, #000 62%, transparent 100%);
+      }
+      #s4-fade {
+        position: absolute;
+        right: 580px;
+        top: 0;
+        width: 320px;
+        height: 1080px;
+        background: linear-gradient(270deg, transparent, var(--ground));
+      }
+      #s4-text {
+        position: absolute;
+        left: 130px;
+        top: 230px;
+        width: 900px;
+      }
+      #s4-title {
+        font-family: var(--font-display);
+        font-size: 70px;
+        font-weight: 700;
+        margin: 24px 0 50px;
+        line-height: 1.1;
+      }
+      .court {
+        font-size: 52px;
+        line-height: 1.25;
+        padding: 14px 0 14px 34px;
+        border-left: 3px solid var(--gold);
+        margin-bottom: 18px;
+      }
+
+      /* Scene 5 — call to action */
+      #s5 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: radial-gradient(circle at 50% 40%, #2a1a0c 0%, var(--ground) 72%);
+      }
+      #s5-logo {
+        width: 230px;
+        height: 230px;
+        border-radius: 50%;
+        margin-bottom: 34px;
+      }
+      #s5-head {
+        font-family: var(--font-display);
+        font-size: 74px;
+        font-weight: 700;
+        margin: 22px 0 30px;
+      }
+      #s5-phone {
+        font-family: var(--font-display);
+        font-size: 88px;
+        color: var(--gold);
+        letter-spacing: 0.04em;
+      }
+      #s5-rule {
+        width: 760px;
+        margin: 34px 0 28px;
+      }
+      #s5-addr {
+        font-size: 44px;
+        color: var(--ink);
+      }
+      #s5-web {
+        margin-top: 14px;
+        font-size: 40px;
+        font-style: italic;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="22"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Scene 1: logo reveal (0–4s) -->
+      <section id="s1" class="clip" data-start="0" data-duration="4" data-track-index="0">
+        <img id="s1-logo" src="assets/logo.webp" alt="Mian Law Associates crest" />
+        <div id="s1-est" class="eyebrow">Bahawalpur · Est. 1997</div>
+      </section>
+
+      <!-- Scene 2: the advocate (4–9s) -->
+      <section id="s2" class="clip vignette" data-start="4" data-duration="5" data-track-index="0">
+        <img id="s2-photo" data-layout-allow-overflow src="assets/portrait.webp" alt="Mian Aqil Nawaz" />
+        <div id="s2-text">
+          <div id="s2-eyebrow" class="eyebrow">Advocate High Court</div>
+          <h1 id="s2-name">Mian Aqil<br />Nawaz</h1>
+          <div id="s2-rule" class="rule"></div>
+          <p id="s2-years"><b>28+</b> years of trusted legal practice</p>
+        </div>
+      </section>
+
+      <!-- Scene 3: practice areas (9–14s) -->
+      <section id="s3" class="clip" data-start="9" data-duration="5" data-track-index="0">
+        <img id="s3-bg" data-layout-allow-overflow src="assets/office.webp" alt="" />
+        <div id="s3-inner">
+          <div id="s3-eyebrow" class="eyebrow">Practice Areas</div>
+          <h2 id="s3-title">Strategic Representation</h2>
+          <div id="s3-grid">
+            <div class="area">Civil</div>
+            <div class="area">Criminal</div>
+            <div class="area">Family</div>
+            <div class="area">Property</div>
+            <div class="area">Constitutional</div>
+            <div class="area">Cyber Crime</div>
+            <div class="area">FIA &amp; NAB</div>
+            <div class="area">Service Matters</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 4: courts (14–18s) -->
+      <section id="s4" class="clip vignette" data-start="14" data-duration="4" data-track-index="0">
+        <img id="s4-photo" data-layout-allow-overflow src="assets/chamber.webp" alt="Chamber No. 39" />
+        <div id="s4-text">
+          <div id="s4-eyebrow" class="eyebrow">In Court For You</div>
+          <h2 id="s4-title">From Trial<br />to High Court</h2>
+          <div class="court">District &amp; Sessions Courts</div>
+          <div class="court">Special Courts</div>
+          <div class="court">Lahore High Court, Bahawalpur Bench</div>
+        </div>
+      </section>
+
+      <!-- Scene 5: call to action (18–22s) -->
+      <section id="s5" class="clip" data-start="18" data-duration="4" data-track-index="0">
+        <img id="s5-logo" src="assets/logo.webp" alt="" />
+        <div id="s5-eyebrow" class="eyebrow">Mian Law Associates</div>
+        <h2 id="s5-head">Book a Consultation</h2>
+        <div id="s5-phone">+92 333 3621111</div>
+        <div id="s5-rule" class="rule"></div>
+        <div id="s5-addr">Chamber No. 39, District Courts, Bahawalpur</div>
+        <div id="s5-web">mlabwp.com.pk</div>
+      </section>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const ease = "power3.out";
+
+      // Scene 1
+      tl.fromTo("#s1-logo", { opacity: 1, scale: 0.94 }, { opacity: 1, scale: 1, duration: 1.4, ease }, 0);
+      tl.to("#s1-logo", { scale: 1.04, duration: 2.5, ease: "none" }, 1.5);
+      tl.fromTo("#s1-est", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.9, ease }, 1.1);
+      tl.to("#s1", { opacity: 0, duration: 0.45, ease: "power2.in" }, 3.55);
+
+      // Scene 2
+      tl.fromTo("#s2", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 4);
+      tl.fromTo("#s2-photo", { scale: 1.12 }, { scale: 1, duration: 5, ease: "none" }, 4);
+      tl.fromTo("#s2-eyebrow", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.7, ease }, 4.4);
+      tl.fromTo("#s2-name", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.9, ease }, 4.6);
+      tl.fromTo("#s2-rule", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.8, ease }, 5.2);
+      tl.fromTo("#s2-years", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, ease }, 5.6);
+      tl.to("#s2", { opacity: 0, duration: 0.45, ease: "power2.in" }, 8.55);
+
+      // Scene 3
+      tl.fromTo("#s3", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 9);
+      tl.fromTo("#s3-bg", { scale: 1 }, { scale: 1.08, duration: 5, ease: "none" }, 9);
+      tl.fromTo("#s3-eyebrow", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.6, ease }, 9.3);
+      tl.fromTo("#s3-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease }, 9.45);
+      tl.fromTo(
+        ".area",
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.6, ease, stagger: 0.12 },
+        10.0
+      );
+      tl.to("#s3", { opacity: 0, duration: 0.45, ease: "power2.in" }, 13.55);
+
+      // Scene 4
+      tl.fromTo("#s4", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 14);
+      tl.fromTo("#s4-photo", { scale: 1.1, x: 30 }, { scale: 1, x: 0, duration: 4, ease: "none" }, 14);
+      tl.fromTo("#s4-eyebrow", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease }, 14.3);
+      tl.fromTo("#s4-title", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.8, ease }, 14.45);
+      tl.fromTo(
+        ".court",
+        { opacity: 0, x: -40 },
+        { opacity: 1, x: 0, duration: 0.6, ease, stagger: 0.25 },
+        15.1
+      );
+      tl.to("#s4", { opacity: 0, duration: 0.45, ease: "power2.in" }, 17.55);
+
+      // Scene 5
+      tl.fromTo("#s5", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 18);
+      tl.fromTo("#s5-logo", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.9, ease }, 18.1);
+      tl.fromTo("#s5-eyebrow", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 18.5);
+      tl.fromTo("#s5-head", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease }, 18.6);
+      tl.fromTo("#s5-phone", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.8, ease }, 19.0);
+      tl.fromTo("#s5-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease }, 19.4);
+      tl.fromTo("#s5-addr", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease }, 19.6);
+      tl.fromTo("#s5-web", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease }, 19.8);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
