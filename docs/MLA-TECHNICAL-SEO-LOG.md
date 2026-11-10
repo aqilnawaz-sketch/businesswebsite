@@ -2,7 +2,7 @@
 
 Full first-round report: `docs/MLA-SEO-IMPLEMENTATION-REPORT-2026-11-10.md`.
 
-## Current state (2026-11-10, working branch, NOT yet live)
+## Current state (2026-11-10, LIVE since the PR #1 merge; canonical fix in PR #2)
 | Area | State | Tested? |
 |---|---|---|
 | Indexable pages | 25 (home, about, contact, 3 general, 9 practice, 10 guides) | yes, `seo_check.py` 0 issues |
@@ -38,7 +38,7 @@ best-advocate → advocate · advocate-high-court → about (all `-bahawalpur/`)
 ## Outstanding
 1. Owner legal review of the 6 rebuilt or new practice pages, then merge.
 2. Search Console + Bing verification and sitemap submission (owner accounts).
-3. Live checks: robots.txt, sitemap, /diary/ 404, redirect stubs, Rich Results Test, PageSpeed baseline.
+3. (Done 2026-11-10) Live checks: robots.txt, sitemap, /diary/ 404, redirect stubs, images. Still to do: Rich Results Test, PageSpeed baseline.
 4. (Done 2026-11-10) Owner confirmed the 4.9-star rating text.
 5. Confirm the opening hours and map coordinates match the Business Profile.
 6. Optional: Cloudflare for true 301s and security headers (owner approval).
