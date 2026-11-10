@@ -8,6 +8,8 @@ production branch to https://mlabwp.com.pk. **Every file in this repository is p
 2. `docs/MLA-SEO-MASTER-PROTOCOL.md`: the standing rules: design freeze, the nine practice pages, content and schema rules.
 3. `docs/MLA-DEPLOYMENT-PROTOCOL.md`: branches, checks to run, and what needs owner approval.
 4. Read the topic file for the task at hand:
+   - `docs/MLA-FAQ-AND-PROCEDURE-PROTOCOL.md`: **mandatory** FAQ and legal-procedure rules (audit → recommend → owner approval → implement)
+   - `docs/MLA-PHASE1-AUDIT-2026-11-10.md`: current audit, FAQ/guide opportunity maps, priorities (nothing in it is approved until the owner says so)
    - `docs/MLA-KEYWORD-MAP.md`: which page owns which keyword (prevents cannibalisation)
    - `docs/MLA-AI-DISCOVERABILITY.md`: crawler policy, llms.txt, IndexNow, AI search
    - `docs/MLA-TECHNICAL-SEO-LOG.md`: technical state of the site and the audit history
@@ -21,6 +23,7 @@ production branch to https://mlabwp.com.pk. **Every file in this repository is p
 - **Identity:** Mian Aqil Nawaz, Advocate High Court = Owner and Principal Advocate. Mian Aumer Nawaz, Advocate High Court = Founder Member.
   Chamber No. 39, District Courts, Bahawalpur. +92 333 362 1111.
 - **Reviews:** show "475+ Google Reviews" via `<span class="mla-review-count">` and the rating 4.9 via `<span class="mla-rating">`. Never add AggregateRating or Review schema, and never invent counts or ratings.
+- **FAQs & procedures are mandatory strategy**, but are published in small, owner-reviewed batches (5–10 per area). Follow the 16-point guide template.
 - **Legal content:** no invented judgments or citations. Statutes must be real. Every page says it is general information, not advice.
   New or materially revised legal content needs the owner's approval before merge.
 - **Crawlers:** allow search and answer crawlers; GPTBot and ClaudeBot are disallowed unless the owner decides otherwise.
