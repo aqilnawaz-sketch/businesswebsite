@@ -2,6 +2,15 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-10 — Production deployment
+- Deployed: PR #1 merged to `main` (merge commit a67572d) with the owner's approval; GitHub Pages run #43 succeeded.
+- Tested live: 25 sitemap pages return 200 with valid JSON-LD and one H1; 10 legacy URLs redirect; 13 images load; /diary/ returns 404;
+  robots.txt, sitemap.xml, llms.txt and the IndexNow key file are live; 475+ review text and Founder Member text are live.
+- Completed: IndexNow submission accepted (HTTP 202).
+- Fix found by the live crawl: 24 pages had relative canonical URLs (the build script's link rewrite ran after the canonicals were written).
+  Made them absolute and added an "absolute canonical" test to `scripts/seo_check.py`. Awaiting authorization: PR #2.
+- Environment: created the personal cloud environment "businesswebsite" (allows api.indexnow.org and mlabwp.com.pk) for live checks.
+
 ## 2026-11-10 — Digital Authority mandate
 - Completed and tested: review count set to 475+ in every visible place (`.mla-review-count`); old 400+, 424+ and 47 figures removed.
 - Completed and tested: `/diary/` app removed from the repository and from all navigation. Archive delivered privately to the owner.

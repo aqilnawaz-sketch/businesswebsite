@@ -17,6 +17,8 @@ for f in files:
     if n!=1: bad.append((f,'h1 count',n))
     t=re.search(r'<title>(.*?)</title>',s,re.S).group(1); titles.setdefault(t,[]).append(f)
     d=re.search(r'<meta[^>]*name="description"[^>]*>',s); d=d and re.search(r'content="([^"]*)"',d.group(0)).group(1); descs.setdefault(d,[]).append(f)
+    cm=re.search(r'rel="canonical" href="([^"]+)"',s)
+    if cm and not cm.group(1).startswith('https://mlabwp.com.pk/'): bad.append((f,'canonical not absolute',cm.group(1)))
     if s.count('rel="canonical"')!=1: bad.append((f,'canonical count',s.count('rel="canonical"')))
     for m in re.finditer(r'(?:href|src)="([^"]+)"',s):
         u=html.unescape(m.group(1)).split('#')[0].split('?')[0]
