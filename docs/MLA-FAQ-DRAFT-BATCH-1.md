@@ -1,3 +1,5 @@
+> **UNPUBLISHED DRAFT — not reviewed, not legal advice, not part of the website.** Internal working file for owner review only.
+
 # FAQ Draft — Batch 1 (Criminal, Family, Inheritance) — FOR OWNER LEGAL REVIEW
 
 Status: **draft, not published.** Prepared 10 Nov 2026 under `docs/MLA-FAQ-AND-PROCEDURE-PROTOCOL.md`.

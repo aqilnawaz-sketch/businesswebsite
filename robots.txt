@@ -4,65 +4,114 @@
 # AI model-training crawlers GPTBot and ClaudeBot: NOT authorised by default (owner decision).
 # Google-Extended (Gemini training/grounding, does not affect Google Search or AI Overviews) is allowed by owner decision (2026-11-10).
 # robots.txt is not a security control; nothing private is published on this site.
+# /docs/, /scripts/, CLAUDE.md and README.md are internal project notes, not content pages.
 
 User-agent: *
 Allow: /
 Disallow: /promo-video/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /CLAUDE.md
+Disallow: /README.md
 
 # Google Search, Google Images, AI Overviews and AI Mode
 User-agent: Googlebot
 Allow: /
 Disallow: /promo-video/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /CLAUDE.md
+Disallow: /README.md
 
 # Bing; also feeds Microsoft Copilot, DuckDuckGo and Yahoo results
 User-agent: Bingbot
 Allow: /
 Disallow: /promo-video/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /CLAUDE.md
+Disallow: /README.md
 
 # ChatGPT search index (OpenAI)
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /promo-video/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /CLAUDE.md
+Disallow: /README.md
 
 # ChatGPT fetches a page when a user asks
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /promo-video/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /CLAUDE.md
+Disallow: /README.md
 
 # Claude search index (Anthropic)
 User-agent: Claude-SearchBot
 Allow: /
 Disallow: /promo-video/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /CLAUDE.md
+Disallow: /README.md
 
 # Claude fetches a page when a user asks
 User-agent: Claude-User
 Allow: /
 Disallow: /promo-video/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /CLAUDE.md
+Disallow: /README.md
 
 # Perplexity search index
 User-agent: PerplexityBot
 Allow: /
 Disallow: /promo-video/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /CLAUDE.md
+Disallow: /README.md
 
 # Perplexity fetches a page when a user asks
 User-agent: Perplexity-User
 Allow: /
 Disallow: /promo-video/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /CLAUDE.md
+Disallow: /README.md
 
 # DuckDuckGo
 User-agent: DuckDuckBot
 Allow: /
 Disallow: /promo-video/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /CLAUDE.md
+Disallow: /README.md
 
 # Apple Spotlight / Siri / Safari suggestions
 User-agent: Applebot
 Allow: /
 Disallow: /promo-video/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /CLAUDE.md
+Disallow: /README.md
 
 # Yandex
 User-agent: YandexBot
 Allow: /
 Disallow: /promo-video/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /CLAUDE.md
+Disallow: /README.md
 
 # AI training crawlers (not authorised by default)
 User-agent: GPTBot

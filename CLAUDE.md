@@ -32,6 +32,11 @@ production branch to https://mlabwp.com.pk. **Every file in this repository is p
 - **Owner approval required** for: merging to production, DNS/Cloudflare, Search Console, Business Profile, social accounts,
   publishing new legal content, changing identity, and paid services.
 
+## LOCKED CONTENT (owner, 11 Nov 2026) — DO NOT EDIT
+Personal practice commencement date and experience claims, the firm's establishment date, founding history, founder attribution and every
+existing personal-experience or firm-history paragraph are **locked as they are live on 11 Nov 2026**. Do not edit, rewrite, optimise,
+correct, restructure or replace them, even during SEO or legal-accuracy work.
+
 ## Professional-claims rules (owner, 11 Nov 2026)
 - Mian Aqil Nawaz is **Advocate High Court**, NOT Advocate Supreme Court. Never imply Supreme Court enrolment or practice.
   The Supreme Court may be mentioned only as an institution (e.g. a judgment restoring the NAB amendments).
