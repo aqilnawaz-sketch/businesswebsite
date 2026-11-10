@@ -11,7 +11,7 @@
 | Email (as published on site) | aqilnawaz@gmail.com |
 | Website | https://mlabwp.com.pk |
 | Map | https://maps.app.goo.gl/RiEffBUYTa3zJVdw8 · geo 29.3902211, 71.6879469 (taken from the site's existing map embed; owner to confirm) |
-| Hours (as published on site) | Mon–Sat 07:30–23:30, Sun 11:00–23:30 (owner to confirm they match the Google Business Profile) |
+| Hours | Mon–Sat 07:30–23:30, Sun 11:30–23:30 (owner-confirmed against the Business Profile, 2026-11-10). WhatsApp 24 hours (owner-confirmed). |
 | Courts | District & Sessions Courts Bahawalpur, Special Courts, Lahore High Court Bahawalpur Bench |
 | Service area | Bahawalpur and South Punjab (Ahmedpur East, Yazman, Hasilpur, Rahim Yar Khan, Bahawalnagar, Chishtian, Fort Abbas, Mailsi) |
 
