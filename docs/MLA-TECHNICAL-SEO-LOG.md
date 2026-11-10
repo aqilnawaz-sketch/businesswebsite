@@ -35,7 +35,10 @@ best-advocate → advocate · advocate-high-court → about (all `-bahawalpur/`)
 
 - 2026-11-10 (owner): Google-Extended allowed; guides stay attributed to the publisher until each is reviewed; PR #1 stays draft pending the owner's legal review.
 
+- 2026-11-10: the site is proxied by Cloudflare (`server: cloudflare`, email obfuscation on). Browser cache max-age is 600 s.
+
 ## Outstanding
+0. **Turn on Cloudflare "Always Use HTTPS"**: http:// currently serves the site insecurely (verified live 2026-11-10).
 1. Owner legal review of the 6 rebuilt or new practice pages, then merge.
 2. Search Console + Bing verification and sitemap submission (owner accounts).
 3. (Done 2026-11-10) Live checks: robots.txt, sitemap, /diary/ 404, redirect stubs, images. Still to do: Rich Results Test, PageSpeed baseline.

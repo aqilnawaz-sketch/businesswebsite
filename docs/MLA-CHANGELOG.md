@@ -2,6 +2,13 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-10 — Live verification after PR #3
+- Deployed: PR #3 merged (main = e82c354), Pages run #45 succeeded; live at 18:30:36 GMT.
+- Tested live (desktop 1366 px and iPhone 13): 475+ shown 6 times on the homepage and 2 on About; rating 4.9 shown 3 times; no stale counts
+  anywhere in the visible text; no horizontal scroll. Screenshots taken from the production URL.
+- Found: plain http://mlabwp.com.pk/ is NOT redirected to https (served over HTTP with status 200). The site is behind Cloudflare, so the fix is
+  Cloudflare → SSL/TLS → Edge Certificates → "Always Use HTTPS" = On (owner action). www → apex https works.
+
 ## 2026-11-10 — Review-count correction (owner report)
 - The owner reported old counts on the live homepage. Verified: three were missed in the first pass (search looked only for the phrase
   "400+ Google Reviews"): "Over 400 five-star client reviews", the "400+ GOOGLE REVIEWS" header counter, and the "400+" stats bar.
