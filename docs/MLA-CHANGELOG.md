@@ -2,6 +2,17 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-11 — SEO / performance execution — PR #10 (AWAITING PRODUCTION APPROVAL)
+- Lighthouse (local, Google's mobile/desktop throttling; the PageSpeed API quota is 0 for unauthenticated use):
+  Home mobile perf 73 → 83, LCP 6.5 s → 4.3 s, SEO 92 → 100, a11y 89 → 91, weight 1,064 → 562 KB; practice/guide pages 98–99 → 100, 632 → 131 KB.
+- 128 px logo (5 KB) for all small logo displays (the original 520 KB file is kept for schema/social); non-blocking Google Fonts on 27 pages
+  (preload + onload, noscript fallback, gstatic preconnect); footer h5 → h3.fh (identical look) to fix heading order; underline body-text links.
+- Homepage: 19 javascript:void(0) links → crawlable (photo lightbox keeps working via return false; panel back buttons use '#').
+- Legal precision: 22-A(6) / Ex-officio Justice of Peace = Sessions Judge or nominated Additional Sessions Judge (s.25); s.491 forum includes LHC.
+- robots.txt: /docs/, /scripts/, CLAUDE.md, README.md excluded from crawling (not a security control); removed data/raw review copy paste.txt;
+  FAQ draft marked as an unpublished draft; tracking parameters removed from Instagram/YouTube links; sitemap lastmod 2026-11-11.
+- LOCKED CONTENT untouched (verified by diff). A nested-link defect inside the locked "Chamber No. 39 — Est. 1997" box was left as is because of the lock.
+
 ## 2026-11-11 — Independent live audit corrections — PR #9 (AWAITING PRODUCTION APPROVAL)
 - B1 removed the Supreme Court implication (the owner's exact replacement sentence).
 - B2 added detailed panels 08 Inheritance and 09 Service Matters (existing design), renumbered all to /09, added a "Full Practice Page →" link to each panel,
