@@ -1,5 +1,7 @@
 # MLA SEO Implementation Report
 
+> Historical record of the first SEO round. Current state and later decisions: `docs/MLA-TECHNICAL-SEO-LOG.md` (e.g. /diary/ has since been removed entirely, and the review count is now 475+).
+
 Website: https://mlabwp.com.pk · Branch: `claude/hyperframes-repository-76fmfa` · Date: 10 November 2026
 
 Status: **implemented in the repository, not yet live.** Changes go live when this branch is merged into the branch GitHub Pages publishes from.

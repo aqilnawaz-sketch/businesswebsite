@@ -2,4 +2,4 @@
 
 Static website for Mian Law Associates, Chamber No. 39, District Courts, Bahawalpur, published at https://mlabwp.com.pk via GitHub Pages.
 
-See `SEO-IMPLEMENTATION-REPORT.md` for the SEO changes and the 90-day plan.
+See `CLAUDE.md` and `docs/` for the SEO changes and the 90-day plan.

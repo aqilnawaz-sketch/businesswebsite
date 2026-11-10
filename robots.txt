@@ -1,28 +1,70 @@
-# robots.txt for https://mlabwp.com.pk
-# Search crawlers are allowed. AI training crawlers (GPTBot, ClaudeBot) are not
-# authorised by default; change "Disallow: /" to "Allow: /" below only if the
-# owner decides to permit model training.
+# robots.txt for https://mlabwp.com.pk  (policy: docs/MLA-AI-DISCOVERABILITY.md)
+#
+# Search and answer-engine crawlers: ALLOWED.
+# AI model-training crawlers GPTBot and ClaudeBot: NOT authorised by default (owner decision).
+# Google-Extended (Gemini training/grounding, does not affect Google Search or AI Overviews) is left at default (allowed) pending owner decision.
+# robots.txt is not a security control; nothing private is published on this site.
 
 User-agent: *
 Allow: /
-Disallow: /diary/
 Disallow: /promo-video/
 
+# Google Search, Google Images, AI Overviews and AI Mode
 User-agent: Googlebot
 Allow: /
-Disallow: /diary/
 Disallow: /promo-video/
 
+# Bing; also feeds Microsoft Copilot, DuckDuckGo and Yahoo results
 User-agent: Bingbot
 Allow: /
-Disallow: /diary/
 Disallow: /promo-video/
 
+# ChatGPT search index (OpenAI)
 User-agent: OAI-SearchBot
 Allow: /
-Disallow: /diary/
 Disallow: /promo-video/
 
+# ChatGPT fetches a page when a user asks
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /promo-video/
+
+# Claude search index (Anthropic)
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /promo-video/
+
+# Claude fetches a page when a user asks
+User-agent: Claude-User
+Allow: /
+Disallow: /promo-video/
+
+# Perplexity search index
+User-agent: PerplexityBot
+Allow: /
+Disallow: /promo-video/
+
+# Perplexity fetches a page when a user asks
+User-agent: Perplexity-User
+Allow: /
+Disallow: /promo-video/
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /promo-video/
+
+# Apple Spotlight / Siri / Safari suggestions
+User-agent: Applebot
+Allow: /
+Disallow: /promo-video/
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+Disallow: /promo-video/
+
+# AI training crawlers (not authorised by default)
 User-agent: GPTBot
 Disallow: /
 
