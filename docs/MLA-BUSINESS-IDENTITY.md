@@ -22,6 +22,9 @@ Google reviews https://g.page/r/CfItjgOqlo-wEBM/review
 
 Only add a profile after the owner confirms it is genuine and controlled by MLA. Never create profiles on MLA's behalf.
 
+## People not to be linked
+- "Mian Allah Nawaz" (Wikipedia) is a **different person**. Owner instruction: do not edit, link or associate.
+
 ## Credentials policy
 State only what the owner has confirmed: Advocate High Court; Punjab Bar Council (the certificate image is on the site); practising since 1997.
 Do **not** add degrees, universities, awards, rankings or case results unless the owner supplies them in writing.
