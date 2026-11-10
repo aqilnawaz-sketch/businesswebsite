@@ -32,6 +32,12 @@ production branch to https://mlabwp.com.pk. **Every file in this repository is p
 - **Owner approval required** for: merging to production, DNS/Cloudflare, Search Console, Business Profile, social accounts,
   publishing new legal content, changing identity, and paid services.
 
+## Audit rules (added 11 Nov 2026 after repeated stale findings)
+- **Audit the live HTML** (`curl -s "https://mlabwp.com.pk/<page>?v=$(date +%s)"`), never search snippets, AI answers or cached copies. Those can lag by weeks.
+  If an audit by the owner reports issues already fixed, show the live evidence and explain the cache lag.
+- **Legal accuracy covers every text block**: homepage cards, hidden/overlay panels, guide previews, FAQs and footers, not only the main pages.
+- Open legal items: see "Legal accuracy queue" in `docs/MLA-TECHNICAL-SEO-LOG.md`.
+
 ## Quick commands
 ```bash
 python3 -m http.server 8000                       # preview at http://localhost:8000

@@ -37,6 +37,13 @@ best-advocate → advocate · advocate-high-court → about (all `-bahawalpur/`)
 
 - 2026-11-10: the site is proxied by Cloudflare (`server: cloudflare`, email obfuscation on). Browser cache max-age is 600 s.
 
+## Legal accuracy queue (found 11 Nov 2026) — L1–L4 and the H1 FIXED in PR #7 (owner: "do it yourself")
+- L1 Homepage guide card: pre-arrest bail described as "before an FIR is formally registered" → reword (s.498 CrPC, apprehended arrest, mala fide).
+- L2 Homepage property card: "Collector appeal within 30 days" → qualify (forum and limitation depend on the order; PLRA 1967).
+- L3 Khula guide step 4: add Punjab dower-return rule (owner to verify wording).
+- L4 NAB/FIA guide: outdated bail statement → reflect 2022–23 amendments (restored Sept 2024) and the Rs 500m threshold.
+- H1 proposal: "Mian Aqil Nawaz — Advocate High Court, Lawyer in Bahawalpur" (owner to approve).
+
 ## Outstanding
 0. **Turn on Cloudflare "Always Use HTTPS"**: http:// currently serves the site insecurely (verified live 2026-11-10).
 1. Owner legal review of the 6 rebuilt or new practice pages, then merge.
