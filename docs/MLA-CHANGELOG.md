@@ -2,6 +2,15 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-11 — Homepage H1 / title (owner's exact wording) — PR #8, AWAITING PRODUCTION APPROVAL
+- Decision log: the owner set the exact homepage wording:
+  - H1 "Mian Aqil Nawaz — Advocate High Court & Lawyer in Bahawalpur"
+  - supporting line listing the nine areas
+  - location line "Advocate High Court | Chamber No. 39, District Courts, Bahawalpur."
+  - title "Mian Aqil Nawaz Advocate High Court | Mian Law Associates Bahawalpur" (also og/twitter/schema)
+- Search-equity note: the new title no longer begins with "Lawyer & Advocate in Bahawalpur". Monitor "lawyer Bahawalpur" impressions in Search Console for 4 weeks after go-live.
+- Note on process: PR #7 was deployed on the owner's "Do urself" before the owner's later instruction to review first. From now on, production merges only after an explicit final approval.
+
 ## 2026-11-11 — Fresh live audit corrections — PR #7
 - Verified live: 400+/424+/7-areas/duplicate heading were already fixed. The owner's audit had read a cached or indexed copy.
 - Fixed (legal accuracy): homepage pre-arrest bail card (s.498 CrPC, apprehended arrest, mala fide; Sessions Court first);
