@@ -1,10 +1,32 @@
+# robots.txt for https://mlabwp.com.pk
+# Search crawlers are allowed. AI training crawlers (GPTBot, ClaudeBot) are not
+# authorised by default; change "Disallow: /" to "Allow: /" below only if the
+# owner decides to permit model training.
+
 User-agent: *
 Allow: /
+Disallow: /diary/
+Disallow: /promo-video/
 
-User-agent: ClaudeBot
+User-agent: Googlebot
 Allow: /
+Disallow: /diary/
+Disallow: /promo-video/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /diary/
+Disallow: /promo-video/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /diary/
+Disallow: /promo-video/
 
 User-agent: GPTBot
-Allow: /
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
 
 Sitemap: https://mlabwp.com.pk/sitemap.xml
