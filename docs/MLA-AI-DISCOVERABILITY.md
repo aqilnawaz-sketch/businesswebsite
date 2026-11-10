@@ -7,7 +7,7 @@ Perplexity docs.perplexity.ai perplexity-crawlers; Google crawler docs on Google
 | Platform | What it relies on | Our control |
 |---|---|---|
 | Google Search, AI Overviews, AI Mode | Googlebot + Google index | Allowed. Search Console + sitemap (owner approval needed) |
-| Gemini app grounding / training | `Google-Extended` token (does not affect Google Search) | **Left at default (allowed) — owner decision pending** |
+| Gemini app grounding / training | `Google-Extended` token (does not affect Google Search) | **Allowed — owner decision 2026-11-10** |
 | Bing, Microsoft Copilot, DuckDuckGo, Yahoo | Bing index (Bingbot); DuckDuckBot for some features | Allowed. Bing Webmaster Tools + IndexNow (`scripts/indexnow-submit.sh`) |
 | Brave Search | Brave's own index (Brave does not publish a separate user-agent token) | Covered by `User-agent: *` |
 | ChatGPT search | OAI-SearchBot (index), ChatGPT-User (on-demand fetch; robots.txt may not apply) | Allowed |

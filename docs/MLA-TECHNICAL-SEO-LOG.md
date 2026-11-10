@@ -33,11 +33,13 @@ best-advocate → advocate · advocate-high-court → about (all `-bahawalpur/`)
 - 2026-11-10: guides are attributed to the Organization until the owner confirms personal review (see the master protocol §6).
 - 2026-11-10: /diary/ removed from public deployment. Archive handed to the owner; its sample data only. Real data, if any, lives in the owner's browser localStorage (`mla_cases`).
 
+- 2026-11-10 (owner): Google-Extended allowed; guides stay attributed to the publisher until each is reviewed; PR #1 stays draft pending the owner's legal review.
+
 ## Outstanding
 1. Owner legal review of the 6 rebuilt or new practice pages, then merge.
 2. Search Console + Bing verification and sitemap submission (owner accounts).
 3. Live checks: robots.txt, sitemap, /diary/ 404, redirect stubs, Rich Results Test, PageSpeed baseline.
-4. Confirm or remove the "4.9-star rating" text on the About page.
+4. (Done 2026-11-10) Owner confirmed the 4.9-star rating text.
 5. Confirm the opening hours and map coordinates match the Business Profile.
 6. Optional: Cloudflare for true 301s and security headers (owner approval).
 7. Homepage (221 KB) still carries the full text of all practice panels; consider trimming them to summaries linking to the practice pages.

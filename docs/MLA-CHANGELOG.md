@@ -11,6 +11,8 @@ Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Comp
 - Completed: `llms.txt`, IndexNow key and submit script, `scripts/seo_check.py`.
 - Completed: project memory: `CLAUDE.md` and `docs/MLA-*.md`.
 - Completed and tested: restored the About-page portrait (it had been replaced by the logo in the first round).
+- Owner decisions: 4.9-star rating text confirmed; Google-Extended allowed; guide bylines stay "Published by" for now.
+- Awaiting authorization: draft PR #1 (https://github.com/aqilnawaz-sketch/businesswebsite/pull/1), pending the owner's legal review.
 - Not yet verified: all live behaviour (awaiting merge).
 
 ## 2026-11-10 — Developer Implementation Order (first SEO round)

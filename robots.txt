@@ -2,7 +2,7 @@
 #
 # Search and answer-engine crawlers: ALLOWED.
 # AI model-training crawlers GPTBot and ClaudeBot: NOT authorised by default (owner decision).
-# Google-Extended (Gemini training/grounding, does not affect Google Search or AI Overviews) is left at default (allowed) pending owner decision.
+# Google-Extended (Gemini training/grounding, does not affect Google Search or AI Overviews) is allowed by owner decision (2026-11-10).
 # robots.txt is not a security control; nothing private is published on this site.
 
 User-agent: *
