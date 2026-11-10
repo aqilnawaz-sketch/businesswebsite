@@ -1,0 +1,13 @@
+# GitHub Pages build settings. The website is plain static HTML; Jekyll only copies it.
+# Internal project files below stay in the repository but are NOT published on mlabwp.com.pk.
+exclude:
+  - docs/
+  - scripts/
+  - CLAUDE.md
+  - README.md
+  - promo-video/AGENTS.md
+  - promo-video/CLAUDE.md
+  - promo-video/package.json
+  - promo-video/hyperframes.json
+  - promo-video/meta.json
+  - promo-video/.gitignore
