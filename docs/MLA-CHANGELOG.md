@@ -2,6 +2,12 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-10 — Cloudflare HTTPS settings applied by the owner
+- Owner turned on Cloudflare "Always Use HTTPS" and "Automatic HTTPS Rewrites", and set Minimum TLS to 1.2. Encryption mode left on Automatic (Full).
+- Tested: http://mlabwp.com.pk/robots.txt (no script) now ends at https:// (server-side redirect); TLS 1.1 handshake refused, TLS 1.2 accepted.
+- Pending: fresh SSL Labs grade (expected A); HSTS to be considered about a week later.
+- The Cloudflare account is the owner's own (aqilnawaz@gmail.com). Before the fix, about 368 of 1,144 requests a day arrived over plain HTTP.
+
 ## 2026-11-10 — Browser-security fix + approved Phase One items — PR #5
 - Root cause of the iPhone ⚠ triangle: http://mlabwp.com.pk is served over plain HTTP (status 200, no redirect) because Cloudflare
   "Always Use HTTPS" is off. Certificates are valid (Cloudflare/Let's Encrypt, apex + *.mlabwp.com.pk, to Jan 2027), there is no mixed content,
