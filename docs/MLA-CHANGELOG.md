@@ -2,6 +2,17 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-11 — Targeted legal correction pass (owner-authorised items 1–8)
+Text-only edits (HTML tags byte-identical; no layout, H1, colour, font, logo, contact or review changes; locked history untouched).
+- Homepage criminal panel: s.22-A no longer says "Sessions Judge as Judicial Magistrate" → Ex-officio Justice of Peace (Sessions Judge or nominated ASJ, s.25 CrPC), s.22-A(6).
+- Homepage s.491: High Court powers + s.491(1A) conferral on Sessions/Additional Sessions Judges; forum depends on facts.
+- Homepage FAQ pre-arrest bail: s.498, non-bailable offences, mala fide test; bailable = right under s.496; no general pre-FIR protection.
+- Cyber: "Pakistan Electronic Crimes Act" → Prevention of…; complaint to NCCIA (homepage panel, cyber page, PECA guide heading/step 2, guide card title);
+  Personal Data Protection Bill stated as proposed, not enacted.
+- Homepage FAQ PECA offences (ss.3–5, 13–14, 20–21, 24, 26A) and online-harassment procedure (NCCIA inquiry, PPC matters to police).
+- Homepage FAQ + guide card mutation: forum/remedy/limitation depend on the order and statute (PLRA 1967); civil declaration where title is disputed.
+- Homepage FAQ khula vs dissolution under DMMA 1939 s.2. Homepage injunction guide: Order XXXIX rr.1–3 CPC, ss.54–56 SRA 1877.
+
 ## 2026-11-11 — SEO / performance execution — PR #10 (AWAITING PRODUCTION APPROVAL)
 - Lighthouse (local, Google's mobile/desktop throttling; the PageSpeed API quota is 0 for unauthenticated use):
   Home mobile perf 73 → 83, LCP 6.5 s → 4.3 s, SEO 92 → 100, a11y 89 → 91, weight 1,064 → 562 KB; practice/guide pages 98–99 → 100, 632 → 131 KB.
