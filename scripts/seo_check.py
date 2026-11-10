@@ -10,6 +10,8 @@ for f in files:
     vis=re.sub(r'<(script|style)[^>]*>.*?</\1>','',s,flags=re.S)
     for m in re.finditer(r'\b(\d{2,4})\+?(?:\s|<[^>]+>)*(?:verified |five-star |5-star |client )*(?:google )?reviews',re.sub(r'<[^>]+>',' ',vis),re.I):
         if m.group(1)!='475': bad.append((f,'stale review count',m.group(0)[:60]))
+    for m in re.finditer(r'class="[^"]*mla-rating[^"]*">([^<]*)<',s):
+        if m.group(1).strip()!='4.9': bad.append((f,'stale rating',m.group(1)))
     if 'AggregateRating' in s: bad.append((f,'AggregateRating present'))
     if '/diary/' in s: bad.append((f,'link to removed /diary/'))
     base='/'+os.path.dirname(f)+'/' if os.path.dirname(f) else '/'

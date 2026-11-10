@@ -20,7 +20,7 @@ production branch to https://mlabwp.com.pk. **Every file in this repository is p
   Inheritance & Succession, Service Matters, Constitutional Petitions, FIA & Cybercrime, Anti-Corruption & NAB.
 - **Identity:** Mian Aqil Nawaz, Advocate High Court = Owner and Principal Advocate. Mian Aumer Nawaz, Advocate High Court = Founder Member.
   Chamber No. 39, District Courts, Bahawalpur. +92 333 362 1111.
-- **Reviews:** show "475+ Google Reviews" via `<span class="mla-review-count">`. Never add AggregateRating or Review schema, and never invent counts or ratings.
+- **Reviews:** show "475+ Google Reviews" via `<span class="mla-review-count">` and the rating 4.9 via `<span class="mla-rating">`. Never add AggregateRating or Review schema, and never invent counts or ratings.
 - **Legal content:** no invented judgments or citations. Statutes must be real. Every page says it is general information, not advice.
   New or materially revised legal content needs the owner's approval before merge.
 - **Crawlers:** allow search and answer crawlers; GPTBot and ClaudeBot are disallowed unless the owner decides otherwise.

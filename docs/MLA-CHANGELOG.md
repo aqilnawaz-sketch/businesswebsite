@@ -7,6 +7,7 @@ Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Comp
   "400+ Google Reviews"): "Over 400 five-star client reviews", the "400+ GOOGLE REVIEWS" header counter, and the "400+" stats bar.
 - Fixed all three with `.mla-review-count` (8 instances now: 6 on the homepage, 2 on About). `seo_check.py` now flags ANY visible
   "<number> … reviews" that is not 475.
+- Owner decision: the Google rating is 4.9. Changed the homepage 5.0 figures (3) to 4.9 via `.mla-rating`; About already said 4.9.
 - Note: the site is served through Cloudflare (cache max-age 600 s). Browsers may show the old copy for up to 10 minutes after a deploy.
 
 ## 2026-11-10 — Production deployment
