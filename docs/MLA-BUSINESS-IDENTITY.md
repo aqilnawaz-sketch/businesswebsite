@@ -34,6 +34,7 @@ Only add a profile after the owner confirms it is genuine and controlled by MLA.
 - "Mian Allah Nawaz" (Wikipedia) is a **different person**. Owner instruction: do not edit, link or associate.
 
 ## Credentials policy
+- Designation: Advocate High Court only (no Supreme Court enrolment). Firm established 1997; personal enrolment year not yet supplied, so use firm wording only.
 State only what the owner has confirmed: Advocate High Court; Punjab Bar Council (the certificate image is on the site); practising since 1997.
 Do **not** add degrees, universities, awards, rankings or case results unless the owner supplies them in writing.
 
