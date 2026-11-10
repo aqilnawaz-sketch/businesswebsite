@@ -2,6 +2,18 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-11 — Independent live audit corrections — PR #9 (AWAITING PRODUCTION APPROVAL)
+- B1 removed the Supreme Court implication (the owner's exact replacement sentence).
+- B2 added detailed panels 08 Inheritance and 09 Service Matters (existing design), renumbered all to /09, added a "Full Practice Page →" link to each panel,
+  made cards 08/09 open their panels, and fixed the 7 panel titles that closed with </h1>.
+- B3 removed bail timing claims ("within hours", "1–3 days"); same-day filing/preparation reworded so the court controls the outcome and timing.
+- B4 removed "most powerful remedy" (homepage + writ guide); now neutral Article 199 wording.
+- B5 NCCIA/FIA sync (cyber page meta/schema, homepage white-collar panel).
+- B6 pre-arrest bail FAQ: mainly relevant to non-bailable offences; s.496 right in bailable offences.
+- B9 firm-only history: personal "since 1997 / 28+ years" claims replaced (Home, About, Advocate, Lawyer, Lawyer-near-me, 2 guides).
+  Also removed "top result for lawyer near me", "most accessible and trusted", "results speak for themselves".
+- Kept by owner decision: About-page client testimonial.
+
 ## 2026-11-11 — Homepage H1 / title (owner's exact wording) — PR #8, AWAITING PRODUCTION APPROVAL
 - Decision log: the owner set the exact homepage wording:
   - H1 "Mian Aqil Nawaz — Advocate High Court & Lawyer in Bahawalpur"

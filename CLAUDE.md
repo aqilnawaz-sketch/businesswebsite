@@ -32,6 +32,16 @@ production branch to https://mlabwp.com.pk. **Every file in this repository is p
 - **Owner approval required** for: merging to production, DNS/Cloudflare, Search Console, Business Profile, social accounts,
   publishing new legal content, changing identity, and paid services.
 
+## Professional-claims rules (owner, 11 Nov 2026)
+- Mian Aqil Nawaz is **Advocate High Court**, NOT Advocate Supreme Court. Never imply Supreme Court enrolment or practice.
+  The Supreme Court may be mentioned only as an institution (e.g. a judgment restoring the NAB amendments).
+- **History, firm wording only:** the chambers / Mian Law Associates were **established in 1997** (Founder Member: Mian Aumer Nawaz).
+  Do NOT state a personal practice start year or "28+ years of his experience" until the owner supplies his enrolment year.
+- No outcome or timing promises (same-day bail, "within hours", success rates, "results speak for themselves"), no superlatives
+  ("most powerful", "top result", "most trusted"). Filing and preparation can be described as prompt; decisions rest with the court.
+- Homepage: **nine practice cards AND nine detailed panels** (01/09–09/09), each linking to its dedicated page.
+- Cybercrime: PECA cases are investigated by the **NCCIA** (2025 amendment). FIA keeps its other functions. Re-verify both before editing.
+
 ## Audit rules (added 11 Nov 2026 after repeated stale findings)
 - **Audit the live HTML** (`curl -s "https://mlabwp.com.pk/<page>?v=$(date +%s)"`), never search snippets, AI answers or cached copies. Those can lag by weeks.
   If an audit by the owner reports issues already fixed, show the live evidence and explain the cache lag.
