@@ -44,6 +44,8 @@ best-advocate → advocate · advocate-high-court → about (all `-bahawalpur/`)
 - L4 NAB/FIA guide: outdated bail statement → reflect 2022–23 amendments (restored Sept 2024) and the Rs 500m threshold.
 - H1 proposal: "Mian Aqil Nawaz — Advocate High Court, Lawyer in Bahawalpur" (owner to approve).
 
+- L5–L12 (11 Nov 2026, owner items 1–8): 22-A designation, s.491(1A), pre-arrest FAQ, NCCIA/PDP Bill, PECA FAQs, mutation route, khula vs DMMA, Order XXXIX — FIXED (see changelog).
+
 ## Outstanding
 0. **Turn on Cloudflare "Always Use HTTPS"**: http:// currently serves the site insecurely (verified live 2026-11-10).
 1. Owner legal review of the 6 rebuilt or new practice pages, then merge.
