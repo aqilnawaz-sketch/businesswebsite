@@ -22,6 +22,14 @@ Google reviews https://g.page/r/CfItjgOqlo-wEBM/review
 
 Only add a profile after the owner confirms it is genuine and controlled by MLA. Never create profiles on MLA's behalf.
 
+## Account control (2026-11-10)
+| System | Owner / access | Status |
+|---|---|---|
+| GitHub repo aqilnawaz-sketch/businesswebsite | aqilnawaz-sketch (admin) only | Former developer MuhammadShahzebMalik786 removed by owner 2026-11-10 (verified) |
+| PKNIC domain mlabwp.com.pk | owner's PKNIC account | Expires 30 Apr 2028; reminders scheduled 1 Mar 2028 and 15 Apr 2028 |
+| Cloudflare (DNS/CDN, nameservers wesley/colette) | probably the former developer's account | Owner asking for Super Administrator transfer; fallback = owner's own Cloudflare account + nameserver change at PKNIC |
+| Hosting | GitHub Pages (free) | no expiry |
+
 ## People not to be linked
 - "Mian Allah Nawaz" (Wikipedia) is a **different person**. Owner instruction: do not edit, link or associate.
 
