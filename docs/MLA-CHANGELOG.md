@@ -2,6 +2,21 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-10 — Browser-security fix + approved Phase One items — PR #5
+- Root cause of the iPhone ⚠ triangle: http://mlabwp.com.pk is served over plain HTTP (status 200, no redirect) because Cloudflare
+  "Always Use HTTPS" is off. Certificates are valid (Cloudflare/Let's Encrypt, apex + *.mlabwp.com.pk, to Jan 2027), there is no mixed content,
+  and DNS (apex and www) points to Cloudflare. Owner is applying the Cloudflare setting with Claude's steps.
+- Safety net (owner-approved): a one-line script in every page's <head> switches http:// to https:// for mlabwp.com.pk and www only.
+- Removed the hidden homepage "Additional Practice Areas" block (display:none, but indexed; listed "Corporate & Commercial Law").
+- New /legal-guides/ hub (CollectionPage + ItemList); guide breadcrumbs and site "Blog" links now point to it; sitemap 26 URLs; llms.txt updated.
+- FAQPage data added for the visible FAQs on Service Matters, Constitutional and FIA & Cybercrime.
+- Drafted docs/MLA-FAQ-DRAFT-BATCH-1.md (Criminal, Family, Inheritance) for owner legal review — not published.
+- Owner decisions: keep identity wording (Aumer = Founder Member/pioneer; Aqil = Owner & Principal); do not edit the "Mian Allah Nawaz" entry or link it.
+
+## 2026-11-10 — Supreme Digital Authority mandate: Phase One (audit only)
+- No website or account changes. Added `docs/MLA-FAQ-AND-PROCEDURE-PROTOCOL.md` (permanent protocol) and `docs/MLA-PHASE1-AUDIT-2026-11-10.md`.
+- Awaiting owner discussion and approval of the individual recommendations.
+
 ## 2026-11-10 — Second live audit (owner order) — PR #4
 - Data: homepage "7 Practice Areas" → 9; "7-Domain Expertise" → "Nine Practice Areas" (all nine listed); homepage practice grid now shows all 9 cards
   (added Inheritance, Service Matters) linking to each URL; fixed "Property Advocate & Lawyer in Bahawalpur in Bahawalpur" and "Lawyeryer"; removed duplicate footer link.
