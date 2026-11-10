@@ -2,6 +2,12 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-11 — Social-media sync (branch only, AWAITING APPROVAL)
+- JSON-LD on 26 pages: Organization sameAs YouTube URL normalised to https://www.youtube.com/@mianaqilnawazmlabwp; same channel added to Person sameAs
+  (channel is titled "Mian Aqil Nawaz | Mian Law Associates"). No new schema objects.
+- Homepage footer: removed the duplicate text "Instagram" link from the Practice Areas list (the Instagram icon remains in the social row).
+- Facebook, Instagram, TikTok and LinkedIn block automated checks; owner to confirm their bio/website fields.
+
 ## 2026-11-11 — Internal files physically excluded from the website
 - Removed `.nojekyll`; added `_config.yml` with `exclude:` (docs/, scripts/, CLAUDE.md, README.md, promo-video notes/config).
 - Tested with the github-pages gem (Jekyll 3.10.0): 117 website files published byte-identical, 24 internal files not published, nothing generated.
