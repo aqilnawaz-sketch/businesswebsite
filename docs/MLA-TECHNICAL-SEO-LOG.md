@@ -37,7 +37,7 @@ best-advocate → advocate · advocate-high-court → about (all `-bahawalpur/`)
 
 - 2026-11-10: the site is proxied by Cloudflare (`server: cloudflare`, email obfuscation on). Browser cache max-age is 600 s.
 
-## Legal accuracy queue (found 11 Nov 2026, awaiting owner approval — NOT yet changed)
+## Legal accuracy queue (found 11 Nov 2026) — L1–L4 and the H1 FIXED in PR #7 (owner: "do it yourself")
 - L1 Homepage guide card: pre-arrest bail described as "before an FIR is formally registered" → reword (s.498 CrPC, apprehended arrest, mala fide).
 - L2 Homepage property card: "Collector appeal within 30 days" → qualify (forum and limitation depend on the order; PLRA 1967).
 - L3 Khula guide step 4: add Punjab dower-return rule (owner to verify wording).

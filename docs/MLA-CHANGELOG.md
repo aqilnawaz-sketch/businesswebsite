@@ -2,6 +2,13 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-11 — Fresh live audit corrections — PR #7
+- Verified live: 400+/424+/7-areas/duplicate heading were already fixed. The owner's audit had read a cached or indexed copy.
+- Fixed (legal accuracy): homepage pre-arrest bail card (s.498 CrPC, apprehended arrest, mala fide; Sessions Court first);
+  homepage mutation card (no unqualified "30 days"); khula guide dower return (Punjab 2015 amendment, checked case by case);
+  NAB guide bail (2022–23 amendments restored Sept 2024; Rs 500m threshold).
+- Homepage H1 shortened to "Mian Aqil Nawaz – Advocate High Court, Lawyer in Bahawalpur" (title tag unchanged).
+
 ## 2026-11-10 — Cloudflare HTTPS settings applied by the owner
 - Owner turned on Cloudflare "Always Use HTTPS" and "Automatic HTTPS Rewrites", and set Minimum TLS to 1.2. Encryption mode left on Automatic (Full).
 - Tested: http://mlabwp.com.pk/robots.txt (no script) now ends at https:// (server-side redirect); TLS 1.1 handshake refused, TLS 1.2 accepted.
