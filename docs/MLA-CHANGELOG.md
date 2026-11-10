@@ -2,6 +2,11 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-11 — Internal files physically excluded from the website
+- Removed `.nojekyll`; added `_config.yml` with `exclude:` (docs/, scripts/, CLAUDE.md, README.md, promo-video notes/config).
+- Tested with the github-pages gem (Jekyll 3.10.0): 117 website files published byte-identical, 24 internal files not published, nothing generated.
+- The files remain in the public GitHub repository (and history); a private repository would be needed to hide them there.
+
 ## 2026-11-11 — Targeted legal correction pass (owner-authorised items 1–8)
 Text-only edits (HTML tags byte-identical; no layout, H1, colour, font, logo, contact or review changes; locked history untouched).
 - Homepage criminal panel: s.22-A no longer says "Sessions Judge as Judicial Magistrate" → Ex-officio Justice of Peace (Sessions Judge or nominated ASJ, s.25 CrPC), s.22-A(6).

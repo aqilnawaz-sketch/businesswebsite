@@ -1,7 +1,9 @@
 # CLAUDE.md — Mian Law Associates website (mlabwp.com.pk)
 
 This repository is the live website of **Mian Law Associates (MLA)**, Bahawalpur. GitHub Pages publishes the
-production branch to https://mlabwp.com.pk. **Every file in this repository is publicly downloadable once merged.**
+production branch to https://mlabwp.com.pk. `_config.yml` `exclude:` keeps docs/, scripts/, CLAUDE.md, README.md and the promo-video
+notes OFF the website (since 11 Nov 2026; .nojekyll removed). They are still visible in the public GitHub repository, so never commit secrets.
+Any new internal file or folder must be added to `exclude:` in `_config.yml`.
 
 ## Read before changing anything
 1. `docs/MLA-BUSINESS-IDENTITY.md`: the approved name, address, phone, people and review count. Never deviate.
