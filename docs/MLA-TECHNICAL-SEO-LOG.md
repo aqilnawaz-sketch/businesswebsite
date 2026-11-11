@@ -2,6 +2,11 @@
 
 Full first-round report: `docs/MLA-SEO-IMPLEMENTATION-REPORT-2026-11-10.md`.
 
+## 2026-11-11 — Media section
+- Completed: `/media/` video + poster, `images/gallery/` (10 WebP), tabbed media section on `/` and `/about/`, VideoObject schema, `promo-video/` excluded from Pages build. `seo_check.py`: 0 issues. No horizontal scroll at 390 px.
+- Outstanding: after go-live, validate VideoObject in the Rich Results Test; consider also uploading the video to YouTube and adding the URL to `sameAs`/`embedUrl`. Ask the owner for original full-resolution photos (uploads were 600 px) and an un-labelled original of the LHC Bahawalpur Bench photo.
+- Decision: firm-attributed "28+ years" allowed (owner, 11 Nov 2026); never personal.
+
 ## Current state (2026-11-10, LIVE since the PR #1 merge; canonical fix in PR #2)
 | Area | State | Tested? |
 |---|---|---|
