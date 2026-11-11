@@ -16,7 +16,7 @@
 | Service area | Bahawalpur and South Punjab (Ahmedpur East, Yazman, Hasilpur, Rahim Yar Khan, Bahawalnagar, Chishtian, Fort Abbas, Mailsi) |
 
 ## Official profiles (sameAs) — as linked from the site
-Facebook https://www.facebook.com/Mlabwp · Instagram https://www.instagram.com/mlabwp · YouTube https://www.youtube.com/@aqilnawaz ·
+Facebook https://www.facebook.com/Mlabwp · Instagram https://www.instagram.com/mlabwp · YouTube https://youtube.com/@mianaqilnawazmlabwp ·
 TikTok https://www.tiktok.com/@mianlawassociates · LinkedIn (personal) https://www.linkedin.com/in/mian-aqil-nawaz-268a6282/ ·
 Google reviews https://g.page/r/CfItjgOqlo-wEBM/review
 
