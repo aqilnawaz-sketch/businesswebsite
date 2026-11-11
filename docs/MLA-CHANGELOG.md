@@ -2,6 +2,16 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-11 — Technical SEO audit: approved fixes only
+- Homepage FAQ (legal accuracy, owner approved): rewrote "How is FIR quashing possible?" (s.561-A CrPC / Art. 199, exceptional cases; s.249-A/265-K after challan), "How is property divided in divorce?" (no general division; dower, dowry articles, maintenance; FCA 1964) and removed "Legal representation ensures fair outcome" from the custody answer (now cites the Guardians and Wards Act 1890 and visitation).
+- Homepage: invalid nested address link in the "Chamber No. 39" credential replaced with equivalent valid markup (pixel-identical; removes an empty link).
+- Homepage: hero particle animation now runs only while the hero is on screen and the tab is visible; respects reduced-motion.
+- Homepage + About: the video poster loads only when the video section nears the screen.
+- Measured (Lighthouse mobile, local, 2 runs): performance 73–76 → 79–81, TBT 280–350 → 150–220 ms, weight 641 → 577 KiB, accessibility 93 → 97. Lab LCP 4.8 → 4.6 s.
+
+## 2026-11-11 — Chamber interior photo
+- Added owner's real photo of Chamber No. 39 (`images/gallery/mian-law-associates-chamber-39-interior-bahawalpur.webp`, 1200×900) as the 2nd, double-width tile in the homepage and About gallery (grid now 4 columns on desktop so rows stay full).
+
 ## 2026-11-11 — Introduction video, photo gallery, firm "28+ years"
 - New 35-second introduction video `/media/mian-law-associates-introduction.mp4` (720p, 3.9 MB, silent, click-to-play, `preload="none"`) with poster image. Firm-attributed "28+ years since 1997"; all nine practice areas; Mian Aumer Nawaz as Founder Member.
 - New tabbed "Video | Photo Gallery" section on the homepage (`#media`, between Courts and Why Choose) and the About page (before Client Reviews). VideoObject JSON-LD added on both.

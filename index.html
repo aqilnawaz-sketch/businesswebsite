@@ -1217,7 +1217,8 @@ a,button,[onclick],.pc-card,.top-card,.ptab,.gallery-strip img{cursor:pointer;}
 .mg-video{border:1px solid rgba(201,164,68,.35);padding:8px;background:#111116;box-shadow:0 18px 50px rgba(0,0,0,.45)}
 .mg-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0c0c0e}
 .mg-note{text-align:center;font-family:'Cormorant Garamond',serif;font-size:.85rem;color:#8a8070;margin-top:12px}
-.mg-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.mg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;grid-auto-flow:dense}
+.mg-wide{grid-column:span 2}.mg-item.mg-wide a{aspect-ratio:3/2}
 .mg-item{margin:0;background:#111116;border:1px solid rgba(201,164,68,.2);padding:6px;transition:border-color .25s,transform .25s}
 .mg-item:hover{border-color:rgba(201,164,68,.55);transform:translateY(-3px)}
 .mg-item a{display:block;aspect-ratio:3/4;overflow:hidden;background:#0c0c0e}
@@ -1322,7 +1323,7 @@ a,button,[onclick],.pc-card,.top-card,.ptab,.gallery-strip img{cursor:pointer;}
 <p class="about-text">Mian Aqil Nawaz practises as an Advocate High Court and as a <strong>civil, criminal, family, and property lawyer in Bahawalpur</strong>.</p>
 <div class="cred-list">
 <div class="cred"><div class="cred-icon">⚖</div><div><div class="cred-title">Advocate High Court</div><div class="cred-text">Punjab Bar Council — active full-jurisdiction practice, Bahawalpur</div></div></div>
-<div class="cred"><div class="cred-icon">📍</div><a class="addr-link" href="https://maps.app.goo.gl/RiEffBUYTa3zJVdw8" rel="noopener noreferrer" style="display:flex;align-items:flex-start;gap:14px;color:inherit;" target="_blank"><div><div class="cred-title">Chamber No. 39 — Est. 1997</div><a class="addr-link" href="https://maps.app.goo.gl/RiEffBUYTa3zJVdw8" rel="noopener noreferrer" target="_blank"><div class="cred-text">District Courts, Bahawalpur — Kachahery Chowk — 28+ years of continuous practice</div></a></div></a></div>
+<div class="cred"><div class="cred-icon">📍</div><span aria-hidden="true"></span><div><a class="addr-link" href="https://maps.app.goo.gl/RiEffBUYTa3zJVdw8" rel="noopener noreferrer" style="display:flex;align-items:flex-start;gap:14px;color:inherit;" target="_blank"><div class="cred-title">Chamber No. 39 — Est. 1997</div></a><a class="addr-link" href="https://maps.app.goo.gl/RiEffBUYTa3zJVdw8" rel="noopener noreferrer" target="_blank"><div class="cred-text">District Courts, Bahawalpur — Kachahery Chowk — 28+ years of continuous practice</div></a></div></div>
 <div class="cred"><div class="cred-icon">🏛</div><div><div class="cred-title">Full-Spectrum Representation</div><div class="cred-text">Trial courts · Sessions Court · LHC Bahawalpur Bench · Special Courts (FIA/NAB)</div></div></div>
 </div>
 <!-- Heritage inset: tea photo, small & framed -->
@@ -1442,12 +1443,13 @@ a,button,[onclick],.pc-card,.top-card,.ptab,.gallery-strip img{cursor:pointer;}
 <button class="mg-tab" role="tab" id="home-tab-photos" aria-controls="home-panel-photos" aria-selected="false" tabindex="-1" data-p="photos">Photo Gallery</button>
 </div>
 <div id="home-panel-video" role="tabpanel" aria-labelledby="home-tab-video">
-<div class="mg-video"><video controls preload="none" playsinline width="1280" height="720" poster="/media/mian-law-associates-introduction-poster.jpg" aria-label="Introduction to Mian Law Associates, Bahawalpur"><source src="/media/mian-law-associates-introduction.mp4" type="video/mp4"/><a href="/media/mian-law-associates-introduction.mp4">Watch the introduction video</a></video></div>
+<div class="mg-video"><video controls preload="none" playsinline width="1280" height="720" data-poster="/media/mian-law-associates-introduction-poster.jpg" aria-label="Introduction to Mian Law Associates, Bahawalpur"><source src="/media/mian-law-associates-introduction.mp4" type="video/mp4"/><a href="/media/mian-law-associates-introduction.mp4">Watch the introduction video</a></video></div>
 <p class="mg-note">35-second introduction · Mian Law Associates, established 1997 · Chamber No. 39, District Courts, Bahawalpur</p>
 </div>
 <div id="home-panel-photos" role="tabpanel" aria-labelledby="home-tab-photos" hidden>
 <div class="mg-grid">
 <figure class="mg-item"><a class="photo-trigger" href="/images/gallery/mian-aqil-nawaz-advocate-high-court-office-portrait.webp" data-src="/images/gallery/mian-aqil-nawaz-advocate-high-court-office-portrait.webp" aria-label="View photo: Mian Aqil Nawaz · Advocate High Court" onclick="if(window.mlaLightbox){mlaLightbox(this);return false;}"><img src="/images/gallery/mian-aqil-nawaz-advocate-high-court-office-portrait.webp" alt="Mian Aqil Nawaz, Advocate High Court, Owner and Principal Advocate of Mian Law Associates" width="600" height="900" loading="lazy" decoding="async"/></a><figcaption>Mian Aqil Nawaz · Advocate High Court</figcaption></figure>
+<figure class="mg-item mg-wide"><a class="photo-trigger" href="/images/gallery/mian-law-associates-chamber-39-interior-bahawalpur.webp" data-src="/images/gallery/mian-law-associates-chamber-39-interior-bahawalpur.webp" aria-label="View photo: Inside Chamber No. 39 · District Courts, Bahawalpur" onclick="if(window.mlaLightbox){mlaLightbox(this);return false;}"><img src="/images/gallery/mian-law-associates-chamber-39-interior-bahawalpur.webp" alt="Interior of Chamber No. 39, Mian Law Associates, District Courts Bahawalpur, with law books and the firm sign" width="1200" height="900" loading="lazy" decoding="async"/></a><figcaption>Inside Chamber No. 39 · District Courts, Bahawalpur</figcaption></figure>
 <figure class="mg-item"><a class="photo-trigger" href="/images/gallery/mian-law-associates-chambers-signboard-bahawalpur.webp" data-src="/images/gallery/mian-law-associates-chambers-signboard-bahawalpur.webp" aria-label="View photo: Our chambers · District Courts, Bahawalpur" onclick="if(window.mlaLightbox){mlaLightbox(this);return false;}"><img src="/images/gallery/mian-law-associates-chambers-signboard-bahawalpur.webp" alt="Signboard of Mian Law Associates chambers, District Courts Bahawalpur" width="600" height="1067" loading="lazy" decoding="async"/></a><figcaption>Our chambers · District Courts, Bahawalpur</figcaption></figure>
 <figure class="mg-item"><a class="photo-trigger" href="/images/gallery/mian-aqil-nawaz-with-colleagues-at-court.webp" data-src="/images/gallery/mian-aqil-nawaz-with-colleagues-at-court.webp" aria-label="View photo: With colleagues at the courts" onclick="if(window.mlaLightbox){mlaLightbox(this);return false;}"><img src="/images/gallery/mian-aqil-nawaz-with-colleagues-at-court.webp" alt="Mian Aqil Nawaz with colleagues at the courts" width="600" height="800" loading="lazy" decoding="async"/></a><figcaption>With colleagues at the courts</figcaption></figure>
 <figure class="mg-item"><a class="photo-trigger" href="/images/gallery/mian-aqil-nawaz-mailsi-bar-association.webp" data-src="/images/gallery/mian-aqil-nawaz-mailsi-bar-association.webp" aria-label="View photo: Mailsi Bar Association" onclick="if(window.mlaLightbox){mlaLightbox(this);return false;}"><img src="/images/gallery/mian-aqil-nawaz-mailsi-bar-association.webp" alt="Mian Aqil Nawaz outside the Mailsi Bar Association" width="600" height="750" loading="lazy" decoding="async"/></a><figcaption>Mailsi Bar Association</figcaption></figure>
@@ -1460,7 +1462,7 @@ a,button,[onclick],.pc-card,.top-card,.ptab,.gallery-strip img{cursor:pointer;}
 </div>
 </div>
 </div>
-<script>(function(){var w=document.currentScript.previousElementSibling;var t=w.querySelectorAll('.mg-tab');t.forEach(function(b){b.addEventListener('click',function(){t.forEach(function(x){var on=x===b;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});if(b.dataset.p!=='video'){var v=w.querySelector('video');if(v)v.pause();}});});})();</script>
+<script>(function(){var w=document.currentScript.previousElementSibling;var t=w.querySelectorAll('.mg-tab');t.forEach(function(b){b.addEventListener('click',function(){t.forEach(function(x){var on=x===b;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});if(b.dataset.p!=='video'){var v=w.querySelector('video');if(v)v.pause();}});});var vp=w.querySelector('video[data-poster]');if(vp){var setP=function(){vp.poster=vp.dataset.poster;};if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){setP();io.disconnect();}},{rootMargin:'400px'});io.observe(vp);}else setP();}})();</script>
 </div>
 </section>
 <!-- WHY CHOOSE -->
@@ -3431,9 +3433,16 @@ function initParticles(){
       ctx.fillStyle='rgba(201,164,68,'+a+')';
       ctx.fill();
     });
-    requestAnimationFrame(draw);
+    if(running)requestAnimationFrame(draw);
   }
-  draw();
+  // Performance (audit 11 Nov 2026): animate only while the hero is on screen and the tab is visible; respect reduced-motion.
+  var running=false,inView=true;
+  function start(){if(!running&&inView&&!document.hidden){running=true;requestAnimationFrame(draw);}}
+  function stop(){running=false;}
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){running=true;draw();running=false;return;}
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){inView=e[0].isIntersecting;inView?start():stop();}).observe(canvas);}
+  document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
+  start();
 }
 
 // ── DOMContentLoaded ──
@@ -3499,7 +3508,7 @@ document.addEventListener('DOMContentLoaded',function(){
           <span class="faq-arrow">→</span>
         </button>
         <div class="faq-accordion-content">
-          <p>FIR can be quashed on technical grounds, lack of evidence, or if facts don't constitute an offense. Expert legal argument and proper documentation are crucial.</p>
+          <p>An FIR can be quashed by the High Court under section 561-A CrPC or in a writ petition under Article 199 of the Constitution, but only in exceptional cases, for example where the FIR, taken as it stands, discloses no offence, or the proceedings are a clear abuse of the process of law. The court does not usually weigh disputed evidence at this stage. After the challan is submitted, the usual remedy is an application for acquittal under section 249-A or 265-K CrPC. Whether either route is available depends on the facts of each case.</p>
           <div class="faq-contact-btns">
             <a href="https://wa.me/923333621111" target="_blank" rel="noopener" class="faq-btn-whatsapp"><span>💬</span> WhatsApp</a>
             <a href="tel:+923333621111" class="faq-btn-call"><span>📞</span> Call</a>
@@ -3528,7 +3537,7 @@ document.addEventListener('DOMContentLoaded',function(){
           <span class="faq-arrow">→</span>
         </button>
         <div class="faq-accordion-content">
-          <p>Property division depends on ownership documentation, mahr, and family court judgment. Separate property, joint property, and acquired property are treated differently under Pakistani law.</p>
+          <p>Pakistani law has no general rule that divides a couple's property on divorce: each spouse keeps what is legally theirs. The wife may claim her unpaid dower (haq mahr), her dowry articles and bridal gifts, and maintenance for the iddat period and for the children, before the Family Court under the Family Courts Act 1964. In khula, the court decides what dower or benefits, if any, are to be returned. Disputes over ownership of other property are decided on title and evidence.</p>
           <div class="faq-contact-btns">
             <a href="https://wa.me/923333621111" target="_blank" rel="noopener" class="faq-btn-whatsapp"><span>💬</span> WhatsApp</a>
             <a href="tel:+923333621111" class="faq-btn-call"><span>📞</span> Call</a>
@@ -3542,7 +3551,7 @@ document.addEventListener('DOMContentLoaded',function(){
           <span class="faq-arrow">→</span>
         </button>
         <div class="faq-accordion-content">
-          <p>Child custody is decided by the Family Court on the welfare of the minor. Under Muslim personal law the mother usually has custody of young children, but the court decides each case on welfare. Legal representation ensures fair outcome.</p>
+          <p>Child custody is decided by the Family Court on the welfare of the minor. Under Muslim personal law the mother usually has custody of young children, but the court decides each case on welfare. Custody and guardianship are governed by the Guardians and Wards Act 1890, and the court can also fix visitation for the other parent.</p>
           <div class="faq-contact-btns">
             <a href="https://wa.me/923333621111" target="_blank" rel="noopener" class="faq-btn-whatsapp"><span>💬</span> WhatsApp</a>
             <a href="tel:+923333621111" class="faq-btn-call"><span>📞</span> Call</a>

@@ -2,6 +2,12 @@
 
 Full first-round report: `docs/MLA-SEO-IMPLEMENTATION-REPORT-2026-11-10.md`.
 
+## 2026-11-11 — Controlled technical SEO audit (live site)
+- NO CHANGE REQUIRED: robots.txt, sitemap (26 URLs, all 200), canonicals, indexability, H1s, titles/descriptions (no duplicates), orphan pages (none), retired-URL stubs, 404s, HTTP→HTTPS (301, verified; Outstanding item 0 below is resolved), compression (brotli), NAP, hours, llms.txt, practice-page FAQ schema.
+- Implemented (owner approved): 3 homepage FAQ legal fixes; nested-link fix; animation pause; lazy video poster.
+- Owner decisions: About page reviews (Muhammad Asif, Tariq Mehmood, Sana Bibi) confirmed genuine by the owner — keep. NOT approved (left as is): removing the homepage FAQPage JSON-LD (8 Q&As not visible on the page — Google guideline risk remains); "Best Lawyer" link text / meta keywords; About "decisive ... results" sentence. Logo artwork reads "Experience 27+ years" / "Results that matter" — owner to decide on new artwork.
+- Open: homepage mobile lab LCP ~4.6 s (fonts: 3 families/12 styles; 1,955-element DOM with 9 hidden practice panels). Act only if Search Console field data (CrUX) shows poor LCP. www.mlabwp.com.pk could not be tested from the audit environment.
+
 ## 2026-11-11 — Media section
 - Completed: `/media/` video + poster, `images/gallery/` (10 WebP), tabbed media section on `/` and `/about/`, VideoObject schema, `promo-video/` excluded from Pages build. `seo_check.py`: 0 issues. No horizontal scroll at 390 px.
 - Outstanding: after go-live, validate VideoObject in the Rich Results Test; consider also uploading the video to YouTube and adding the URL to `sameAs`/`embedUrl`. Ask the owner for original full-resolution photos (uploads were 600 px) and an un-labelled original of the LHC Bahawalpur Bench photo.
