@@ -2,6 +2,17 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-11 — Homepage "Legal Blog" section: cards link to all 10 guides (LIVE)
+Committed directly to `main` as `de31e70` from the GitHub web editor (no pull request). Owner request: "Full redesign of section"; owner decision after it went live: "Keep it live".
+- `#blogs` now shows 10 cards, one per existing guide, each linking to its guide page, plus two tiles: "Browse all legal guides" (`/legal-guides/`) and "Discuss your case" (phone). Before: 6 unlinked mini-articles dated Nov 2024–Apr 2025, whose only buttons were phone links.
+- Card dates now come from each guide's own `dateModified` ("Updated Jul 2026" / "Updated Nov 2026"). The descriptions say what each guide covers, with no new legal statements.
+- Same palette, fonts, grid, `blog-card`/`reveal` classes and responsive rules. 5 CSS lines added (stretched card link, focus outline). In-section contrast raised: date, label and body text.
+- Unchanged: heading, subtitle, disclaimer, "Get Legal Consultation" button, JSON-LD, title/meta, review count, `#guides` section.
+- Design-freeze exception (SEO Master Protocol §2) for this one section: accepted by the owner when keeping it live.
+- Removed with the old cards: the owner-corrected mutation (L2/L6) and injunction (L12, Order XXXIX) card text. Those topics have no guide page yet.
+- **Still pending:** Mian Aqil Nawaz's review of the 10 card descriptions.
+- Tested before commit: `scripts/seo_check.py` 0 issues; local preview at 1366 px (3 columns) and 390 px (1 column, no horizontal scroll); no console errors. Live check: 15 `/legal-guides/` links on the homepage (4 footer + 11 new).
+
 ## 2026-11-11 — Technical SEO audit: approved fixes only
 - Homepage FAQ (legal accuracy, owner approved): rewrote "How is FIR quashing possible?" (s.561-A CrPC / Art. 199, exceptional cases; s.249-A/265-K after challan), "How is property divided in divorce?" (no general division; dower, dowry articles, maintenance; FCA 1964) and removed "Legal representation ensures fair outcome" from the custody answer (now cites the Guardians and Wards Act 1890 and visitation).
 - Homepage: invalid nested address link in the "Chamber No. 39" credential replaced with equivalent valid markup (pixel-identical; removes an empty link).
