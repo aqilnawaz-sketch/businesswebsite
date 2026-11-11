@@ -1194,6 +1194,12 @@ a,button,[onclick],.pc-card,.top-card,.ptab,.gallery-strip img{cursor:pointer;}
   color:rgba(240,228,204,.5);padding-left:16px;position:relative;line-height:1.65;}
 .blog-card ul li::before{content:'◆';position:absolute;left:0;
   color:var(--gold);font-size:.45rem;top:5px;}
+/* ── BLOG CARDS: linked guide cards (Stage 4 proposal) ── */
+.blog-card{display:flex;flex-direction:column;cursor:pointer;}
+.blog-card h3 a{color:inherit;text-decoration:none;}
+.blog-card h3 a::after{content:'';position:absolute;inset:0;z-index:1;}
+.blog-card:hover .bc-more,.blog-card:focus-within .bc-more{color:var(--gold3);}
+.blog-card:focus-within{outline:2px solid var(--gold);outline-offset:-2px;}
 @media(max-width:960px){
   #blogs > .si > div[style*="grid-template-columns"]{grid-template-columns:1fr 1fr!important;}
 }
@@ -1643,71 +1649,117 @@ a,button,[onclick],.pc-card,.top-card,.ptab,.gallery-strip img{cursor:pointer;}
 <div class="gd" style="max-width:440px;margin:16px auto 48px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);"></div>
 <p style="font-family:'Cormorant Garamond',serif;font-size:.95rem;color:var(--muted);text-align:center;max-width:600px;margin:-32px auto 48px;">Practical legal guides on Pakistani law — from Mian Law Associates, practising in Bahawalpur courts since 1997.</p>
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);">
-<div class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;cursor:default;">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+<article class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;">
 <span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">Criminal Law</span>
-<span style="font-family:'Cormorant Garamond',serif;font-size:.75rem;color:var(--muted);">April 2025</span>
+<span style="font-family:'Cormorant Garamond',serif;font-size:.78rem;color:rgba(240,228,204,.7);">Updated Jul 2026</span>
 </div>
-<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.35);margin-bottom:10px;">GUIDE 01</div>
-<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:14px;">How to Get Pre-Arrest Bail in Bahawalpur</h3>
-<p style="font-family:'Cormorant Garamond',serif;font-size:.88rem;line-height:1.78;color:rgba(240,228,204,.55);margin-bottom:18px;">Pre-arrest bail, also called anticipatory bail, is sought under Section 498 CrPC by a person who apprehends arrest in a case, usually after an FIR or complaint. The court grants it only in exceptional circumstances, such as where the arrest appears mala fide or intended to humiliate. In Bahawalpur, applications are normally filed first before the Sessions Court, with the Lahore High Court Bahawalpur Bench as the further forum.</p>
-<ul style="list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:22px;"><li>Application must state grounds why arrest is anticipated</li><li>Strong legal grounds significantly improve chances</li><li>Bail can be challenged — anticipate opposition arguments</li><li>Urgent applications can be prepared and filed promptly; the outcome and timing rest with the court</li></ul>
-<a href="tel:+923333621111" style="font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,164,68,.3);padding-bottom:2px;transition:border-color .25s;">Consult on This Matter →</a>
+<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.65);margin-bottom:10px;">GUIDE 01</div>
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:12px;"><a href="/legal-guides/bail-in-pakistan/">Bail Before Arrest (Pre-Arrest Bail) in Pakistan</a></h3>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;line-height:1.75;color:rgba(240,228,204,.72);margin-bottom:20px;">What pre-arrest bail is, the conditions the courts look for, and the steps from the Sessions Court to the Lahore High Court Bahawalpur Bench.</p>
+<span class="bc-more" aria-hidden="true" style="margin-top:auto;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);">Read the guide →</span>
+</article>
+<article class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;">
+<span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">Criminal Law</span>
+<span style="font-family:'Cormorant Garamond',serif;font-size:.78rem;color:rgba(240,228,204,.7);">Updated Nov 2026</span>
 </div>
-<div class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;cursor:default;">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-<span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">Family Law</span>
-<span style="font-family:'Cormorant Garamond',serif;font-size:.75rem;color:var(--muted);">March 2025</span>
+<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.65);margin-bottom:10px;">GUIDE 02</div>
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:12px;"><a href="/legal-guides/fir-cancellation/">FIR Cancellation in Pakistan</a></h3>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;line-height:1.75;color:rgba(240,228,204,.72);margin-bottom:20px;">The routes for ending FIR proceedings: compromise, a police cancellation report, or quashing by the High Court under Section 561-A CrPC.</p>
+<span class="bc-more" aria-hidden="true" style="margin-top:auto;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);">Read the guide →</span>
+</article>
+<article class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;">
+<span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">NAB &amp; FIA</span>
+<span style="font-family:'Cormorant Garamond',serif;font-size:.78rem;color:rgba(240,228,204,.7);">Updated Nov 2026</span>
 </div>
-<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.35);margin-bottom:10px;">GUIDE 02</div>
-<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:14px;">Khula in Pakistan — Complete Procedure Guide</h3>
-<p style="font-family:'Cormorant Garamond',serif;font-size:.88rem;line-height:1.78;color:rgba(240,228,204,.55);margin-bottom:18px;">Khula is the right of a Muslim wife to seek dissolution of marriage through the Family Court. Unlike talaq, which is the husband's unilateral right, Khula requires a court decree. The procedure in Bahawalpur follows the West Pakistan Family Courts Act 1964.</p>
-<ul style="list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:22px;"><li>File suit in Family Court of your residential area</li><li>Court issues notice — husband served formally</li><li>Reconciliation attempted by the court</li><li>Decree issued if reconciliation fails</li></ul>
-<a href="tel:+923333621111" style="font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,164,68,.3);padding-bottom:2px;transition:border-color .25s;">Consult on This Matter →</a>
-</div>
-<div class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;cursor:default;">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-<span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">Property Law</span>
-<span style="font-family:'Cormorant Garamond',serif;font-size:.75rem;color:var(--muted);">February 2025</span>
-</div>
-<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.35);margin-bottom:10px;">GUIDE 03</div>
-<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:14px;">How to Challenge an Illegal Mutation in Bahawalpur</h3>
-<p style="font-family:'Cormorant Garamond',serif;font-size:.88rem;line-height:1.78;color:rgba(240,228,204,.55);margin-bottom:18px;">Mutations (Intiqal) are entries in the Revenue Record transferring property ownership. Fraudulent or unlawful mutations are a common property dispute in Bahawalpur. They can be challenged before the Revenue Courts, Collector, and Board of Revenue — or through civil courts.</p>
-<ul style="list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:22px;"><li>File written objection before Revenue Officer immediately</li><li>Appeal or revision before the higher revenue officers under the Punjab Land Revenue Act 1967 — time limits are short and depend on the order</li><li>Further revision before the Board of Revenue where the Act provides for it</li><li>Civil suit for declaration where the dispute concerns title; the right route depends on the order and the statute</li></ul>
-<a href="tel:+923333621111" style="font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,164,68,.3);padding-bottom:2px;transition:border-color .25s;">Consult on This Matter →</a>
-</div>
-<div class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;cursor:default;">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.65);margin-bottom:10px;">GUIDE 03</div>
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:12px;"><a href="/legal-guides/nab-fia-arrest-pakistan/">NAB / FIA Arrest — What to Do</a></h3>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;line-height:1.75;color:rgba(240,228,204,.72);margin-bottom:20px;">Your rights on arrest and the first practical steps when NAB or the FIA is involved in a case.</p>
+<span class="bc-more" aria-hidden="true" style="margin-top:auto;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);">Read the guide →</span>
+</article>
+<article class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;">
 <span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">Cyber Law</span>
-<span style="font-family:'Cormorant Garamond',serif;font-size:.75rem;color:var(--muted);">January 2025</span>
+<span style="font-family:'Cormorant Garamond',serif;font-size:.78rem;color:rgba(240,228,204,.7);">Updated Nov 2026</span>
 </div>
-<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.35);margin-bottom:10px;">GUIDE 04</div>
-<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:14px;">What to Do If a PECA Case is Filed Against You</h3>
-<p style="font-family:'Cormorant Garamond',serif;font-size:.88rem;line-height:1.78;color:rgba(240,228,204,.55);margin-bottom:18px;">A PECA 2016 case investigated by the NCCIA (formerly the FIA Cybercrime Wing) is serious and requires immediate legal action. From the moment you learn of a complaint or FIR, every step must be calculated. Mian Aqil Nawaz handles PECA cases from investigation through trial in Bahawalpur.</p>
-<ul style="list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:22px;"><li>Do not give any statement without legal counsel present</li><li>Secure all digital evidence — screenshots, messages, records</li><li>Pre-arrest bail application should be filed immediately</li><li>Challenge the agency's jurisdiction if the offence is not a PECA offence</li></ul>
-<a href="tel:+923333621111" style="font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,164,68,.3);padding-bottom:2px;transition:border-color .25s;">Consult on This Matter →</a>
+<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.65);margin-bottom:10px;">GUIDE 04</div>
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:12px;"><a href="/legal-guides/peca-cybercrime-pakistan/">PECA Cybercrime Case — What to Expect</a></h3>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;line-height:1.75;color:rgba(240,228,204,.72);margin-bottom:20px;">How a PECA 2016 case proceeds with the NCCIA, from complaint and inquiry to bail and trial.</p>
+<span class="bc-more" aria-hidden="true" style="margin-top:auto;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);">Read the guide →</span>
+</article>
+<article class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;">
+<span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">Family Law</span>
+<span style="font-family:'Cormorant Garamond',serif;font-size:.78rem;color:rgba(240,228,204,.7);">Updated Nov 2026</span>
 </div>
-<div class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;cursor:default;">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.65);margin-bottom:10px;">GUIDE 05</div>
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:12px;"><a href="/legal-guides/khula-procedure-pakistan/">Khula Procedure in Pakistan</a></h3>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;line-height:1.75;color:rgba(240,228,204,.72);margin-bottom:20px;">A wife's right to khula through the Family Court, the procedure step by step, and typical timelines.</p>
+<span class="bc-more" aria-hidden="true" style="margin-top:auto;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);">Read the guide →</span>
+</article>
+<article class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;">
+<span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">Family Law</span>
+<span style="font-family:'Cormorant Garamond',serif;font-size:.78rem;color:rgba(240,228,204,.7);">Updated Nov 2026</span>
+</div>
+<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.65);margin-bottom:10px;">GUIDE 06</div>
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:12px;"><a href="/legal-guides/divorce-procedure-pakistan/">Divorce Procedure in Pakistan</a></h3>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;line-height:1.75;color:rgba(240,228,204,.72);margin-bottom:20px;">Talaq, khula and dissolution through the Family Court: notice requirements, documents and timelines.</p>
+<span class="bc-more" aria-hidden="true" style="margin-top:auto;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);">Read the guide →</span>
+</article>
+<article class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;">
+<span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">Property Law</span>
+<span style="font-family:'Cormorant Garamond',serif;font-size:.78rem;color:rgba(240,228,204,.7);">Updated Nov 2026</span>
+</div>
+<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.65);margin-bottom:10px;">GUIDE 07</div>
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:12px;"><a href="/legal-guides/property-dispute/">Property Disputes in Pakistan</a></h3>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;line-height:1.75;color:rgba(240,228,204,.72);margin-bottom:20px;">Possession, title, mutation and inheritance disputes, and which court or revenue forum hears each.</p>
+<span class="bc-more" aria-hidden="true" style="margin-top:auto;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);">Read the guide →</span>
+</article>
+<article class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;">
+<span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">Property Law</span>
+<span style="font-family:'Cormorant Garamond',serif;font-size:.78rem;color:rgba(240,228,204,.7);">Updated Nov 2026</span>
+</div>
+<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.65);margin-bottom:10px;">GUIDE 08</div>
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:12px;"><a href="/legal-guides/property-transfer-pakistan/">Property Transfer — The Legal Process</a></h3>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;line-height:1.75;color:rgba(240,228,204,.72);margin-bottom:20px;">Title checks, agreement to sell, registry and mutation: the steps in a property transfer.</p>
+<span class="bc-more" aria-hidden="true" style="margin-top:auto;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);">Read the guide →</span>
+</article>
+<article class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;">
 <span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">Civil Law</span>
-<span style="font-family:'Cormorant Garamond',serif;font-size:.75rem;color:var(--muted);">December 2024</span>
+<span style="font-family:'Cormorant Garamond',serif;font-size:.78rem;color:rgba(240,228,204,.7);">Updated Jul 2026</span>
 </div>
-<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.35);margin-bottom:10px;">GUIDE 05</div>
-<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:14px;">Difference Between Temporary &amp; Permanent Injunction in Pakistan</h3>
-<p style="font-family:'Cormorant Garamond',serif;font-size:.88rem;line-height:1.78;color:rgba(240,228,204,.55);margin-bottom:18px;">Injunctions are court orders restraining a party from doing a specific act. In civil litigation in Bahawalpur they are often sought, for example to stop construction on disputed land or prevent the sale of property while a suit is pending.</p>
-<ul style="list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:22px;"><li>Temporary injunction — Order XXXIX rules 1 and 2 CPC, in a pending suit, e.g. where disputed property is in danger of being wasted, alienated or wrongfully sold</li><li>The court considers a prima facie case, the balance of convenience and irreparable loss together; the relief is discretionary</li><li>Ad-interim or status quo order before notice only where delay would defeat its object, with reasons recorded (Order XXXIX rule 3)</li><li>Permanent injunction — by decree after trial, under sections 54–56 of the Specific Relief Act 1877, which also sets out when it cannot be granted</li></ul>
-<a href="tel:+923333621111" style="font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,164,68,.3);padding-bottom:2px;transition:border-color .25s;">Consult on This Matter →</a>
+<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.65);margin-bottom:10px;">GUIDE 09</div>
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:12px;"><a href="/legal-guides/civil-suit-procedure-pakistan/">Civil Suit Procedure in Pakistan</a></h3>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;line-height:1.75;color:rgba(240,228,204,.72);margin-bottom:20px;">How a civil suit runs under the CPC 1908, from jurisdiction and the plaint to judgment, execution and appeal.</p>
+<span class="bc-more" aria-hidden="true" style="margin-top:auto;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);">Read the guide →</span>
+</article>
+<article class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;">
+<span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">Constitutional Law</span>
+<span style="font-family:'Cormorant Garamond',serif;font-size:.78rem;color:rgba(240,228,204,.7);">Updated Nov 2026</span>
 </div>
-<div class="blog-card reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;cursor:default;">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-<span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,68,.1);padding:4px 10px;border:1px solid rgba(201,164,68,.2);">Constitutional Advocate & Lawyer</span>
-<span style="font-family:'Cormorant Garamond',serif;font-size:.75rem;color:var(--muted);">November 2024</span>
+<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.65);margin-bottom:10px;">GUIDE 10</div>
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:12px;"><a href="/legal-guides/writ-petition-lahore-high-court/">Writ Petition — LHC Bahawalpur Bench</a></h3>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;line-height:1.75;color:rgba(240,228,204,.72);margin-bottom:20px;">When a writ petition under Article 199 can be filed before the Bahawalpur Bench, and how the procedure works.</p>
+<span class="bc-more" aria-hidden="true" style="margin-top:auto;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);">Read the guide →</span>
+</article>
+<div class="blog-card blog-card--all reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;">
+<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.65);margin-bottom:14px;">ALL RESOURCES</div>
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:12px;"><a href="/legal-guides/">Browse all legal guides</a></h3>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;line-height:1.75;color:rgba(240,228,204,.72);margin-bottom:20px;">Criminal, family, property, civil, cyber and constitutional law, in one place.</p>
+<span class="bc-more" aria-hidden="true" style="margin-top:auto;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);">View all guides →</span>
 </div>
-<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.35);margin-bottom:10px;">GUIDE 06</div>
-<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:14px;">When to File a Writ Petition Before LHC Bahawalpur Bench</h3>
-<p style="font-family:'Cormorant Garamond',serif;font-size:.88rem;line-height:1.78;color:rgba(240,228,204,.55);margin-bottom:18px;">The Lahore High Court Bahawalpur Bench exercises constitutional jurisdiction over government actions, unlawful orders, and fundamental rights violations in Bahawalpur division. A writ petition under Article 199 lets the High Court review unlawful action by public authorities. Relief is discretionary and depends on maintainability, any adequate alternative remedy, delay, and whether the petitioner is an aggrieved person.</p>
-<ul style="list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:22px;"><li>Mandamus — force a public authority to perform its legal duty</li><li>Certiorari — quash an illegal government or tribunal order</li><li>Habeas corpus — immediate release from unlawful detention</li><li>Service matters — challenge dismissal, retirement, or demotion</li></ul>
-<a href="tel:+923333621111" style="font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,164,68,.3);padding-bottom:2px;transition:border-color .25s;">Consult on This Matter →</a>
+<div class="blog-card blog-card--cta reveal" style="background:var(--bg3);padding:32px 26px;transition:background .25s;position:relative;overflow:hidden;">
+<div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.2em;color:rgba(201,164,68,.65);margin-bottom:14px;">YOUR MATTER</div>
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.35;margin-bottom:12px;"><a href="tel:+923333621111">Discuss your case with Mian Aqil Nawaz</a></h3>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;line-height:1.75;color:rgba(240,228,204,.72);margin-bottom:20px;">Chamber No. 39, District Courts, Bahawalpur ·&nbsp;+92&nbsp;333&nbsp;3621111</p>
+<span class="bc-more" aria-hidden="true" style="margin-top:auto;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);">Call the chambers →</span>
 </div>
 </div>
 <div style="text-align:center;margin-top:36px;">
