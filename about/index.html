@@ -268,7 +268,7 @@ h3{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.16em;text-transfor
 <button class="mg-tab" role="tab" id="about-tab-photos" aria-controls="about-panel-photos" aria-selected="false" tabindex="-1" data-p="photos">Photo Gallery</button>
 </div>
 <div id="about-panel-video" role="tabpanel" aria-labelledby="about-tab-video">
-<div class="mg-video"><video controls preload="none" playsinline width="1280" height="720" poster="/media/mian-law-associates-introduction-poster.jpg" aria-label="Introduction to Mian Law Associates, Bahawalpur"><source src="/media/mian-law-associates-introduction.mp4" type="video/mp4"/><a href="/media/mian-law-associates-introduction.mp4">Watch the introduction video</a></video></div>
+<div class="mg-video"><video controls preload="none" playsinline width="1280" height="720" data-poster="/media/mian-law-associates-introduction-poster.jpg" aria-label="Introduction to Mian Law Associates, Bahawalpur"><source src="/media/mian-law-associates-introduction.mp4" type="video/mp4"/><a href="/media/mian-law-associates-introduction.mp4">Watch the introduction video</a></video></div>
 <p class="mg-note">35-second introduction · Mian Law Associates, established 1997 · Chamber No. 39, District Courts, Bahawalpur</p>
 </div>
 <div id="about-panel-photos" role="tabpanel" aria-labelledby="about-tab-photos" hidden>
@@ -287,7 +287,7 @@ h3{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.16em;text-transfor
 </div>
 </div>
 </div>
-<script>(function(){var w=document.currentScript.previousElementSibling;var t=w.querySelectorAll('.mg-tab');t.forEach(function(b){b.addEventListener('click',function(){t.forEach(function(x){var on=x===b;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});if(b.dataset.p!=='video'){var v=w.querySelector('video');if(v)v.pause();}});});})();</script>
+<script>(function(){var w=document.currentScript.previousElementSibling;var t=w.querySelectorAll('.mg-tab');t.forEach(function(b){b.addEventListener('click',function(){t.forEach(function(x){var on=x===b;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});if(b.dataset.p!=='video'){var v=w.querySelector('video');if(v)v.pause();}});});var vp=w.querySelector('video[data-poster]');if(vp){var setP=function(){vp.poster=vp.dataset.poster;};if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){setP();io.disconnect();}},{rootMargin:'400px'});io.observe(vp);}else setP();}})();</script>
 </div>
 <div style="background:#111116;border-top:1px solid rgba(201,164,68,.18);border-bottom:1px solid rgba(201,164,68,.18);padding:60px 0">
   <div class="section" style="padding-top:0;padding-bottom:0">
