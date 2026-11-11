@@ -2,6 +2,12 @@
 
 Full first-round report: `docs/MLA-SEO-IMPLEMENTATION-REPORT-2026-11-10.md`.
 
+## 2026-11-11 — Homepage blog section internal links (LIVE, `de31e70`)
+- Before: the homepage linked to the guides only from the footer (4 links). After: +11 contextual links from `#blogs` (10 guides + the `/legal-guides/` hub).
+- Stretched-link pattern: one `<a>` per card on the `<h3>`, with `::after` covering the card. One accessible link per card; "Read the guide" is `aria-hidden`.
+- Process note: the GitHub web editor's commit dialog defaults to "Commit directly to the main branch". Always select "Create a new branch" for web edits.
+- Still outstanding: `#guides` (3 unlinked cards) duplicates `#blogs`. A merge needs an owner decision.
+
 ## 2026-11-11 — Controlled technical SEO audit (live site)
 - NO CHANGE REQUIRED: robots.txt, sitemap (26 URLs, all 200), canonicals, indexability, H1s, titles/descriptions (no duplicates), orphan pages (none), retired-URL stubs, 404s, HTTP→HTTPS (301, verified; Outstanding item 0 below is resolved), compression (brotli), NAP, hours, llms.txt, practice-page FAQ schema.
 - Implemented (owner approved): 3 homepage FAQ legal fixes; nested-link fix; animation pause; lazy video poster.
