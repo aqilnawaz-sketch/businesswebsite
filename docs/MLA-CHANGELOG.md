@@ -2,6 +2,14 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-11 — Introduction video, photo gallery, firm "28+ years"
+- New 35-second introduction video `/media/mian-law-associates-introduction.mp4` (720p, 3.9 MB, silent, click-to-play, `preload="none"`) with poster image. Firm-attributed "28+ years since 1997"; all nine practice areas; Mian Aumer Nawaz as Founder Member.
+- New tabbed "Video | Photo Gallery" section on the homepage (`#media`, between Courts and Why Choose) and the About page (before Client Reviews). VideoObject JSON-LD added on both.
+- 10 owner-supplied photos added in `images/gallery/` (WebP, alt text, captions).
+- NOT published (owner was told why): Supreme Court photo (would imply Supreme Court practice), courtroom interior photo, family-with-children photo and LHC Bahawalpur Bench photo (both carry Google's "AI-generated content" label), business card, round logo and poster with "27+ years"/"Results that matter" (only the Mailsi notification document was cropped and used).
+- Footer label on all 26 pages: "Established 1997 · 28+ Years · Bahawalpur, Punjab" (firm wording, owner request).
+- `_config.yml`: whole `promo-video/` folder excluded from the site (old promo said "28+ years" as a personal claim).
+
 ## 2026-11-11 — Internal files physically excluded from the website
 - Removed `.nojekyll`; added `_config.yml` with `exclude:` (docs/, scripts/, CLAUDE.md, README.md, promo-video notes/config).
 - Tested with the github-pages gem (Jekyll 3.10.0): 117 website files published byte-identical, 24 internal files not published, nothing generated.

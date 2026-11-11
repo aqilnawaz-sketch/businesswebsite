@@ -44,6 +44,8 @@ correct, restructure or replace them, even during SEO or legal-accuracy work.
   The Supreme Court may be mentioned only as an institution (e.g. a judgment restoring the NAB amendments).
 - **History, firm wording only:** the chambers / Mian Law Associates were **established in 1997** (Founder Member: Mian Aumer Nawaz).
   Do NOT state a personal practice start year or "28+ years of his experience" until the owner supplies his enrolment year.
+  Owner decision 11 Nov 2026: "28+ years" MAY be used only when it is clearly the FIRM's (e.g. "Mian Law Associates: 28+ years since 1997",
+  footer "Established 1997 · 28+ Years"). Never attach it to Mian Aqil Nawaz personally or word it so readers infer personal experience.
 - No outcome or timing promises (same-day bail, "within hours", success rates, "results speak for themselves"), no superlatives
   ("most powerful", "top result", "most trusted"). Filing and preparation can be described as prompt; decisions rest with the court.
 - Homepage: **nine practice cards AND nine detailed panels** (01/09–09/09), each linking to its dedicated page.

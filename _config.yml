@@ -5,9 +5,5 @@ exclude:
   - scripts/
   - CLAUDE.md
   - README.md
-  - promo-video/AGENTS.md
-  - promo-video/CLAUDE.md
-  - promo-video/package.json
-  - promo-video/hyperframes.json
-  - promo-video/meta.json
-  - promo-video/.gitignore
+  # Whole folder kept off the site: the old 22-second promo said "28+ years" as a personal claim (replaced 11 Nov 2026 by /media/).
+  - promo-video/
