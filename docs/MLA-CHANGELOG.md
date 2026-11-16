@@ -2,6 +2,13 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-16 — Sunday hours added where missing (branch `claude/sunday-hours-2026-11-16`, awaiting owner merge)
+Owner request in chat on 16 Nov 2026.
+- /contact/: meta, OG and Twitter descriptions (and the matching schema text) now read "Mon–Sat 7:30 AM–11:30 PM, Sun 11:30 AM–11:30 PM" (they gave Mon–Sat only).
+- /advocate-bahawalpur/: closing line now includes "Sun 11:30 AM – 11:30 PM", matching its sidebar and the rest of the site.
+- Checked, no change needed: every other page, every openingHoursSpecification schema block and the homepage already show Sunday 11:30 AM – 11:30 PM. /ur/ shows no hours. Redirect stubs carry no hours.
+- `scripts/seo_check.py`: 0 issues.
+
 ## 2026-11-16 — Audit fixes (branch `claude/audit-fixes-2026-11-16`, awaiting owner merge)
 Owner-approved in chat on 16 Nov 2026.
 - Completed: removed three teaching reviews (Mahar Shakeel, Talha Memon, Usman Saeed) from the homepage review carousel and `data/reviews.json`; they stay on Google.
