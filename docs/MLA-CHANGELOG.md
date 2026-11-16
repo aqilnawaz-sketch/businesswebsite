@@ -2,6 +2,15 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-16 — Audit fixes (branch `claude/audit-fixes-2026-11-16`, awaiting owner merge)
+Owner-approved in chat on 16 Nov 2026.
+- Completed: removed three teaching reviews (Mahar Shakeel, Talha Memon, Usman Saeed) from the homepage review carousel and `data/reviews.json`; they stay on Google.
+- Completed: homepage counters keep their real figures for crawlers, AI tools and reduced-motion users (a JS-rendering crawl had captured "0").
+- Completed, **legal review needed**: rewrote three homepage FAQ answers: possession suit (SRA 1877 ss.8–9, Limitation Act, Illegal Dispossession Act 2005), property transfer (TPA s.54, Registration Act ss.17, 23, mutation), electronic evidence (ETO 2002, QSO Art.164).
+- Completed: width/height on the logo, QR and four review images (CLS). Other images left alone: their CSS has no height, so attributes would distort them.
+- Decision: homepage keeps nine cards and nine panels (standing owner rule). Font trimming skipped: browsers only download faces in use, so no real gain.
+- Checked, no change needed: hours already Sun 11:30 on every page in `main` (the audit used a stale snippet).
+
 ## 2026-11-16 — Review count 475+ → 490+ (Google shows 493, 4.9). All `mla-review-count` spans and the homepage stat updated.
 
 ## 2026-11-16 — Urdu page, secondary phone, spam-signal clean-up (branch `claude/urdu-page-nap-fixes`, awaiting owner merge)

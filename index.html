@@ -1252,7 +1252,7 @@ a,button,[onclick],.pc-card,.top-card,.ptab,.gallery-strip img{cursor:pointer;}
 <header>
 <div class="hdr">
 <a class="logo-wrap" href="/" onclick="mlaGoMain('home',event)">
-<img alt="Mian Law Associates logo" class="logo-img" src="/images/mian-law-associates-logo-128.webp"/>
+<img width="128" height="128" alt="Mian Law Associates logo" class="logo-img" src="/images/mian-law-associates-logo-128.webp"/>
 <div>
 <span class="logo-main">Mian Law Associates</span>
 <span class="logo-sub">Advocates &amp; Legal Consultants — Est. 1997</span>
@@ -2752,7 +2752,7 @@ function toggleFAQ(button) {
       <br>
       <p style="color:rgba(255,255,255,0.5);font-size:0.82rem;margin-bottom:12px;">Or scan with your phone</p>
       <a href="https://g.page/r/CfItjgOqlo-wEBM/review" target="_blank" rel="noopener">
-        <img loading="lazy" decoding="async" alt="QR code to leave a Google review for Mian Law Associates" src="/images/google-review-qr.webp" style="width:140px;height:140px;object-fit:contain;border-radius:8px;background:#fff;padding:8px;">
+        <img width="845" height="1369" loading="lazy" decoding="async" alt="QR code to leave a Google review for Mian Law Associates" src="/images/google-review-qr.webp" style="height:auto;width:140px;height:140px;object-fit:contain;border-radius:8px;background:#fff;padding:8px;">
       </a>
     </div>
 
@@ -2812,10 +2812,10 @@ function toggleFAQ(button) {
     <div style="margin-top:48px;">
       <div class="ey" style="text-align:center;margin-bottom:20px;">client reviews</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:960px;margin:0 auto;">
-        <img alt="Google review of Mian Law Associates, Bahawalpur" src="/images/review-1.webp" loading="lazy" style="width:100%;border:1px solid rgba(201,164,68,.2);border-radius:4px;">
-        <img alt="Google review of Mian Law Associates, Bahawalpur" src="/images/review-2.webp" loading="lazy" style="width:100%;border:1px solid rgba(201,164,68,.2);border-radius:4px;">
-        <img alt="Google review of Mian Law Associates, Bahawalpur" src="/images/review-3.webp" loading="lazy" style="width:100%;border:1px solid rgba(201,164,68,.2);border-radius:4px;">
-        <img alt="Google review of Mian Law Associates, Bahawalpur" src="/images/review-4.webp" loading="lazy" style="width:100%;border:1px solid rgba(201,164,68,.2);border-radius:4px;">
+        <img width="400" height="462" alt="Google review of Mian Law Associates, Bahawalpur" src="/images/review-1.webp" loading="lazy" style="height:auto;width:100%;border:1px solid rgba(201,164,68,.2);border-radius:4px;">
+        <img width="386" height="477" alt="Google review of Mian Law Associates, Bahawalpur" src="/images/review-2.webp" loading="lazy" style="height:auto;width:100%;border:1px solid rgba(201,164,68,.2);border-radius:4px;">
+        <img width="388" height="399" alt="Google review of Mian Law Associates, Bahawalpur" src="/images/review-3.webp" loading="lazy" style="height:auto;width:100%;border:1px solid rgba(201,164,68,.2);border-radius:4px;">
+        <img width="407" height="420" alt="Google review of Mian Law Associates, Bahawalpur" src="/images/review-4.webp" loading="lazy" style="height:auto;width:100%;border:1px solid rgba(201,164,68,.2);border-radius:4px;">
       </div>
     </div>
     </div>
@@ -3095,7 +3095,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "location": "Chamber No. 39, District Courts, Bahawalpur",
       "note": "Real verified reviews from Google Business Profile",
       "source": "Google Business Profile - Mian Law Associates (Real Reviews)",
-      "totalCount": 11,
+      "totalCount": 8,
       "filteredRating": "5-star only",
       "averageRating": 5.0
     },
@@ -3154,27 +3154,6 @@ document.addEventListener('DOMContentLoaded', function() {
         "date": "6 months ago",
         "id": 8,
         "text": "Mian Law Association is TOP-NOTCH! Their lawyers are super knowledgeable, friendly, and always there to help. They truly care about their clients and fight hard to get the best results. Highly recommend!",
-        "rating": 5
-      },
-      {
-        "name": "MAHAR SHAKEEL",
-        "date": "6 months ago",
-        "id": 9,
-        "text": "Sir, I really appreciate the way you guide and support us. Your professionalism and practical knowledge have helped me understand legal matters much better. It's been a great experience learning under your supervision.",
-        "rating": 5
-      },
-      {
-        "name": "Talha Memon",
-        "date": "6 months ago",
-        "id": 10,
-        "text": "A remarkable mentor whose wisdom and passion for law inspire every learner. Your guidance makes complex legal concepts clear and meaningful, and your dedication truly defines excellence in teaching.",
-        "rating": 5
-      },
-      {
-        "name": "Usman Saeed",
-        "date": "6 months ago",
-        "id": 11,
-        "text": "A great teacher with deep knowledge of law and an inspiring teaching style. Always makes complex topics easy to understand. May Allah bless you with more success, knowledge, and happiness.",
         "rating": 5
       }
     ]
@@ -3405,6 +3384,8 @@ function animateCounter(el){
   var target=parseInt(el.getAttribute('data-count'),10);
   var suffix=el.getAttribute('data-suffix')||'';
   if(!target)return;
+  // Keep the real figure for crawlers, AI tools and reduced-motion users (they would otherwise snapshot "0")
+  if(navigator.webdriver||/bot|crawl|spider|slurp|headless|lighthouse|preview/i.test(navigator.userAgent)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
   var start=0,duration=1800,startTime=null;
   function ease(t){return t<.5?2*t*t:-1+(4-2*t)*t;}
   function step(ts){
@@ -3634,7 +3615,7 @@ document.addEventListener('DOMContentLoaded',function(){
           <span class="faq-arrow">→</span>
         </button>
         <div class="faq-accordion-content">
-          <p>A possession suit recovers physical possession of property in civil courts. Proves rightful ownership through valid documents and evidence. Requires expert litigation strategy.</p>
+          <p>A possession suit asks the civil court to restore physical possession of immovable property. Under section 8 of the Specific Relief Act 1877 an owner sues on the strength of title, proved through documents such as the registered deed, mutation and revenue record; the limitation period is generally 12 years under the Limitation Act 1908. Under section 9, a person dispossessed without consent and otherwise than in due course of law may sue within six months of dispossession without proving title, and no appeal lies from that decree. Where property is taken by force or fraud, a complaint may also lie under the Illegal Dispossession Act 2005. General information only, not legal advice.</p>
           <div class="faq-contact-btns">
             <a href="https://wa.me/923333621111" target="_blank" rel="noopener" class="faq-btn-whatsapp"><span>💬</span> WhatsApp</a>
             <a href="tel:+923333621111" class="faq-btn-call"><span>📞</span> Call</a>
@@ -3648,7 +3629,7 @@ document.addEventListener('DOMContentLoaded',function(){
           <span class="faq-arrow">→</span>
         </button>
         <div class="faq-accordion-content">
-          <p>Property transfer requires proper deed drafting, stamp duty payment, and registration with relevant authority. All signatures and witnesses must be verified. Legal compliance ensures validity.</p>
+          <p>A sale of immovable property worth Rs 100 or more can be made only by a registered instrument (Transfer of Property Act 1882, s.54; Registration Act 1908, s.17). In practice: verify the seller's title from the fard and the earlier chain of documents; draft the sale deed; pay the stamp duty and transfer taxes due in Punjab; and present the deed before the Sub-Registrar, normally within four months of execution (Registration Act, s.23), where the seller or an authorised attorney admits execution. The transfer is then entered in the revenue record by mutation (intiqal), which records the transfer but does not by itself create title. See our <a href="/legal-guides/property-transfer-pakistan/">property transfer guide</a>. General information only, not legal advice.</p>
           <div class="faq-contact-btns">
             <a href="https://wa.me/923333621111" target="_blank" rel="noopener" class="faq-btn-whatsapp"><span>💬</span> WhatsApp</a>
             <a href="tel:+923333621111" class="faq-btn-call"><span>📞</span> Call</a>
@@ -3691,7 +3672,7 @@ document.addEventListener('DOMContentLoaded',function(){
           <span class="faq-arrow">→</span>
         </button>
         <div class="faq-accordion-content">
-          <p>Digital evidence (logs, emails, messages, metadata) requires proper chain of custody. Forensic analysis and expert testimony strengthen cases. Tampered evidence is inadmissible.</p>
+          <p>Electronic records can be used as evidence in Pakistan: the Electronic Transactions Ordinance 2002 recognises electronic documents, and Article 164 of the Qanun-e-Shahadat Order 1984 allows the court to admit evidence produced by modern devices or techniques. Admission is not automatic. The party relying on screenshots, chats, call records, emails or videos must show where the material came from and that it has not been altered, for example through the original device or account, service-provider records, a forensic examination report and a clear chain of custody. Material whose authenticity is in doubt may carry little or no weight. Keep the original files and devices unedited. General information only, not legal advice.</p>
           <div class="faq-contact-btns">
             <a href="https://wa.me/923333621111" target="_blank" rel="noopener" class="faq-btn-whatsapp"><span>💬</span> WhatsApp</a>
             <a href="tel:+923333621111" class="faq-btn-call"><span>📞</span> Call</a>
