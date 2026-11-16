@@ -2,6 +2,8 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-16 — Review count 475+ → 490+ (Google shows 493, 4.9). All `mla-review-count` spans and the homepage stat updated.
+
 ## 2026-11-16 — Urdu page, secondary phone, spam-signal clean-up (branch `claude/urdu-page-nap-fixes`, awaiting owner merge)
 Owner-approved in chat on 16 Nov 2026.
 - New `/ur/` Urdu overview page (RTL, Noto Nastaliq Urdu), hreflang pair with `/` (ur, en, x-default); linked from the homepage footer; added to sitemap.xml, llms.txt and the keyword map. Name spelling per owner: میاں عاقل نواز. **New legal text: owner review required before merge.**
