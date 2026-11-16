@@ -2,6 +2,8 @@
 
 Full first-round report: `docs/MLA-SEO-IMPLEMENTATION-REPORT-2026-11-10.md`.
 
+## 2026-11-16 — Urdu /ur/ page + hreflang; secondary phone ContactPoint; meta keywords removed; footer city list → sentence; "Best Lawyer" link text removed; dead `#` back-links fixed (see changelog). Awaiting merge.
+
 ## 2026-11-11 — Homepage blog section internal links (LIVE, `de31e70`)
 - Before: the homepage linked to the guides only from the footer (4 links). After: +11 contextual links from `#blogs` (10 guides + the `/legal-guides/` hub).
 - Stretched-link pattern: one `<a>` per card on the `<h3>`, with `::after` covering the card. One accessible link per card; "Read the guide" is `aria-hidden`.

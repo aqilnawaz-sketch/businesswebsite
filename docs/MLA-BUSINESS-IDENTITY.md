@@ -8,6 +8,8 @@
 | Established | 1997 |
 | Address | Chamber No. 39, District Courts, Kachahery Chowk, Bahawalpur 63100, Punjab, Pakistan |
 | Telephone / WhatsApp | +92 333 362 1111 (`tel:+923333621111`, `https://wa.me/923333621111`) |
+| Secondary phone (owner, 16 Nov 2026) | +92 300 868 1692 (`tel:+923008681692`): shown as "alternate" in the contact section, footer, /contact/, /ur/ and as a second schema ContactPoint. The primary number stays everywhere else (calls, WhatsApp, schema `telephone`). |
+| Urdu name (owner, 16 Nov 2026) | میاں عاقل نواز |
 | Email (as published on site) | aqilnawaz@gmail.com |
 | Website | https://mlabwp.com.pk |
 | Map | https://maps.app.goo.gl/RiEffBUYTa3zJVdw8 · geo 29.3902211, 71.6879469 (taken from the site's existing map embed; owner to confirm) |

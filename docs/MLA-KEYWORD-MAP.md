@@ -7,6 +7,7 @@
 | `/contact/` | contact lawyer Bahawalpur, Chamber No. 39 District Courts Bahawalpur | lawyer phone number Bahawalpur |
 | `/lawyer-bahawalpur/` | lawyer in Bahawalpur | best lawyer in Bahawalpur (redirect target of /best-lawyer-bahawalpur/) |
 | `/advocate-bahawalpur/` | advocate in Bahawalpur | best advocate in Bahawalpur (redirect target of /best-advocate-bahawalpur/) |
+| `/ur/` (Urdu) | وکیل بہاولپور, ایڈووکیٹ بہاولپور, میاں عاقل نواز | wakeel Bahawalpur (Roman Urdu, in text only); hreflang pair of `/` |
 | `/lawyer-near-me-bahawalpur/` | lawyer near me Bahawalpur, advocate near me | |
 | `/civil-lawyer-bahawalpur/` | civil lawyer Bahawalpur | stay order, recovery suit, civil appeal, rent case |
 | `/criminal-lawyer-bahawalpur/` | criminal lawyer Bahawalpur | bail lawyer, pre-arrest bail, FIR lawyer, criminal appeal |
