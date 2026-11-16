@@ -2,6 +2,16 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-16 — Urdu page, secondary phone, spam-signal clean-up (branch `claude/urdu-page-nap-fixes`, awaiting owner merge)
+Owner-approved in chat on 16 Nov 2026.
+- New `/ur/` Urdu overview page (RTL, Noto Nastaliq Urdu), hreflang pair with `/` (ur, en, x-default); linked from the homepage footer; added to sitemap.xml, llms.txt and the keyword map. Name spelling per owner: میاں عاقل نواز. **New legal text: owner review required before merge.**
+- Secondary phone +92 300 868 1692 added as "alternate": homepage contact card, footer Contact list (26 pages), /contact/ card, and a second `ContactPoint` in the LegalService schema (26 pages). Primary number unchanged everywhere else.
+- Removed the meta keywords tag from the homepage (Google ignores it).
+- Footer "Also Serving South Punjab" block (26 pages): the "Lawyer in [city]" list became one plain sentence naming the approved service area (Google spam policy lists city blocks as keyword stuffing).
+- Link text "Best Lawyer (in) Bahawalpur" → "Lawyer in Bahawalpur" (13 links; same target). /best-lawyer-bahawalpur/ and /best-advocate-bahawalpur/ redirects untouched.
+- 9 homepage "← All Practice Areas" links: `href="#"` → `href="/#practice"` (the click behaviour is unchanged).
+- Not changed: titles, H1s, URLs, canonicals, the review count, locked history text, layout.
+
 ## 2026-11-11 — Homepage "Legal Blog" section: cards link to all 10 guides (LIVE)
 Committed directly to `main` as `de31e70` from the GitHub web editor (no pull request). Owner request: "Full redesign of section"; owner decision after it went live: "Keep it live".
 - `#blogs` now shows 10 cards, one per existing guide, each linking to its guide page, plus two tiles: "Browse all legal guides" (`/legal-guides/`) and "Discuss your case" (phone). Before: 6 unlinked mini-articles dated Nov 2024–Apr 2025, whose only buttons were phone links.
