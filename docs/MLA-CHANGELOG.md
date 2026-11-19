@@ -2,6 +2,9 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — Case-search coverage (branch `claude/case-search-coverage`)
+Owner request: be found for lawyer/advocate/wakeel + case type (khula, bail, etc.). Each of the 9 practice pages gets one natural paragraph naming its case types with lawyer/advocate/wakeel wording, a link to the choosing-a-lawyer guide, and an Urdu line linking its Urdu page. Six new Urdu pages (civil, inheritance, service matters, constitutional, cyber crime, NAB) reuse only verified statements already on the English pages; all nine areas now have Urdu pages with hreflang pairs. No "best/top" self-claims.
+
 ## 2026-11-19 — "Choosing a good lawyer" guide, EN + UR (branch `claude/choose-lawyer-guide`)
 Owner request (covers good lawyer / achha wakeel / best lawyer searches without self-praise). New: /legal-guides/choosing-a-lawyer-bahawalpur/ and /ur/achha-wakeel-bahawalpur/ (hreflang pair). Linked from the guides hub, /lawyer-bahawalpur/ and /ur/. Sitemap and llms.txt updated.
 
