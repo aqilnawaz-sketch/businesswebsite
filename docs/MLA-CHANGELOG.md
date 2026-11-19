@@ -2,8 +2,12 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — Readability: muted text colour (branch `claude/mobile-footer-space`)
+Owner approved in chat. `--muted` lightened for contrast on the dark background: homepage #8a7258 → #a08a6e, inner pages #8a8070 → #a39a8a (same hue). Gold, fonts, layout unchanged.
+
 ## 2026-11-19 — Mobile footer space (branch `claude/mobile-footer-space`)
 Owner approved in chat. On screens up to 640px, footer gets 80px bottom padding so its last lines are not hidden behind the floating Call/WhatsApp buttons. Buttons, colours and desktop layout unchanged.
+
 ## 2026-11-19 — Search-term variants (re-done from PR #27, branch `claude/search-variants-v2`)
 Owner approved in chat. Near-me page adds "advocate near me"; choosing-a-lawyer guide adds best advocate, top 10 lawyers, vakeel/vakil and case-specific searches; Urdu achha-wakeel page adds ٹاپ وکیل and case types. No self-claims; "no list can tell you" line kept.
 
