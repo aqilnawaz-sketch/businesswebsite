@@ -2,7 +2,7 @@
 
 Full first-round report: `docs/MLA-SEO-IMPLEMENTATION-REPORT-2026-11-10.md`.
 
-## 2026-11-19 — Audit fixes: firm alternateName + LinkedIn sameAs (30 pages), YouTube/TikTok footer links (40), WhatsApp pre-fill (280), NCCIA wording in PECA descriptions, reviews heading (see changelog). Outstanding for owner: Search Console removals for /diary/ and /desk/; request indexing of https homepage (old http:// snippet still indexed); confirm GitHub Pages "Enforce HTTPS"; mark click_call/click_whatsapp as GA4 key events; PageSpeed mobile measurement. Awaiting merge.
+## 2026-11-19 — Audit fixes: LinkedIn sameAs (30 pages; alternateName unchanged by owner decision), YouTube/TikTok footer links (40), WhatsApp pre-fill (280), NCCIA wording in PECA descriptions, reviews heading (see changelog). Outstanding for owner: Search Console removals for /diary/ and /desk/; request indexing of https homepage (old http:// snippet still indexed); confirm GitHub Pages "Enforce HTTPS"; mark click_call/click_whatsapp as GA4 key events; PageSpeed mobile measurement. Awaiting merge.
 
 ## 2026-11-19 — Batch 1: homepage panels condensed, near-me retired, 3 new + 2 rebuilt guides, +18 FAQs, 3 Urdu pages with hreflang (see changelog). Awaiting merge.
 
