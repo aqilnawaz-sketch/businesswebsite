@@ -242,3 +242,5 @@ Text-only edits (HTML tags byte-identical; no layout, H1, colour, font, logo, co
 - Contact page: visible "Lawyer phone number in Bahawalpur / وکیل کا نمبر" line.
 - /lawyer-bahawalpur/: nearby towns line (Ahmadpur East, Lodhran, Hasilpur, Yazman, Khairpur Tamewali, Rahim Yar Khan, Bahawalnagar).
 - Same neutral style as PR #28/#29; no self-praise; visible text only.
+- Also in PR #30: "Common case types" line (EN + UR) on all 9 practice pages (e.g. 302/324/365-A/420/489-F PPC, CNSA, Arms Ordinance, ATA; khula, nafaqa, haq mehr, jahez, custody; qabza, intiqal, haq shufa, hiba; succession certificate, wasiyat; PEEDA 2006; Article 199 writs; PECA s.16/20/21; NAO 1999, PCA 1947).
+- Logo (owner decision 19 Nov 2026): plain version without "Experience 27+ Years" / "Results that Matter" band. New images/mian-law-associates-logo-plain.(webp|jpg); schema "logo" now points to it; header logo-128 regenerated from it. Original file kept unchanged.
