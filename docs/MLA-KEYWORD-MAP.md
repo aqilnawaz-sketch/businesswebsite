@@ -8,7 +8,7 @@
 | `/lawyer-bahawalpur/` | lawyer in Bahawalpur | best lawyer in Bahawalpur (redirect target of /best-lawyer-bahawalpur/) |
 | `/advocate-bahawalpur/` | advocate in Bahawalpur | best advocate in Bahawalpur (redirect target of /best-advocate-bahawalpur/) |
 | `/ur/` (Urdu) | وکیل بہاولپور, ایڈووکیٹ بہاولپور, میاں عاقل نواز | wakeel Bahawalpur (Roman Urdu, in text only); hreflang pair of `/` |
-| `/lawyer-near-me-bahawalpur/` | retired 19 Nov 2026 → redirects to `/lawyer-bahawalpur/` ("near me" searches are won by the Google Business Profile) | |
+| `/lawyer-near-me-bahawalpur/` | lawyer near me Bahawalpur, wakeel near me, میرے قریب وکیل | directions/visit page (rewritten 19 Nov 2026, owner kept it) |
 | `/civil-lawyer-bahawalpur/` | civil lawyer Bahawalpur | stay order, recovery suit, civil appeal, rent case |
 | `/criminal-lawyer-bahawalpur/` | criminal lawyer Bahawalpur | bail lawyer, pre-arrest bail, FIR lawyer, criminal appeal |
 | `/family-lawyer-bahawalpur/` | family lawyer Bahawalpur | khula lawyer, divorce, custody, maintenance, haq mehr, court marriage |
@@ -30,3 +30,23 @@ If Search Console shows two pages ranking for one query, strengthen the owner pa
 | `/legal-guides/after-fir-registered-pakistan/` | what to do after FIR, FIR registered against me | criminal |
 | `/legal-guides/maintenance-suit-pakistan/` | maintenance suit, nafaqa case, interim maintenance 17-A | family |
 | `/legal-guides/succession-certificate-pakistan/` | succession certificate NADRA, succession certificate court | inheritance |
+
+## Search-term universe (owner request, 19 Nov 2026)
+Each term has ONE home page. Terms appear naturally in headings/text; never as a keyword list on a page (keyword stuffing is a Google spam violation).
+| Terms (English · Roman Urdu · Urdu) | Home page |
+|---|---|
+| lawyer in Bahawalpur, law firm Bahawalpur, attorney Bahawalpur, legal advisor Bahawalpur · wakeel/vakeel Bahawalpur, achha wakeel · وکیل بہاولپور، بہاولپور میں وکیل، قانونی مشیر | `/lawyer-bahawalpur/` (Urdu: `/ur/`) |
+| advocate in Bahawalpur, advocate high court Bahawalpur, High Court lawyer Bahawalpur · advocate sahib · ایڈووکیٹ بہاولپور، ہائی کورٹ وکیل | `/advocate-bahawalpur/` |
+| lawyer near me, advocate near me, lawyer Kachahery Chowk / District Courts Bahawalpur · wakeel near me · میرے قریب وکیل | `/lawyer-near-me-bahawalpur/` (+ GBP) |
+| criminal lawyer, bail lawyer, FIR lawyer · zamanat ka wakeel, fojdari wakeel · فوجداری وکیل، ضمانت کا وکیل | `/criminal-lawyer-bahawalpur/`, `/ur/criminal-lawyer-bahawalpur/` |
+| family lawyer, khula lawyer, divorce lawyer, custody lawyer, court marriage lawyer · khula/talaq ka wakeel · فیملی وکیل، خلع کا وکیل، طلاق کا وکیل | `/family-lawyer-bahawalpur/`, `/ur/family-lawyer-bahawalpur/` |
+| property lawyer, land dispute lawyer, mutation lawyer · zameen ka wakeel · جائیداد کا وکیل، زمین کا وکیل | `/property-lawyer-bahawalpur/`, `/ur/property-lawyer-bahawalpur/` |
+| inheritance lawyer, succession certificate lawyer · virasat ka wakeel · وراثت کا وکیل | `/inheritance-lawyer-bahawalpur/` |
+| civil lawyer, stay order lawyer, recovery suit lawyer · دیوانی مقدمات کا وکیل | `/civil-lawyer-bahawalpur/` |
+| writ petition lawyer, constitutional lawyer · رٹ پٹیشن وکیل | `/constitutional-lawyer-bahawalpur/` |
+| service matters lawyer, service tribunal lawyer · سروس کیس وکیل | `/service-matters-lawyer-bahawalpur/` |
+| cyber crime lawyer, FIA lawyer, PECA lawyer · سائبر کرائم وکیل | `/cyber-crime-lawyer-bahawalpur/` |
+| NAB lawyer, anti-corruption lawyer, cheque bounce (489-F) lawyer · نیب وکیل | `/nab-lawyer-bahawalpur/` |
+| Mian Aqil Nawaz, Aqil Nawaz advocate, Mian Law Associates, MLA Bahawalpur · میاں عاقل نواز | `/`, `/about/` |
+| "best lawyer in Bahawalpur" | No page uses "best" (PBC Rule 135; Google devalues self-ranking). Won through reviews, GBP and the pages above. |
+| lawyer in Yazman / Ahmedpur East / Hasilpur / Rahim Yar Khan etc. | Mentioned as areas served only; no separate town pages (doorway-page risk). |
