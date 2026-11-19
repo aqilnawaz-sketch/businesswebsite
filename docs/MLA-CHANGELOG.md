@@ -2,6 +2,18 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — Content & structure batch 1 (branch `claude/content-structure-batch1`, awaiting owner merge; includes PR #20)
+Owner approved in chat on 19 Nov 2026 (MCQ answers). Design and theme unchanged.
+- Homepage: the nine practice panels keep their titles, intros, service titles and links; the 70 duplicated legal descriptions and 9 keyword lines were removed (panel text 2,655 → 1,265 words) so each practice page can rank for its own topic.
+- `/lawyer-near-me-bahawalpur/` retired → redirect stub to `/lawyer-bahawalpur/`; removed from sitemap; footer "Lawyer Near Me" links now point to Inheritance.
+- `/lawyer-bahawalpur/` (334 → 713 words) and `/advocate-bahawalpur/` now link all nine practice areas and describe courts, location, hours and Urdu option. Locked first paragraphs unchanged.
+- Practice pages: two new verified FAQs each (4 → 6), visible text and FAQPage schema identical.
+- New guides (16-point template): after-fir-registered-pakistan, maintenance-suit-pakistan, succession-certificate-pakistan. Rebuilt: fir-cancellation, property-dispute.
+- Urdu pages: /ur/criminal-lawyer-bahawalpur/, /ur/family-lawyer-bahawalpur/, /ur/property-lawyer-bahawalpur/ with hreflang pairs to the English pages.
+- Sitemap, llms.txt and keyword map updated. `scripts/seo_check.py`: 0 issues. Desktop 1366 px and mobile 390 px rendered; no sideways scroll.
+- Sources checked 19 Nov 2026 for new legal statements: Limitation Act Arts 91, 120, 164; CrPC ss.154, 167, 173, 496–498; Family Courts Act 1964 ss.13(3), 14(3), 17-A; Punjab Land Revenue Act 1967 s.172; PECA s.16; NAB Rs 500m (SC, Sept 2024); NADRA SFUs nationwide (Aug 2025).
+- Flag for owner: /advocate-bahawalpur/ previously said "WhatsApp 24 hours" (removed in the rewrite of that line); confirm if it should return.
+
 ## 2026-11-19 — Enquiry tracking, FAQ schema, claims clean-up (branch `claude/tracking-faq-schema-claims`, awaiting owner merge)
 Owner request in chat on 19 Nov 2026 (audit items 1 and 2). No GBP or social changes.
 - Added `/mla-track.js` to all 27 content pages (not redirect stubs, 404 or promo-video). Counts Call, WhatsApp, Directions, Email and Write-a-review clicks as GA4 events (`click_call`, `click_whatsapp`, `click_directions`, `click_email`, `click_review`). **Inactive until the owner's GA4 Measurement ID is entered in the file.**
