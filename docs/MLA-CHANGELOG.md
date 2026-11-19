@@ -2,6 +2,17 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — Enquiry tracking, FAQ schema, claims clean-up (branch `claude/tracking-faq-schema-claims`, awaiting owner merge)
+Owner request in chat on 19 Nov 2026 (audit items 1 and 2). No GBP or social changes.
+- Added `/mla-track.js` to all 27 content pages (not redirect stubs, 404 or promo-video). Counts Call, WhatsApp, Directions, Email and Write-a-review clicks as GA4 events (`click_call`, `click_whatsapp`, `click_directions`, `click_email`, `click_review`). **Inactive until the owner's GA4 Measurement ID is entered in the file.**
+- Homepage FAQPage schema rebuilt from the 12 visible FAQ answers (the old 8 schema questions were not on the page, a structured-data guideline breach). WebPage dateModified → 2026-11-19.
+- Homepage HTML fix: the FAQ section sat after `</body>`; `</body>` moved to just before `</html>`.
+- Claims removed (PBC Rule 135 / house rules): "widely recognised as a reliable, result-driven law firm", "Expert criminal defence", "Specialist defence", "specialist intervention … expert defence"; "expert" removed from six legal-guide CTAs.
+- About page: three unverified testimonial cards (Muhammad Asif, Tariq Mehmood, Sana Bibi; two stated outcomes/timing such as "bail granted the same day") replaced by three reviews from `data/reviews.json`. Blockquote "TOP-NOTCH … fight hard to get the best results" replaced. Generic "Experience, Expertise, Authoritativeness, and Trustworthiness" sentence replaced with a plain lead-in.
+- Homepage carousel and `data/reviews.json`: removed Hammad Ali ("achieving the best outcomes") and Taiba Batool ("TOP-NOTCH … best results"); they stay on Google.
+- NOT changed (locked content, owner decision needed): homepage "a proven legal track record" (Established Since 1997 item); /advocate-bahawalpur/ "a proven track record matter above all"; /about/ "outcome-focused … decisive and legally sustainable results".
+- `scripts/seo_check.py`: 0 issues.
+
 ## 2026-11-16 — Sunday hours added where missing (branch `claude/sunday-hours-2026-11-16`, awaiting owner merge)
 Owner request in chat on 16 Nov 2026.
 - /contact/: meta, OG and Twitter descriptions (and the matching schema text) now read "Mon–Sat 7:30 AM–11:30 PM, Sun 11:30 AM–11:30 PM" (they gave Mon–Sat only).

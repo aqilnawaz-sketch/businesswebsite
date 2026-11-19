@@ -2,6 +2,8 @@
 
 Full first-round report: `docs/MLA-SEO-IMPLEMENTATION-REPORT-2026-11-10.md`.
 
+## 2026-11-19 — GA4 click tracking (`/mla-track.js`, needs Measurement ID); homepage FAQPage schema now mirrors the visible FAQ; `</body>` placement fixed (see changelog). Awaiting merge.
+
 ## 2026-11-16 — Urdu /ur/ page + hreflang; secondary phone ContactPoint; meta keywords removed; footer city list → sentence; "Best Lawyer" link text removed; dead `#` back-links fixed (see changelog). Awaiting merge.
 
 ## 2026-11-11 — Homepage blog section internal links (LIVE, `de31e70`)
