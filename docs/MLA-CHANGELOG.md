@@ -11,6 +11,7 @@ Owner request in chat on 19 Nov 2026 (audit items 1 and 2). No GBP or social cha
 - About page: three unverified testimonial cards (Muhammad Asif, Tariq Mehmood, Sana Bibi; two stated outcomes/timing such as "bail granted the same day") replaced by three reviews from `data/reviews.json`. Blockquote "TOP-NOTCH … fight hard to get the best results" replaced. Generic "Experience, Expertise, Authoritativeness, and Trustworthiness" sentence replaced with a plain lead-in.
 - Homepage carousel and `data/reviews.json`: removed Hammad Ali ("achieving the best outcomes") and Taiba Batool ("TOP-NOTCH … best results"); they stay on Google.
 - NOT changed (locked content, owner decision needed): homepage "a proven legal track record" (Established Since 1997 item); /advocate-bahawalpur/ "a proven track record matter above all"; /about/ "outcome-focused … decisive and legally sustainable results".
+- Review count 490+ → **500+** everywhere (Google Maps: 4.9 from 500 reviews, checked 19 Nov 2026; owner request). `seo_check.py` now expects 500.
 - `scripts/seo_check.py`: 0 issues.
 
 ## 2026-11-16 — Sunday hours added where missing (branch `claude/sunday-hours-2026-11-16`, awaiting owner merge)
