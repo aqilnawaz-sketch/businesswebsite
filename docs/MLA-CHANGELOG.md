@@ -2,6 +2,9 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — Search-term variants (re-done from PR #27, branch `claude/search-variants-v2`)
+Owner approved in chat. Near-me page adds "advocate near me"; choosing-a-lawyer guide adds best advocate, top 10 lawyers, vakeel/vakil and case-specific searches; Urdu achha-wakeel page adds ٹاپ وکیل and case types. No self-claims; "no list can tell you" line kept.
+
 ## 2026-11-19 — WhatsApp availability wording (branch `claude/whatsapp-office-hours`)
 Owner instruction: WhatsApp is answered in office hours; after hours clients leave a message. Replaced "WhatsApp 24 hours" on /contact/ (3 places) /about/ (1) and the 11 Urdu pages (sidebar "واٹس ایپ (24 گھنٹے)" → office hours / leave a message). Reason: Google AI Overview was describing the firm as "online services open 24 hours".
 
