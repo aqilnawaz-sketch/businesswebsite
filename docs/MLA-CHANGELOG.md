@@ -3,7 +3,7 @@
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
 ## 2026-11-19 — WhatsApp availability wording (branch `claude/whatsapp-office-hours`)
-Owner instruction: WhatsApp is answered in office hours; after hours clients leave a message. Replaced "WhatsApp 24 hours" on /contact/ (3 places) and /about/ (1). Reason: Google AI Overview was describing the firm as "online services open 24 hours".
+Owner instruction: WhatsApp is answered in office hours; after hours clients leave a message. Replaced "WhatsApp 24 hours" on /contact/ (3 places) /about/ (1) and the 11 Urdu pages (sidebar "واٹس ایپ (24 گھنٹے)" → office hours / leave a message). Reason: Google AI Overview was describing the firm as "online services open 24 hours".
 
 ## 2026-11-19 — Audit fixes (branch `claude/audit-fixes-2026-11-19`)
 Owner instruction in chat: fix what the 19 Nov audit found, but leave the search-term paragraphs and anything about Bar Council wording untouched. Design unchanged.
