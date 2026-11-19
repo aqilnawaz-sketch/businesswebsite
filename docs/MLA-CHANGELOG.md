@@ -234,3 +234,13 @@ Text-only edits (HTML tags byte-identical; no layout, H1, colour, font, logo, co
 - Covers: best/top/top 10/top 3 lawyer & advocate in Bahawalpur, good lawyer, achha/behtareen wakeel, and per-area Roman Urdu (khula ka wakeel, talaq ka wakeel, zamanat ka wakeel, faujdari wakeel, zameen/property ka wakeel, virasat ka wakeel, writ ka wakeel, PECA/NAB ka wakeel) plus Urdu equivalents.
 - Compliance (PBC Rule 135): wording describes what people search for; every block says no page can tell who is best for a case and links to the choosing guide. No self-praise. Visible text only (no hidden keywords).
 - Locked paragraphs untouched; design unchanged; seo_check 0 issues.
+
+## 2026-11-19 — more search terms (PR #30)
+- Criminal (EN/UR): cheque bounce (489-F PPC), murder/qatl (302 PPC), narcotics (CNSA 1997), anti-terrorism (ATC).
+- Family (EN/UR): court marriage, jahez (dowry articles), haq mehr.
+- Hubs: legal advisor / legal adviser / قانونی مشیر, attorney, vakil / wakil, lawyer phone number.
+- Contact page: visible "Lawyer phone number in Bahawalpur / وکیل کا نمبر" line.
+- /lawyer-bahawalpur/: nearby towns line (Ahmadpur East, Lodhran, Hasilpur, Yazman, Khairpur Tamewali, Rahim Yar Khan, Bahawalnagar).
+- Same neutral style as PR #28/#29; no self-praise; visible text only.
+- Also in PR #30: "Common case types" line (EN + UR) on all 9 practice pages (e.g. 302/324/365-A/420/489-F PPC, CNSA, Arms Ordinance, ATA; khula, nafaqa, haq mehr, jahez, custody; qabza, intiqal, haq shufa, hiba; succession certificate, wasiyat; PEEDA 2006; Article 199 writs; PECA s.16/20/21; NAO 1999, PCA 1947).
+- Logo (owner decision 19 Nov 2026): plain version without "Experience 27+ Years" / "Results that Matter" band. New images/mian-law-associates-logo-plain.(webp|jpg); schema "logo" now points to it; header logo-128 regenerated from it. Original file kept unchanged.
