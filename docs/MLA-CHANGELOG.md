@@ -2,6 +2,9 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — Homepage mobile header buttons (branch `claude/home-mobile-header-ctas`)
+Owner approved in chat. Phones only (≤640px): a Call Now + WhatsApp row under the homepage header, styled like the inner pages' header buttons. Desktop unchanged; menu button unchanged.
+
 ## 2026-11-19 — Old logo restored + smaller mobile headline (branch `claude/headline-and-old-logo`)
 Owner request in chat: restore the logo used before today (header `mian-law-associates-logo-128.webp` from before 202ed82; schema `logo` back to `mian-law-associates-logo.webp`). The plain logo files stay in /images for directory listings. Homepage H1 on phones (≤640px): 11vw → 8vw (text unchanged).
 
