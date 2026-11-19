@@ -8,7 +8,7 @@
 | `/lawyer-bahawalpur/` | lawyer in Bahawalpur | best lawyer in Bahawalpur (redirect target of /best-lawyer-bahawalpur/) |
 | `/advocate-bahawalpur/` | advocate in Bahawalpur | best advocate in Bahawalpur (redirect target of /best-advocate-bahawalpur/) |
 | `/ur/` (Urdu) | وکیل بہاولپور, ایڈووکیٹ بہاولپور, میاں عاقل نواز | wakeel Bahawalpur (Roman Urdu, in text only); hreflang pair of `/` |
-| `/lawyer-near-me-bahawalpur/` | lawyer near me Bahawalpur, advocate near me | |
+| `/lawyer-near-me-bahawalpur/` | retired 19 Nov 2026 → redirects to `/lawyer-bahawalpur/` ("near me" searches are won by the Google Business Profile) | |
 | `/civil-lawyer-bahawalpur/` | civil lawyer Bahawalpur | stay order, recovery suit, civil appeal, rent case |
 | `/criminal-lawyer-bahawalpur/` | criminal lawyer Bahawalpur | bail lawyer, pre-arrest bail, FIR lawyer, criminal appeal |
 | `/family-lawyer-bahawalpur/` | family lawyer Bahawalpur | khula lawyer, divorce, custody, maintenance, haq mehr, court marriage |
