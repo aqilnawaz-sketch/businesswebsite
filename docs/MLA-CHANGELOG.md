@@ -234,3 +234,11 @@ Text-only edits (HTML tags byte-identical; no layout, H1, colour, font, logo, co
 - Covers: best/top/top 10/top 3 lawyer & advocate in Bahawalpur, good lawyer, achha/behtareen wakeel, and per-area Roman Urdu (khula ka wakeel, talaq ka wakeel, zamanat ka wakeel, faujdari wakeel, zameen/property ka wakeel, virasat ka wakeel, writ ka wakeel, PECA/NAB ka wakeel) plus Urdu equivalents.
 - Compliance (PBC Rule 135): wording describes what people search for; every block says no page can tell who is best for a case and links to the choosing guide. No self-praise. Visible text only (no hidden keywords).
 - Locked paragraphs untouched; design unchanged; seo_check 0 issues.
+
+## 2026-11-19 — more search terms (PR #30)
+- Criminal (EN/UR): cheque bounce (489-F PPC), murder/qatl (302 PPC), narcotics (CNSA 1997), anti-terrorism (ATC).
+- Family (EN/UR): court marriage, jahez (dowry articles), haq mehr.
+- Hubs: legal advisor / legal adviser / قانونی مشیر, attorney, vakil / wakil, lawyer phone number.
+- Contact page: visible "Lawyer phone number in Bahawalpur / وکیل کا نمبر" line.
+- /lawyer-bahawalpur/: nearby towns line (Ahmadpur East, Lodhran, Hasilpur, Yazman, Khairpur Tamewali, Rahim Yar Khan, Bahawalnagar).
+- Same neutral style as PR #28/#29; no self-praise; visible text only.
