@@ -2,6 +2,9 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — Old logo restored + smaller mobile headline (branch `claude/headline-and-old-logo`)
+Owner request in chat: restore the logo used before today (header `mian-law-associates-logo-128.webp` from before 202ed82; schema `logo` back to `mian-law-associates-logo.webp`). The plain logo files stay in /images for directory listings. Homepage H1 on phones (≤640px): 11vw → 8vw (text unchanged).
+
 ## 2026-11-19 — Mobile hero portrait (branch `claude/mobile-hero-portrait`)
 Owner approved in chat. Homepage only, screens up to 960px: the existing portrait (mian-aqil-nawaz-advocate-high-court-portrait.webp) shows in a 120px round gold-bordered frame above the H1, where the desktop side photo is hidden. Desktop unchanged; no new image.
 
