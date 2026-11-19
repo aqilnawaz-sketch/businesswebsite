@@ -2,6 +2,9 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — "Choosing a good lawyer" guide, EN + UR (branch `claude/choose-lawyer-guide`)
+Owner request (covers good lawyer / achha wakeel / best lawyer searches without self-praise). New: /legal-guides/choosing-a-lawyer-bahawalpur/ and /ur/achha-wakeel-bahawalpur/ (hreflang pair). Linked from the guides hub, /lawyer-bahawalpur/ and /ur/. Sitemap and llms.txt updated.
+
 ## 2026-11-19 — GA4 tracking switched on (branch `claude/ga4-activate`)
 Owner request in chat. GA4 property "mian law associates" (Pakistan time); web stream mlabwp.com.pk created 19 Nov 2026; Measurement ID G-8V11PZG188 set in `/mla-track.js`. Events: click_call, click_whatsapp, click_directions, click_email, click_review. In GA4, mark click_call and click_whatsapp as key events (conversions).
 

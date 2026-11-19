@@ -26,6 +26,7 @@ Website content is general legal information about Pakistani law, not legal advi
 
 ## Legal guides
 - [All legal guides](https://mlabwp.com.pk/legal-guides/)
+- [How to choose a good lawyer in Bahawalpur](https://mlabwp.com.pk/legal-guides/choosing-a-lawyer-bahawalpur/)
 - [How bail works in Pakistan](https://mlabwp.com.pk/legal-guides/bail-in-pakistan/)
 - [FIR cancellation in Pakistan](https://mlabwp.com.pk/legal-guides/fir-cancellation/)
 - [What to do after an FIR is registered](https://mlabwp.com.pk/legal-guides/after-fir-registered-pakistan/)
@@ -44,3 +45,4 @@ Website content is general legal information about Pakistani law, not legal advi
 - [بہاولپور میں فوجداری مقدمات اور ضمانت](https://mlabwp.com.pk/ur/criminal-lawyer-bahawalpur/)
 - [بہاولپور میں فیملی مقدمات اور خلع](https://mlabwp.com.pk/ur/family-lawyer-bahawalpur/)
 - [بہاولپور میں جائیداد اور ریونیو کے مقدمات](https://mlabwp.com.pk/ur/property-lawyer-bahawalpur/)
+- [بہاولپور میں اچھا وکیل کیسے تلاش کریں](https://mlabwp.com.pk/ur/achha-wakeel-bahawalpur/)
