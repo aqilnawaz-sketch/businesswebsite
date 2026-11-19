@@ -3,7 +3,7 @@
    No personal data is sent: only the type of click, the page, and the page section.
    To switch on: put the GA4 Measurement ID (looks like G-XXXXXXXXXX) between the quotes below. */
 (function () {
-  var GA4_ID = '';
+  var GA4_ID = 'G-8V11PZG188';
   if (!GA4_ID) return;
 
   window.dataLayer = window.dataLayer || [];

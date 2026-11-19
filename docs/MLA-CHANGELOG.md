@@ -2,6 +2,9 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — GA4 tracking switched on (branch `claude/ga4-activate`)
+Owner request in chat. GA4 property "mian law associates" (Pakistan time); web stream mlabwp.com.pk created 19 Nov 2026; Measurement ID G-8V11PZG188 set in `/mla-track.js`. Events: click_call, click_whatsapp, click_directions, click_email, click_review. In GA4, mark click_call and click_whatsapp as key events (conversions).
+
 ## 2026-11-19 — Content & structure batch 1 (branch `claude/content-structure-batch1`, awaiting owner merge; includes PR #20)
 Owner approved in chat on 19 Nov 2026 (MCQ answers). Design and theme unchanged.
 - Homepage: the nine practice panels keep their titles, intros, service titles and links; the 70 duplicated legal descriptions and 9 keyword lines were removed (panel text 2,655 → 1,265 words) so each practice page can rank for its own topic.
