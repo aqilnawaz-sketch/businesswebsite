@@ -228,3 +228,5 @@ Text-only edits (HTML tags byte-identical; no layout, H1, colour, font, logo, co
 
 ## 2026-11-10 — Promo video
 - `promo-video/`: 22-second HyperFrames promo (rendered MP4 included). Disallowed in robots.txt.
+
+- 2026-11-19: Search-term variants added (no self-praise claims): choosing guide now names best/top 10/good advocate searches, vakeel/vakil spellings and case-specific searches; Urdu achha-wakeel page adds ٹاپ وکیل and case types; near-me page adds 'advocate near me'.
