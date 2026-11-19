@@ -2,6 +2,9 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — Sharper header logo on phones (same old design)
+Owner approved in chat. Added 256px and 384px versions of the old logo (from images/mian-law-associates-logo.webp) and a srcset on every header logo, so high-density phone screens get a sharp image. Design unchanged.
+
 ## 2026-11-19 — Homepage mobile header buttons (branch `claude/home-mobile-header-ctas`)
 Owner approved in chat. Phones only (≤640px): a Call Now + WhatsApp row under the homepage header, styled like the inner pages' header buttons. Desktop unchanged; menu button unchanged.
 
