@@ -2,6 +2,11 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — After-hours urgent call line
+- Owner confirmed (19 Nov 2026) the main number is answered after office hours for urgent matters.
+- Added "Urgent matters after office hours (for example, an arrest): call +92 333 362 1111" to the contact page Office Hours box, and the Urdu equivalent to the sidebar of 11 Urdu pages.
+- Deliberately NOT "24 hours"/"24/7": schema openingHours and GBP hours unchanged (Mon–Sat 07:30–23:30, Sun 11:30–23:30) to keep hours consistent; no timing promise.
+
 ## 2026-11-19 — Faster mobile portrait
 Owner approved in chat. The phone-only hero portrait now loads 240/360px square crops (same photo) instead of the full-size image, and the desktop side photo (hidden on phones but still downloaded) now serves the same 240px file on screens ≤960px via <picture>. Fixes PageSpeed "improve image delivery" (mobile LCP 4.8 s).
 
