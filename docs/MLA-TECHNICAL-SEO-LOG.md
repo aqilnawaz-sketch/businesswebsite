@@ -82,3 +82,5 @@ best-advocate → advocate · advocate-high-court → about (all `-bahawalpur/`)
 7. Homepage (221 KB) still carries the full text of all practice panels; consider trimming them to summaries linking to the practice pages.
 8. Two legal guides (bail, civil suit) render text edge-to-edge on desktop (pre-existing layout bug, left as is under the design freeze; a 28 px side padding would fix it — owner to approve).
 9. `/diary/` stays in git history (sample data only). If it ever held real data, purging history requires a force-push (owner approval).
+
+- 2026-11-19: After-hours urgent call line added (contact + 11 Urdu sidebars). Decision: no '24 hours' wording; schema/GBP hours unchanged.
