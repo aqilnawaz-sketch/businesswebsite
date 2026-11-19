@@ -5,7 +5,7 @@ Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Comp
 ## 2026-11-19 — Content & structure batch 1 (branch `claude/content-structure-batch1`, awaiting owner merge; includes PR #20)
 Owner approved in chat on 19 Nov 2026 (MCQ answers). Design and theme unchanged.
 - Homepage: the nine practice panels keep their titles, intros, service titles and links; the 70 duplicated legal descriptions and 9 keyword lines were removed (panel text 2,655 → 1,265 words) so each practice page can rank for its own topic.
-- `/lawyer-near-me-bahawalpur/` retired → redirect stub to `/lawyer-bahawalpur/`; removed from sitemap; footer "Lawyer Near Me" links now point to Inheritance.
+- `/lawyer-near-me-bahawalpur/` kept at the owner's request and rewritten as a directions/visit page (how to reach the chambers, hours, courts nearby, what to bring, all nine areas, Urdu paragraph). Removed "WhatsApp 24 hours", "same-day consultation" and "experienced, and trusted". Locked 1997/reviews line unchanged. Footer link now points to Inheritance; the lawyer page links to it.
 - `/lawyer-bahawalpur/` (334 → 713 words) and `/advocate-bahawalpur/` now link all nine practice areas and describe courts, location, hours and Urdu option. Locked first paragraphs unchanged.
 - Practice pages: two new verified FAQs each (4 → 6), visible text and FAQPage schema identical.
 - New guides (16-point template): after-fir-registered-pakistan, maintenance-suit-pakistan, succession-certificate-pakistan. Rebuilt: fir-cancellation, property-dispute.
