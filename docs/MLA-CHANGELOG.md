@@ -12,6 +12,7 @@ Owner approved in chat on 19 Nov 2026 (MCQ answers). Design and theme unchanged.
 - Urdu pages: /ur/criminal-lawyer-bahawalpur/, /ur/family-lawyer-bahawalpur/, /ur/property-lawyer-bahawalpur/ with hreflang pairs to the English pages.
 - Sitemap, llms.txt and keyword map updated. `scripts/seo_check.py`: 0 issues. Desktop 1366 px and mobile 390 px rendered; no sideways scroll.
 - Sources checked 19 Nov 2026 for new legal statements: Limitation Act Arts 91, 120, 164; CrPC ss.154, 167, 173, 496–498; Family Courts Act 1964 ss.13(3), 14(3), 17-A; Punjab Land Revenue Act 1967 s.172; PECA s.16; NAB Rs 500m (SC, Sept 2024); NADRA SFUs nationwide (Aug 2025).
+- Review pass (19 Nov 2026): corrected the service-matters writ FAQ (writ generally needs statutory service rules; non-statutory = master and servant), removed duplicated NADRA wording from the inheritance FAQ, added the section 14 appeal exception to the maintenance guide, clarified the federal 2020 / Punjab 2021 Acts in the succession guide, fixed two Urdu statute names, and changed /contact/ "six days a week" to "seven days a week" (Sunday hours exist).
 - Flag for owner: /advocate-bahawalpur/ previously said "WhatsApp 24 hours" (removed in the rewrite of that line); confirm if it should return.
 
 ## 2026-11-19 — Enquiry tracking, FAQ schema, claims clean-up (branch `claude/tracking-faq-schema-claims`, awaiting owner merge)
