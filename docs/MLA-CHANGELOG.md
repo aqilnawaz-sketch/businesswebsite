@@ -2,6 +2,16 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — Audit fixes (branch `claude/audit-fixes-2026-11-19`)
+Owner instruction in chat: fix what the 19 Nov audit found, but leave the search-term paragraphs and anything about Bar Council wording untouched. Design unchanged.
+- Schema (30 pages): LegalService `alternateName` is now ["Mian Law Associates Bahawalpur", "MLA Bahawalpur"] to separate the firm from same-name firms in Lahore/Peshawar; LinkedIn added to the organisation `sameAs`.
+- Footer (40 pages): YouTube and TikTok links added next to LinkedIn, same style, where missing.
+- WhatsApp (280 links): pre-filled first message (English pages: "Assalam o Alaikum, I would like legal advice about: "; Urdu pages: Urdu equivalent). Tracking regex still matches.
+- PECA guide and guides hub: description "FIA process" → "the NCCIA inquiry".
+- Homepage reviews heading: "Real Reviews from Google" → "Selected Reviews from Google" (the widget shows a hand-picked set).
+- Not changed (owner decision or standing rule): search-term paragraphs; homepage practice panels (required by CLAUDE.md); locked history text; CSS consolidation (deferred: design-freeze risk).
+seo_check: 0 issues.
+
 ## 2026-11-19 — Case-search coverage (branch `claude/case-search-coverage`)
 Owner request: be found for lawyer/advocate/wakeel + case type (khula, bail, etc.). Each of the 9 practice pages gets one natural paragraph naming its case types with lawyer/advocate/wakeel wording, a link to the choosing-a-lawyer guide, and an Urdu line linking its Urdu page. Six new Urdu pages (civil, inheritance, service matters, constitutional, cyber crime, NAB) reuse only verified statements already on the English pages; all nine areas now have Urdu pages with hreflang pairs. No "best/top" self-claims.
 
