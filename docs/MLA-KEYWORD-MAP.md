@@ -22,3 +22,11 @@
 
 Rules: use keywords naturally (no stuffing). The homepage may mention every area but should link to the practice page rather than compete with it.
 If Search Console shows two pages ranking for one query, strengthen the owner page and point the other page's anchor text at it.
+
+
+## Added 19 Nov 2026
+| Page | Owns | Notes |
+|---|---|---|
+| `/legal-guides/after-fir-registered-pakistan/` | what to do after FIR, FIR registered against me | criminal |
+| `/legal-guides/maintenance-suit-pakistan/` | maintenance suit, nafaqa case, interim maintenance 17-A | family |
+| `/legal-guides/succession-certificate-pakistan/` | succession certificate NADRA, succession certificate court | inheritance |
