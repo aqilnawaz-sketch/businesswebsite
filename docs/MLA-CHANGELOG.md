@@ -2,6 +2,9 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — Faster mobile portrait
+Owner approved in chat. The phone-only hero portrait now loads 240/360px square crops (same photo) instead of the full-size image, and the desktop side photo (hidden on phones but still downloaded) now serves the same 240px file on screens ≤960px via <picture>. Fixes PageSpeed "improve image delivery" (mobile LCP 4.8 s).
+
 ## 2026-11-19 — Sharper header logo on phones (same old design)
 Owner approved in chat. Added 256px and 384px versions of the old logo (from images/mian-law-associates-logo.webp) and a srcset on every header logo, so high-density phone screens get a sharp image. Design unchanged.
 
