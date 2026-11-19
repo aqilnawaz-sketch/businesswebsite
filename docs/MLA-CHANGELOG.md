@@ -228,3 +228,9 @@ Text-only edits (HTML tags byte-identical; no layout, H1, colour, font, logo, co
 
 ## 2026-11-10 — Promo video
 - `promo-video/`: 22-second HyperFrames promo (rendered MP4 included). Disallowed in robots.txt.
+
+## 2026-11-19 — "best / top / behtareen" search wording (PR #27)
+- Added visible, neutral search-term wording to all 9 English practice pages, all 9 Urdu practice pages, /lawyer-bahawalpur/ and /advocate-bahawalpur/ (20 pages).
+- Covers: best/top/top 10/top 3 lawyer & advocate in Bahawalpur, good lawyer, achha/behtareen wakeel, and per-area Roman Urdu (khula ka wakeel, talaq ka wakeel, zamanat ka wakeel, faujdari wakeel, zameen/property ka wakeel, virasat ka wakeel, writ ka wakeel, PECA/NAB ka wakeel) plus Urdu equivalents.
+- Compliance (PBC Rule 135): wording describes what people search for; every block says no page can tell who is best for a case and links to the choosing guide. No self-praise. Visible text only (no hidden keywords).
+- Locked paragraphs untouched; design unchanged; seo_check 0 issues.
