@@ -28,6 +28,9 @@ Website content is general legal information about Pakistani law, not legal advi
 - [All legal guides](https://mlabwp.com.pk/legal-guides/)
 - [How bail works in Pakistan](https://mlabwp.com.pk/legal-guides/bail-in-pakistan/)
 - [FIR cancellation in Pakistan](https://mlabwp.com.pk/legal-guides/fir-cancellation/)
+- [What to do after an FIR is registered](https://mlabwp.com.pk/legal-guides/after-fir-registered-pakistan/)
+- [Maintenance suit in the Family Court](https://mlabwp.com.pk/legal-guides/maintenance-suit-pakistan/)
+- [Succession certificate: NADRA or court](https://mlabwp.com.pk/legal-guides/succession-certificate-pakistan/)
 - [Civil suit procedure in Pakistan](https://mlabwp.com.pk/legal-guides/civil-suit-procedure-pakistan/)
 - [Divorce procedure in Pakistan](https://mlabwp.com.pk/legal-guides/divorce-procedure-pakistan/)
 - [Khula procedure in Pakistan](https://mlabwp.com.pk/legal-guides/khula-procedure-pakistan/)
@@ -36,3 +39,8 @@ Website content is general legal information about Pakistani law, not legal advi
 - [PECA cybercrime cases](https://mlabwp.com.pk/legal-guides/peca-cybercrime-pakistan/)
 - [NAB and FIA arrest](https://mlabwp.com.pk/legal-guides/nab-fia-arrest-pakistan/)
 - [Writ petition before the Lahore High Court](https://mlabwp.com.pk/legal-guides/writ-petition-lahore-high-court/)
+
+## Urdu pages
+- [بہاولپور میں فوجداری مقدمات اور ضمانت](https://mlabwp.com.pk/ur/criminal-lawyer-bahawalpur/)
+- [بہاولپور میں فیملی مقدمات اور خلع](https://mlabwp.com.pk/ur/family-lawyer-bahawalpur/)
+- [بہاولپور میں جائیداد اور ریونیو کے مقدمات](https://mlabwp.com.pk/ur/property-lawyer-bahawalpur/)
