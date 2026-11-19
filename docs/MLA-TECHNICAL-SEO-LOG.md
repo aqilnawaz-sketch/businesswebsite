@@ -84,3 +84,4 @@ best-advocate → advocate · advocate-high-court → about (all `-bahawalpur/`)
 9. `/diary/` stays in git history (sample data only). If it ever held real data, purging history requires a force-push (owner approval).
 
 - 2026-11-19: After-hours urgent call line added (contact + 11 Urdu sidebars). Decision: no '24 hours' wording; schema/GBP hours unchanged.
+- 2026-11-19: sitemap lastmod corrected for 12 pages changed today. IndexNow could not be sent from the work environment (proxy); owner to request indexing in Search Console.

@@ -2,6 +2,9 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-19 — Sitemap lastmod refreshed
+- 12 sitemap entries (home, /ur/, about, contact, 8 legal guides) still showed 11 or 16 Nov although each page was changed on 19 Nov (git log). Set to 2026-11-19 so Google and Bing recrawl them.
+
 ## 2026-11-19 — After-hours urgent call line
 - Owner confirmed (19 Nov 2026) the main number is answered after office hours for urgent matters.
 - Added "Urgent matters after office hours (for example, an arrest): call +92 333 362 1111" to the contact page Office Hours box, and the Urdu equivalent to the sidebar of 11 Urdu pages.
