@@ -9,7 +9,7 @@ for f in files:
     if 'http-equiv="refresh"' in s or f=='404.html': continue
     vis=re.sub(r'<(script|style)[^>]*>.*?</\1>','',s,flags=re.S)
     for m in re.finditer(r'\b(\d{2,4})\+?(?:\s|<[^>]+>)*(?:verified |five-star |5-star |client )*(?:google )?reviews',re.sub(r'<[^>]+>',' ',vis),re.I):
-        if m.group(1)!='500': bad.append((f,'stale review count',m.group(0)[:60]))
+        if m.group(1)!='480': bad.append((f,'stale review count',m.group(0)[:60]))
     for m in re.finditer(r'class="[^"]*mla-rating[^"]*">([^<]*)<',s):
         if m.group(1).strip()!='4.9': bad.append((f,'stale rating',m.group(1)))
     if 'AggregateRating' in s: bad.append((f,'AggregateRating present'))

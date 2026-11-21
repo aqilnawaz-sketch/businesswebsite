@@ -2,6 +2,9 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-21 — Review count corrected to 480+
+- Google Maps (embedded map data, 21 Nov 2026) shows 4.9 from **486** reviews, down from 500 on 19 Nov. The site said "500+", which overstated. Set every `.mla-review-count` (9) and the homepage `data-count` to 480+ / 480; `seo_check.py` expects 480; identity doc updated. Rating 4.9 unchanged.
+
 ## 2026-11-19 — Sitemap lastmod refreshed
 - 12 sitemap entries (home, /ur/, about, contact, 8 legal guides) still showed 11 or 16 Nov although each page was changed on 19 Nov (git log). Set to 2026-11-19 so Google and Bing recrawl them.
 

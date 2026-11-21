@@ -41,7 +41,7 @@ State only what the owner has confirmed: Advocate High Court; Punjab Bar Council
 Do **not** add degrees, universities, awards, rankings or case results unless the owner supplies them in writing.
 
 ## Reviews
-- Visible count: **500+ Google Reviews** (Google Maps showed 4.9 from 500 reviews on 19 Nov 2026; updated at the owner's request). Was 490+ (16 Nov 2026), 475+ (2026-11-10). Each instance is wrapped in `<span class="mla-review-count">`.
+- Visible count: **480+ Google Reviews** (Google Maps showed 4.9 from 486 reviews on 21 Nov 2026, down from 500 on 19 Nov; lowered so the site never overstates). Never show more than Google shows.
 - No AggregateRating or Review structured data (Google's self-serving review policy; previous markup had inconsistent counts of 47 and 424).
 - Visible Google rating: **4.9** (owner-confirmed 2026-11-10; the homepage previously said 5.0). Each instance is wrapped in `<span class="mla-rating">` (4 places: 3 on the homepage, 1 on About). Visible text only, never in schema.
 - Google Business Profile: do not change the name, primary category or identity without approval. Never create a second profile.
