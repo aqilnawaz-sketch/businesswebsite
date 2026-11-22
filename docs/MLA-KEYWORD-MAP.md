@@ -117,7 +117,7 @@ Single source of truth for every search phrase the site covers. All are visible 
 Goal (owner): MLA appears first when people search "best lawyer / best advocate / best criminal (civil, family…) lawyer in Bahawalpur", "achha wakeel" and similar.
 How Google decides: page relevance and quality for organic results; relevance, distance and prominence (reviews, links) for Maps. Lists of terms are keyword stuffing under Google's spam policy and can demote pages.
 1. One home page per term (tables above). Never compete with another MLA page.
-2. A term appears once, in a natural sentence. No comma lists of search terms, synonyms, case types or towns.
+2. A term appears once, in a natural sentence. No comma lists of search terms, synonyms or towns; case types get at most one short descriptive sentence per page (the separate "Related matters" lists were removed on 22 Nov 2026).
 3. "Best" wording only describes what people search for, never a claim about MLA (Pakistan Bar Council Rule 135); each such sentence sits next to "No page can tell you who is best for your case" and the choosing-a-lawyer guide.
 4. Everyday wording (Roman Urdu, Urdu) goes into FAQ questions phrased the way clients ask, published in owner-approved batches.
 5. "Best lawyer" searches are mostly won on Google Maps: complete GBP categories/services, regular posts, steady genuine reviews with replies (never incentivised), consistent directory listings.
