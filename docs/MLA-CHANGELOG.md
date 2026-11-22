@@ -299,3 +299,4 @@ Text-only edits (HTML tags byte-identical; no layout, H1, colour, font, logo, co
 - /lawyer-bahawalpur/: removed the duplicate nearby-towns sentence (the towns stay in the Courts and Forums section).
 - Long-term search-term policy added to docs/MLA-KEYWORD-MAP.md. CLAUDE.md review note corrected to 480+.
 - Locked paragraphs, design and case-type lines untouched; seo_check 0 issues.
+- Same PR: one new FAQ on each of the 9 English and 9 Urdu practice pages: "How do I find a good <area> lawyer in Bahawalpur?" / «بہاولپور میں … کا اچھا وکیل کیسے تلاش کریں؟». Answer = Bar Council enrolment, right court, written fee, read the wakalatnama, "no page can tell you who is best", link to the choosing guide. English FAQs added to FAQPage schema. Covers "good / achha" wording naturally alongside the "best" sentence (policy rule 4). Owner approval required (FAQ protocol).
