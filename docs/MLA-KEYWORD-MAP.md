@@ -112,3 +112,15 @@ Single source of truth for every search phrase the site covers. All are visible 
 - Urdu: لوگ اکثر «بہاولپور میں نیب کا بہترین وکیل»، «اینٹی کرپشن کا وکیل»، «بہاولپور کا بہترین ایڈووکیٹ» یا «بہاولپور کے ٹاپ 10 وکیل» تلاش کرتے ہیں۔ کوئی صفحہ یہ نہیں بتا سکتا کہ آپ کے مقدمے کے لیے کون بہترین ہے؛ وکیل چننے سے پہلے دیکھیں: اچھا وکیل کیسے تلاش کریں۔ اس شعبے کے عام مقدمات: نیب کا کال اپ نوٹس، انکوائری، تفتیش اور ریفرنس، احتساب عدالت اور ہائی کورٹ میں ضمانت، پلی بارگین اور رضاکارانہ واپسی، اینٹی کرپشن اسٹیبلشمنٹ پنجاب کے مقدمات (انسدادِ بدعنوانی ایکٹ 1947 اور دفعہ 161 و 409)، اور محکمانہ انکوائریاں۔ متعلقہ معاملات: آمدن سے زائد اثاثے، اختیارات کا ناجائز استعمال، وفاقی ملازمین کے خلاف ایف آئی اے کے اینٹی کرپشن اور بینکنگ کرائم کے مقدمات، منی لانڈرنگ (اینٹی منی لانڈرنگ ایکٹ 2010)، جائیداد کا منجمد کیا جانا، اور احتساب عدالت میں ٹرائل اور اپیل۔
 
 **Deliberately not added (owner decision needed):** religious offences (sections 295–298 PPC), child sexual abuse offences. Sensitive locally; add only if the owner asks.
+
+## Search-term policy (long-term, 22 Nov 2026 — replaces the list style of PRs #28–#32)
+Goal (owner): MLA appears first when people search "best lawyer / best advocate / best criminal (civil, family…) lawyer in Bahawalpur", "achha wakeel" and similar.
+How Google decides: page relevance and quality for organic results; relevance, distance and prominence (reviews, links) for Maps. Lists of terms are keyword stuffing under Google's spam policy and can demote pages.
+1. One home page per term (tables above). Never compete with another MLA page.
+2. A term appears once, in a natural sentence. No comma lists of search terms, synonyms, case types or towns.
+3. "Best" wording only describes what people search for, never a claim about MLA (Pakistan Bar Council Rule 135); each such sentence sits next to "No page can tell you who is best for your case" and the choosing-a-lawyer guide.
+4. Everyday wording (Roman Urdu, Urdu) goes into FAQ questions phrased the way clients ask, published in owner-approved batches.
+5. "Best lawyer" searches are mostly won on Google Maps: complete GBP categories/services, regular posts, steady genuine reviews with replies (never incentivised), consistent directory listings.
+6. Add a new term only when Search Console shows impressions for it or clients use it.
+7. At most one content batch per month, owner-approved, so rankings can settle.
+8. Measure monthly: Search Console queries containing "best", Maps rank checks, GBP calls and direction requests.
