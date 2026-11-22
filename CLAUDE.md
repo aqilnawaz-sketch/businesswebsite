@@ -24,7 +24,7 @@ Any new internal file or folder must be added to `exclude:` in `_config.yml`.
   Inheritance & Succession, Service Matters, Constitutional Petitions, FIA & Cybercrime, Anti-Corruption & NAB.
 - **Identity:** Mian Aqil Nawaz, Advocate High Court = Owner and Principal Advocate. Mian Aumer Nawaz, Advocate High Court = Founder Member.
   Chamber No. 39, District Courts, Bahawalpur. +92 333 362 1111.
-- **Reviews:** show "475+ Google Reviews" via `<span class="mla-review-count">` and the rating 4.9 via `<span class="mla-rating">`. Never add AggregateRating or Review schema, and never invent counts or ratings.
+- **Reviews:** show "480+ Google Reviews" via `<span class="mla-review-count">` and the rating 4.9 via `<span class="mla-rating">`. Never add AggregateRating or Review schema, and never invent counts or ratings.
 - **FAQs & procedures are mandatory strategy**, but are published in small, owner-reviewed batches (5–10 per area). Follow the 16-point guide template.
 - **Legal content:** no invented judgments or citations. Statutes must be real. Every page says it is general information, not advice.
   New or materially revised legal content needs the owner's approval before merge.
