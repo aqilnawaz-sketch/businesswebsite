@@ -2,6 +2,11 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-28 — Homepage stops competing with practice pages; clearer search snippets
+- Search check (28 Nov 2026, Bahawalpur): the HOMEPAGE, not the practice page, ranked for "criminal lawyer bahawalpur", "family lawyer bahawalpur" and "cyber crime lawyer bahawalpur". Cause: four homepage link cards were H2 headings using the practice pages' exact H1 phrases ("Criminal Lawyer in Bahawalpur", "Family Lawyer in Bahawalpur", ...). Changed those four H2 to styled link titles (`p.seo-card-t`, same font/size/colour/weight). Links and anchor text unchanged; desktop 1366 px and mobile 390 px look the same; no sideways scroll. Owner approved (audit improvement 1).
+- Meta / OG / Twitter descriptions rewritten for criminal, family, cyber-crime, lawyer and advocate pages to add the principal's name and phone (Search Console: "best lawyer in bahawalpur" 45 impressions, 0 clicks; "advocate bahawalpur" 37, 0). Neutral wording, no superlatives, 142–150 characters.
+- Not changed: titles, H1s, page text, locked content, design, review count.
+
 ## 2026-11-28 — Audit fixes: review wording, /data/ off the site
 - Homepage "why choose us" badge said "480+ Verified Google Reviews". Google does not verify reviewers and CLAUDE.md allows only "480+ Google Reviews", so "Verified" removed (owner approved, 28 Nov 2026 digital ecosystem audit, Fix 7).
 - `data/reviews.json` (old list of 6 reviewer names, "totalCount 6", contradicting 480+) was publicly served at /data/reviews.json although no page loads it. Added `data/` to `_config.yml` `exclude:`. File stays in the repo.
