@@ -2,6 +2,12 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-28 — Criminal page: case stages, documents checklist, author note, 2 FAQs (AWAITING OWNER LEGAL REVIEW)
+- Ranking plan step 2 (owner approved building it as a PR, 28 Nov 2026). Criminal page gains a "How a Criminal Case Moves in Bahawalpur" section (FIR → pre-arrest bail → arrest/remand → post-arrest bail → challan → trial → appeal), consistent with the reviewed After-FIR guide and linking to it; "What to Do First" expanded into a documents checklist; an "About this page" author note linking to /about/.
+- Two FAQs added (now 9 of max 10): police remand under s.167 CrPC (15-day total limit, as in the reviewed guide) and bail after Sessions refusal (fresh application to LHC Bahawalpur Bench). FAQPage JSON-LD updated to match; dateModified 2026-11-28.
+- No limitation periods, outcome promises, timelines, superlatives or case law. No personal experience years (locked content untouched). Author note says "Last legal review: PENDING OWNER REVIEW" — replace with "November 2026 by Mian Aqil Nawaz, Advocate High Court" when approved, before merge.
+- seo_check.py: 0 issues. Desktop render checked.
+
 ## 2026-11-28 — Homepage stops competing with practice pages; clearer search snippets
 - Search check (28 Nov 2026, Bahawalpur): the HOMEPAGE, not the practice page, ranked for "criminal lawyer bahawalpur", "family lawyer bahawalpur" and "cyber crime lawyer bahawalpur". Cause: four homepage link cards were H2 headings using the practice pages' exact H1 phrases ("Criminal Lawyer in Bahawalpur", "Family Lawyer in Bahawalpur", ...). Changed those four H2 to styled link titles (`p.seo-card-t`, same font/size/colour/weight). Links and anchor text unchanged; desktop 1366 px and mobile 390 px look the same; no sideways scroll. Owner approved (audit improvement 1).
 - Meta / OG / Twitter descriptions rewritten for criminal, family, cyber-crime, lawyer and advocate pages to add the principal's name and phone (Search Console: "best lawyer in bahawalpur" 45 impressions, 0 clicks; "advocate bahawalpur" 37, 0). Neutral wording, no superlatives, 142–150 characters.
