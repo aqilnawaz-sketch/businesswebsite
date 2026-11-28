@@ -2,7 +2,7 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
-## 2026-11-28 — Guide accuracy fixes (AWAITING OWNER LEGAL REVIEW)
+## 2026-11-28 — Guide accuracy fixes (owner legal review: approved 28 Nov 2026)
 - PECA guide: section numbers corrected against the official PECA index (Sindh Judicial Academy, updated 2025): s.9 glorification, s.10 cyber terrorism, s.20 offences against dignity, s.24 cyber stalking (previously listed as 15, 17, "online harassment", 10).
 - Khula guide: forum corrected. Was "husband's last known place of residence"; now rule 6 West Pakistan Family Courts Rules 1965, including the proviso letting the wife file where she ordinarily resides.
 - Khula, divorce and writ guides: "Timeline" sections promising 3–6 months / 1–2 years / 6 months–2 years replaced with no-promise wording (CLAUDE.md: no timing promises). Divorce keeps the MFLO s.7 90-day rule.
