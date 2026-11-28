@@ -2,9 +2,9 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
-## 2026-11-28 — All eight other practice pages: case stages, documents checklist, author note (AWAITING OWNER LEGAL REVIEW)
+## 2026-11-28 — All eight other practice pages: case stages, documents checklist, author note (owner legal review: approved 28 Nov 2026)
 - Owner instruction 28 Nov 2026: "do all areas if required". Audit: none of civil, family, property, inheritance, service, constitutional, cyber-crime, NAB had a step-by-step section, a documents list or an author note; constitutional and cyber-crime did not link their own guides (writ petition, PECA); service matters has no guide.
-- Each page gains "How a … Moves" (6–7 stages drawn from its reviewed guide or settled statute), "What to Bring to Chamber No. 39", a "do not" line, and an "About this page" note linking to /about/ with "Last legal review: PENDING OWNER REVIEW". Constitutional and cyber-crime now link their guides; service matters links the constitutional page for writ cases.
+- Each page gains "How a … Moves" (6–7 stages drawn from its reviewed guide or settled statute), "What to Bring to Chamber No. 39", a "do not" line, and an "About this page" note linking to /about/ with "Last legal review: November 2026 by Mian Aqil Nawaz, Advocate High Court" (owner approved 28 Nov 2026). Constitutional and cyber-crime now link their guides; service matters links the constitutional page for writ cases.
 - Service, constitutional and cyber-crime pages lacked the shared `.page-main h2` / `.legal-note` CSS line used on the other practice pages; the identical line was added so the new sections render the same. No other design change.
 - No timelines, limitation periods, fee figures, outcome promises, superlatives, experience years or case law. FAQs unchanged. dateModified 2026-11-28. seo_check 0 issues; desktop 1200 px and mobile 390 px checked, no sideways scroll.
 
