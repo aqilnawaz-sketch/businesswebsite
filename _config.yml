@@ -7,3 +7,5 @@ exclude:
   - README.md
   # Whole folder kept off the site: the old 22-second promo said "28+ years" as a personal claim (replaced 11 Nov 2026 by /media/).
   - promo-video/
+  # Old static review list (6 names, "totalCount 6"): not used by any page; kept off the site (audit 28 Nov 2026).
+  - data/

@@ -7,6 +7,11 @@ Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Comp
 - Meta / OG / Twitter descriptions rewritten for criminal, family, cyber-crime, lawyer and advocate pages to add the principal's name and phone (Search Console: "best lawyer in bahawalpur" 45 impressions, 0 clicks; "advocate bahawalpur" 37, 0). Neutral wording, no superlatives, 142–150 characters.
 - Not changed: titles, H1s, page text, locked content, design, review count.
 
+## 2026-11-28 — Audit fixes: review wording, /data/ off the site
+- Homepage "why choose us" badge said "480+ Verified Google Reviews". Google does not verify reviewers and CLAUDE.md allows only "480+ Google Reviews", so "Verified" removed (owner approved, 28 Nov 2026 digital ecosystem audit, Fix 7).
+- `data/reviews.json` (old list of 6 reviewer names, "totalCount 6", contradicting 480+) was publicly served at /data/reviews.json although no page loads it. Added `data/` to `_config.yml` `exclude:`. File stays in the repo.
+- Not changed: review count, rating, locked content, design.
+
 ## 2026-11-21 — Review count corrected to 480+
 - Google Maps (embedded map data, 21 Nov 2026) shows 4.9 from **486** reviews, down from 500 on 19 Nov. The site said "500+", which overstated. Set every `.mla-review-count` (9) and the homepage `data-count` to 480+ / 480; `seo_check.py` expects 480; identity doc updated. Rating 4.9 unchanged.
 
