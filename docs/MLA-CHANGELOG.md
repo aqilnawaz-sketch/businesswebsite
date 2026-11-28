@@ -2,6 +2,10 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-28 — eLawyers.pk profile added to Person sameAs
+- Owner request: link the eLawyers.pk profile across the ecosystem. Added https://elawyers.pk/lawyers/aqilnawaz to `sameAs` of the `#person` (Mian Aqil Nawaz) node in the JSON-LD of all 31 pages that define it. No visible change. Profile corrected the same day (name, photo, High Court Advocate, contact, cities, courts).
+- seo_check 0 issues.
+
 ## 2026-11-28 — New guide: Service Tribunal appeal in Punjab (owner legal review: approved 28 Nov 2026)
 - Service matters was the only practice area without a guide. New /legal-guides/service-tribunal-appeal-punjab/ with all 16 template headings: Art. 212; Punjab Civil Servants Act 1974; Punjab Service Tribunals Act 1974 s.4; PEEDA 2006 ss.16–17 (departmental appeal/review, revision); 7-day show-cause reply; non-civil-servants → writ where rules non-statutory; further appeal "to the apex court with leave — take current advice" (27th Amendment).
 - No fixed limitation days stated except the PEEDA 7-day reply; all other periods described as short, take advice.
