@@ -2,6 +2,13 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-28 — Guide accuracy fixes (AWAITING OWNER LEGAL REVIEW)
+- PECA guide: section numbers corrected against the official PECA index (Sindh Judicial Academy, updated 2025): s.9 glorification, s.10 cyber terrorism, s.20 offences against dignity, s.24 cyber stalking (previously listed as 15, 17, "online harassment", 10).
+- Khula guide: forum corrected. Was "husband's last known place of residence"; now rule 6 West Pakistan Family Courts Rules 1965, including the proviso letting the wife file where she ordinarily resides.
+- Khula, divorce and writ guides: "Timeline" sections promising 3–6 months / 1–2 years / 6 months–2 years replaced with no-promise wording (CLAUDE.md: no timing promises). Divorce keeps the MFLO s.7 90-day rule.
+- Property transfer guide: "stamp duty currently 2%" replaced; Punjab ordinance of April 2026 fixed a uniform 1% (Dawn, Business Recorder), with advice to confirm the rate at registry.
+- Kept by owner decision (28 Nov 2026): civil guide's "over 25 years" line. Court-fee cap Rs 15,000 checked and left unchanged.
+
 ## 2026-11-28 — All eight other practice pages: case stages, documents checklist, author note (owner legal review: approved 28 Nov 2026)
 - Owner instruction 28 Nov 2026: "do all areas if required". Audit: none of civil, family, property, inheritance, service, constitutional, cyber-crime, NAB had a step-by-step section, a documents list or an author note; constitutional and cyber-crime did not link their own guides (writ petition, PECA); service matters has no guide.
 - Each page gains "How a … Moves" (6–7 stages drawn from its reviewed guide or settled statute), "What to Bring to Chamber No. 39", a "do not" line, and an "About this page" note linking to /about/ with "Last legal review: November 2026 by Mian Aqil Nawaz, Advocate High Court" (owner approved 28 Nov 2026). Constitutional and cyber-crime now link their guides; service matters links the constitutional page for writ cases.
