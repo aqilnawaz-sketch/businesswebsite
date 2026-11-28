@@ -2,6 +2,11 @@
 
 Newest first. Branch: `claude/hyperframes-repository-76fmfa`. Status key: **Completed** (in branch) · **Tested** · **Awaiting authorization** · **Not yet verified** (needs live site).
 
+## 2026-11-28 — Homepage stops competing with practice pages; clearer search snippets
+- Search check (28 Nov 2026, Bahawalpur): the HOMEPAGE, not the practice page, ranked for "criminal lawyer bahawalpur", "family lawyer bahawalpur" and "cyber crime lawyer bahawalpur". Cause: four homepage link cards were H2 headings using the practice pages' exact H1 phrases ("Criminal Lawyer in Bahawalpur", "Family Lawyer in Bahawalpur", ...). Changed those four H2 to styled link titles (`p.seo-card-t`, same font/size/colour/weight). Links and anchor text unchanged; desktop 1366 px and mobile 390 px look the same; no sideways scroll. Owner approved (audit improvement 1).
+- Meta / OG / Twitter descriptions rewritten for criminal, family, cyber-crime, lawyer and advocate pages to add the principal's name and phone (Search Console: "best lawyer in bahawalpur" 45 impressions, 0 clicks; "advocate bahawalpur" 37, 0). Neutral wording, no superlatives, 142–150 characters.
+- Not changed: titles, H1s, page text, locked content, design, review count.
+
 ## 2026-11-21 — Review count corrected to 480+
 - Google Maps (embedded map data, 21 Nov 2026) shows 4.9 from **486** reviews, down from 500 on 19 Nov. The site said "500+", which overstated. Set every `.mla-review-count` (9) and the homepage `data-count` to 480+ / 480; `seo_check.py` expects 480; identity doc updated. Rating 4.9 unchanged.
 
